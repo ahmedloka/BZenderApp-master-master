@@ -1,6 +1,9 @@
 package apps.sharabash.bzender.activities.chatRoom;
 
 import android.annotation.SuppressLint;
+import android.arch.lifecycle.Observer;
+import android.arch.lifecycle.ViewModelProviders;
+import android.arch.paging.PagedList;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
@@ -10,6 +13,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.Looper;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatImageView;
 import android.support.v7.widget.LinearLayoutManager;
@@ -30,22 +34,28 @@ import apps.sharabash.bzender.Models.message.Message;
 import apps.sharabash.bzender.Models.singleChat.ChatList;
 import apps.sharabash.bzender.R;
 import apps.sharabash.bzender.Utills.Constant;
+import apps.sharabash.bzender.Utills.MyApp;
 import apps.sharabash.bzender.Utills.MyTextViewBold;
 import apps.sharabash.bzender.activities.chatAllUsers.ChatListActivity;
 import apps.sharabash.bzender.adapters.RecyclerMessagesOneToOneAdapter;
 import apps.sharabash.bzender.dialog.DialogLoader;
+import apps.sharabash.bzender.paging.ChatAdapter;
+import apps.sharabash.bzender.paging.ItemViewModel;
 import apps.sharabash.bzender.services.SignalRService;
+import jp.wasabeef.recyclerview.animators.SlideInDownAnimator;
+import jp.wasabeef.recyclerview.animators.SlideInRightAnimator;
 import jp.wasabeef.recyclerview.animators.SlideInUpAnimator;
 import microsoft.aspnet.signalr.client.hubs.HubConnection;
 import microsoft.aspnet.signalr.client.hubs.HubProxy;
 import microsoft.aspnet.signalr.client.transport.ClientTransport;
 
-public class ChatRoom extends AppCompatActivity implements RecyclerMessagesOneToOneAdapter.OnClickHandler, View.OnClickListener, ChatRoomInterface {
+public class ChatRoom extends AppCompatActivity implements RecyclerMessagesOneToOneAdapter.OnClickHandler, View.OnClickListener { //ChatRoomInterface
 
     public static final List<Message> messageList = new ArrayList<>();
     @SuppressLint("StaticFieldLeak")
     public static RecyclerView mRecyclerViewOneToOne;
-    public static RecyclerMessagesOneToOneAdapter messagesOneToOneAdapter;
+    // public static RecyclerMessagesOneToOneAdapter messagesOneToOneAdapter;
+    public static ChatAdapter adapter;
     private static Message message;
     private final Context mContext = this;
     ListView messagesView;
@@ -53,14 +63,15 @@ public class ChatRoom extends AppCompatActivity implements RecyclerMessagesOneTo
     HubConnection connection;
     HubProxy hub;
     Boolean isScrolling = false;
-    int currentItems, totalItems, scrollOutItems;
     private MyTextViewBold mTxtTitle;
     private Handler mHandler; // to display Toast message
     private EditText mEdTMsg;
-    private String senderId, roomId, statusId;
+    // private String senderId, roomId,
 
+    private String statusId;
     private int pagesCount;
 
+    public static ItemViewModel itemViewModel;
     private boolean toUp;
 
     private boolean isLoading, isLastPage;
@@ -90,10 +101,11 @@ public class ChatRoom extends AppCompatActivity implements RecyclerMessagesOneTo
     private List<String> sendMsgs, receivedMsgs;
     private DialogLoader dialogLoader, dialogLoaderTwo;
     private int page = 0;
-    private ChatRoomPresenter chatRoomPresenter;
+    //  private ChatRoomPresenter chatRoomPresenter;
     private ProgressBar progressBar;
     private SharedPreferences sharedPreferences;
 
+    private PagedList<ChatList> items;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -114,29 +126,29 @@ public class ChatRoom extends AppCompatActivity implements RecyclerMessagesOneTo
         statusId = getIntent().getStringExtra(Constant.STATUS_ID_CHAT);
 
         sharedPreferences = getSharedPreferences("MySharedPreference", Context.MODE_PRIVATE);
-        chatRoomPresenter = new ChatRoomPresenter(this, this);
+        //chatRoomPresenter = new ChatRoomPresenter(this, this);
 
         ImageView mIVSendMsg = findViewById(R.id.btn_send_message);
         mIVSendMsg.setOnClickListener(this);
 
-        roomId = (getIntent().getStringExtra(Constant.ROOM_ID));
-        pagesCount = getIntent().getIntExtra(Constant.PAGES_COUNT, 0);
+//        roomId = (getIntent().getStringExtra(Constant.ROOM_ID));
+//        pagesCount = getIntent().getIntExtra(Constant.PAGES_COUNT, 0);
         Log.d("PAGES_COUNT", "onCreate: " + String.valueOf(pagesCount));
-        Log.d("ROOM_ID", "onCreate: " + roomId);
-        senderId = getIntent().getStringExtra(Constant.SENDER_ID);
+        // Log.d("ROOM_ID", "onCreate: " + roomId);
+        // senderId = getIntent().getStringExtra(Constant.SENDER_ID);
 
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString(Constant.ROOM_ID_FOR_SIGNAL_R, roomId);
+        // editor.putString(Constant.ROOM_ID_FOR_SIGNAL_R, roomId);
         editor.putString(Constant.STATUS_ID_CHAT, statusId);
         //editor.putInt(Constant.PAGES_COUNT, pagesCount);
 
         editor.apply();
 
-        chatRoomPresenter.getChatRoomData(roomId, page);
+        // chatRoomPresenter.getChatRoomData(roomId, page);
 
 
-        Log.d("IDRECEIVER", "onCreate: " + roomId);
-        Log.d("IDSENDER", "onCreate: " + senderId);
+        // Log.d("IDRECEIVER", "onCreate: " + roomId);
+        // Log.d("IDSENDER", "onCreate: " + senderId);
 
 
         // FOR SIGNALR
@@ -164,10 +176,33 @@ public class ChatRoom extends AppCompatActivity implements RecyclerMessagesOneTo
         mEdTMsg = findViewById(R.id.et_message);
         mRecyclerViewOneToOne = findViewById(R.id.recycler_view_messages_one_to_one);
         mRecyclerViewOneToOne.setHasFixedSize(true);
-        mRecyclerViewOneToOne.setItemAnimator(new SlideInUpAnimator());
+        // mRecyclerViewOneToOne.setItemAnimator(new SlideInDownAnimator());
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, true);
         layoutManager.setStackFromEnd(true);
         mRecyclerViewOneToOne.setLayoutManager(layoutManager);
+
+        //getting our ItemViewModel
+        itemViewModel = ViewModelProviders.of(this).get(ItemViewModel.class);
+
+        //creating the Adapter
+        adapter = new ChatAdapter(MyApp.getAppContext(), messageList);
+
+        //observing the itemPagedList from view model
+        itemViewModel.itemPagedList.observe(this, new Observer<PagedList<ChatList>>() {
+            @Override
+            public void onChanged(@Nullable PagedList<ChatList> items) {
+
+                //in case of any changes
+                //submitting the items to adapter
+
+                adapter.submitList(items);
+                mRecyclerViewOneToOne.smoothScrollToPosition(1);
+            }
+        });
+
+        //setting the adapter
+        mRecyclerViewOneToOne.setAdapter(adapter);
+
 
 //        RecyclerView.OnScrollListener recyclerViewOnScrollListener = new RecyclerView.OnScrollListener() {
 //            @Override
@@ -214,7 +249,7 @@ public class ChatRoom extends AppCompatActivity implements RecyclerMessagesOneTo
         //mRecyclerViewOneToOne.addOnScrollListener(recyclerViewOnScrollListener);
 
 
-        chatRoomPresenter.getChatRoomData(senderId, page);
+        // chatRoomPresenter.getChatRoomData(senderId, page);
 
 
     }
@@ -223,7 +258,7 @@ public class ChatRoom extends AppCompatActivity implements RecyclerMessagesOneTo
         if (page > 0) {
             page--;
 
-            chatRoomPresenter.getChatRoomData(roomId, page);
+            // chatRoomPresenter.getChatRoomData(roomId, page);
 
             toUp = false;
 
@@ -235,7 +270,7 @@ public class ChatRoom extends AppCompatActivity implements RecyclerMessagesOneTo
 
         if (page < pagesCount) {
             page++;
-            chatRoomPresenter.getChatRoomData(roomId, page);
+            // chatRoomPresenter.getChatRoomData(roomId, page);
             toUp = true;
         }
     }
@@ -249,11 +284,13 @@ public class ChatRoom extends AppCompatActivity implements RecyclerMessagesOneTo
         intent.setClass(mContext, SignalRService.class);
         bindService(intent, mConnection, Context.BIND_AUTO_CREATE);
 
-        messageList.clear();
-        sendMsgs.clear();
-        receivedMsgs.clear();
 
-        chatRoomPresenter.getChatRoomData(roomId, page);
+        try {
+            itemViewModel.invalidateDataSource();
+
+        } catch (NullPointerException ignored) {
+
+        }
 
 
     }
@@ -302,11 +339,52 @@ public class ChatRoom extends AppCompatActivity implements RecyclerMessagesOneTo
                 // occur in a separate thread to avoid slowing down the activity performance.
                 if (!mEdTMsg.getText().toString().isEmpty()) {
                     String message = mEdTMsg.getText().toString();
+                    String roomId = sharedPreferences.getString(Constant.ROOM_ID, "");
+
                     //String reciveridentityId, String myID, String message
                     mService.sendMessage(roomId, message);
                     mEdTMsg.getText().clear();
-                    messagesOneToOneAdapter.addItem(new Message(Message.MSG_TYPE_SENT, message));
+
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            itemViewModel.invalidateDataSource();
+                            itemViewModel.invalidateDataSource();
+                        }
+                    }, 500);
+
+
                     mRecyclerViewOneToOne.smoothScrollToPosition(1);
+
+                    //onResume();
+
+                    //setting the adapter
+                    //mRecyclerViewOneToOne.setAdapter(adapter);
+//
+//                    items.add(new ChatList("", "", sharedPreferences.getString(Constant.USER_ID_CHAT, ""), message.trim()));
+//                    adapter.notifyDataSetChanged();
+
+//
+//                    Intent again = new Intent(this, ChatRoom.class);
+//                    again.putExtra(Constant.TENDER_NAME, mTxtTitle.getText().toString());
+//                    again.putExtra(Constant.STATUS_ID_CHAT, statusId);
+//
+//                    startActivity(again);
+//                    ItemViewModel itemViewModel = ViewModelProviders.of(this).get(ItemViewModel.class);
+//                    itemViewModel.itemPagedList.observe(this, new Observer<PagedList<ChatList>>() {
+//                        @Override
+//                        public void onChanged(@Nullable PagedList<ChatList> items) {
+//
+//                            //in case of any changes
+//                            //submitting the items to adapter
+//
+//                            chatAdapter.submitList(items);
+//                            //mRecyclerViewOneToOne.smoothScrollToPosition(items.size() -1);
+//                        }
+//                    });
+//
+//                    //setting the adapter
+//                    mRecyclerViewOneToOne.setAdapter(chatAdapter);
 
 
                 }
@@ -325,46 +403,45 @@ public class ChatRoom extends AppCompatActivity implements RecyclerMessagesOneTo
     }
 
 
-    @Override
-    public void getChatRoomData(List<ChatList> singleChatResponse) {
+//    @Override
+//    public void getChatRoomData(List<ChatList> singleChatResponse) {
+//
+//
+//        Log.d("TEEEST", "getChatRoomData: " + singleChatResponse.get(0).getBody());
+//
+//        for (int i = 0; i < singleChatResponse.size(); i++) {
+//            if (singleChatResponse.get(i).getSenderId().equals(senderId)) {
+//                messageList.add(new Message(Message.MSG_TYPE_RECEIVED, singleChatResponse.get(i).getBody()));
+//            } else {
+//                messageList.add(new Message(Message.MSG_TYPE_SENT, singleChatResponse.get(i).getBody()));
+//            }
+//            //Collections.reverse(messageList);
+//        }
+//
+//
+//    }
 
-
-        Log.d("TEEEST", "getChatRoomData: " + singleChatResponse.get(0).getBody());
-
-        for (int i = 0; i < singleChatResponse.size(); i++) {
-            if (singleChatResponse.get(i).getSenderId().equals(senderId)) {
-                messageList.add(new Message(Message.MSG_TYPE_RECEIVED, singleChatResponse.get(i).getBody()));
-            } else {
-                messageList.add(new Message(Message.MSG_TYPE_SENT, singleChatResponse.get(i).getBody()));
-            }
-            //Collections.reverse(messageList);
-        }
-
-
-    }
-
-    @Override
-    public void finishGetDate() {
-
-
-        messagesOneToOneAdapter = new RecyclerMessagesOneToOneAdapter(messageList, this);
-        for (int i = 0; i < sendMsgs.size(); i++) {
-            messagesOneToOneAdapter.addItem(new Message(Message.MSG_TYPE_SENT, sendMsgs.get(i)));
-            Log.d("SIZE_LIST", "finishGetDate:_SEND " + sendMsgs.size());
-        }
-
-        for (int i = 0; i < receivedMsgs.size(); i++) {
-            messagesOneToOneAdapter.addItem(new Message(Message.MSG_TYPE_RECEIVED, receivedMsgs.get(i)));
-            Log.d("SIZE_LIST", "finishGetDate:_RECEIVE " + receivedMsgs.size());
-        }
-        mRecyclerViewOneToOne.setAdapter(messagesOneToOneAdapter);
-
-
-        Log.d("count", "initViews: " + messagesOneToOneAdapter.getItemCount());
-        if (messagesOneToOneAdapter.getItemCount() > 1)
-            mRecyclerViewOneToOne.smoothScrollToPosition(1);
-
-    }
+//    @Override
+//    public void finishGetDate() {
+//
+//
+//        messagesOneToOneAdapter = new RecyclerMessagesOneToOneAdapter(messageList, this);
+//        for (int i = 0; i < sendMsgs.size(); i++) {
+//            messagesOneToOneAdapter.addItem(new Message(Message.MSG_TYPE_SENT, sendMsgs.get(i)));
+//            Log.d("SIZE_LIST", "finishGetDate:_SEND " + sendMsgs.size());
+//        }
+//
+//        for (int i = 0; i < receivedMsgs.size(); i++) {
+//            messagesOneToOneAdapter.addItem(new Message(Message.MSG_TYPE_RECEIVED, receivedMsgs.get(i)));
+//            Log.d("SIZE_LIST", "finishGetDate:_RECEIVE " + receivedMsgs.size());
+//        }
+//        mRecyclerViewOneToOne.setAdapter(messagesOneToOneAdapter);
+//
+//
+//        Log.d("count", "initViews: " + messagesOneToOneAdapter.getItemCount());
+//        if (messagesOneToOneAdapter.getItemCount() > 1)
+//            mRecyclerViewOneToOne.smoothScrollToPosition(messagesOneToOneAdapter.getItemCount() - 1);
+//    }
 //    @Override
 //    public void getChatRoomData(SingleChatResponse singleChatResponse) {
 //

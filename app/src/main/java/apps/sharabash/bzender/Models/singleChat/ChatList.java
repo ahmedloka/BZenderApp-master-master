@@ -1,6 +1,14 @@
 package apps.sharabash.bzender.Models.singleChat;
 
 public class ChatList {
+
+    public ChatList(String messageDate, String id, String senderId, String body) {
+        MessageDate = messageDate;
+        Id = id;
+        SenderId = senderId;
+        Body = body;
+    }
+
     private String MessageDate;
 
     private String Id;

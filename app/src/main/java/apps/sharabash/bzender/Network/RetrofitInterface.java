@@ -47,6 +47,7 @@ import apps.sharabash.bzender.Models.signUp.CountryCodeResponse;
 import apps.sharabash.bzender.Models.signUp.SignUpRequest;
 import apps.sharabash.bzender.Models.signUp.signUpResponse;
 import apps.sharabash.bzender.Models.singleChat.SingleChatResponse;
+import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
@@ -155,7 +156,7 @@ public interface RetrofitInterface {
 
 
     @GET("api/GetChatMessages")
-    Observable<SingleChatResponse> getChatChatRoomData(@Query("RoomId") String roomID , @Query("page") int page);
+    Call<SingleChatResponse> getChatChatRoomData(@Query("RoomId") String roomID , @Query("page") int page);
 
     @GET("api/packages")
     Observable<List<ResponsePackages>> getPackages();

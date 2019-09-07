@@ -30,22 +30,48 @@ public class NetworkUtil {
 
     }
 
-    public static RetrofitInterface getRetrofitByToken(String token) {
+
+    public static RetrofitInterface getRetrofitByTokenForChat(String token) {
 
         Gson gson = new GsonBuilder()
                 .setLenient()
                 .create();
-
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
 
-        String newToken="Bearer "+token;
+        String newToken = "Bearer " + token;
         httpClient.addInterceptor(chain -> {
 
             Request original = chain.request();
             Request.Builder builder = original.newBuilder()
-                    .addHeader("Authorization",newToken)
-                    .method(original.method(),original.body());
-            return  chain.proceed(builder.build());
+                    .addHeader("Authorization", newToken)
+                    .method(original.method(), original.body());
+            return chain.proceed(builder.build());
+
+        });
+
+        return new Retrofit.Builder()
+                .baseUrl(BASE_URL_HTTP)
+                .client(httpClient.build())
+                .addConverterFactory(GsonConverterFactory.create(gson))
+                .build().create(RetrofitInterface.class);
+    }
+
+    public static RetrofitInterface getRetrofitByToken(String token) {
+
+
+        Gson gson = new GsonBuilder()
+                .setLenient()
+                .create();
+        OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
+
+        String newToken = "Bearer " + token;
+        httpClient.addInterceptor(chain -> {
+
+            Request original = chain.request();
+            Request.Builder builder = original.newBuilder()
+                    .addHeader("Authorization", newToken)
+                    .method(original.method(), original.body());
+            return chain.proceed(builder.build());
 
         });
 
@@ -59,7 +85,7 @@ public class NetworkUtil {
                 .build().create(RetrofitInterface.class);
     }
 
-    public static RetrofitInterface getRetrofit_Get_Address(){
+    public static RetrofitInterface getRetrofit_Get_Address() {
 
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
 
@@ -67,8 +93,8 @@ public class NetworkUtil {
 
             Request original = chain.request();
             Request.Builder builder = original.newBuilder()
-                    .method(original.method(),original.body());
-            return  chain.proceed(builder.build());
+                    .method(original.method(), original.body());
+            return chain.proceed(builder.build());
 
         });
 

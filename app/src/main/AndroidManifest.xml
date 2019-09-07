@@ -37,7 +37,7 @@
     <uses-permission android:name="android.permission.CALL_PHONE" />
 
     <application
-        android:name="android.support.multidex.MultiDexApplication"
+        android:name=".Utills.MyApp"
         android:allowBackup="true"
         android:fullBackupContent="true"
         android:icon="@mipmap/ic_launcher"
@@ -49,12 +49,10 @@
         android:usesCleartextTraffic="true">
         <activity
             android:name=".activities.webPaymnet.WebPaymentActivity"
-            android:parentActivityName=".activities.packages.PackagesActivity"></activity>
+            android:parentActivityName=".activities.packages.PackagesActivity" />
         <activity
             android:name=".activities.PaymentActivity"
-            android:parentActivityName=".activities.packages.PackagesActivity">
-
-        </activity>
+            android:parentActivityName=".activities.packages.PackagesActivity"></activity>
         <activity
             android:name=".activities.packages.PackagesActivity"
             android:parentActivityName=".activities.Home.Home" />
@@ -122,9 +120,7 @@
         <activity android:name=".activities.WelcomeActivity" />
         <activity
             android:name=".activities.chatRoom.ChatRoom"
-            android:parentActivityName=".activities.chatRoom.ChatRoom">
-
-        </activity>
+            android:parentActivityName=".activities.chatRoom.ChatRoom"></activity>
         <activity
             android:name=".activities.notification.Notifications"
             android:parentActivityName=".activities.Home.Home" />
@@ -166,7 +162,6 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
 
         <meta-data

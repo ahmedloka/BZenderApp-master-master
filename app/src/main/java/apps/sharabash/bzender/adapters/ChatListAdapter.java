@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -70,7 +71,14 @@ public class ChatListAdapter extends RecyclerView.Adapter<ChatListAdapter.ViewHo
 
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.putInt(Constant.PAGES_COUNT, itemList.get(listPosition).getPagesCount());
+            editor.putString(Constant.ROOM_ID, itemList.get(listPosition).getRoomId());
             editor.apply();
+
+            String roomId = sharedPreferences.getString(Constant.ROOM_ID, "");
+            int pages_size = sharedPreferences.getInt(Constant.PAGES_COUNT, 0);
+
+            Log.d("DATA_SIZE_PAGE", "ItemDataSource: " + pages_size);
+            Log.d("DATA_ROOM_ID", "ItemDataSource: " + roomId);
 
             context.startActivity(intent);
             Animatoo.animateSlideRight(context);

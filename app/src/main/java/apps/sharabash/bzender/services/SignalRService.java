@@ -1,6 +1,7 @@
 package apps.sharabash.bzender.services;
 
 import android.app.Service;
+import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -21,6 +22,7 @@ import java.util.concurrent.ExecutionException;
 import apps.sharabash.bzender.Models.message.Message;
 import apps.sharabash.bzender.Utills.Constant;
 import apps.sharabash.bzender.adapters.RecyclerMessagesOneToOneAdapter;
+import apps.sharabash.bzender.paging.ItemViewModel;
 import microsoft.aspnet.signalr.client.Credentials;
 import microsoft.aspnet.signalr.client.MessageReceivedHandler;
 import microsoft.aspnet.signalr.client.Platform;
@@ -32,8 +34,9 @@ import microsoft.aspnet.signalr.client.hubs.HubProxy;
 import microsoft.aspnet.signalr.client.transport.ClientTransport;
 import microsoft.aspnet.signalr.client.transport.ServerSentEventsTransport;
 
+import static apps.sharabash.bzender.activities.chatRoom.ChatRoom.itemViewModel;
 import static apps.sharabash.bzender.activities.chatRoom.ChatRoom.mRecyclerViewOneToOne;
-import static apps.sharabash.bzender.activities.chatRoom.ChatRoom.messagesOneToOneAdapter;
+//import static apps.sharabash.bzender.activities.chatRoom.ChatRoom.messagesOneToOneAdapter;
 
 public class SignalRService extends Service implements RecyclerMessagesOneToOneAdapter.OnClickHandler {
     private final String CLIENT_METHOD_BROADAST_MESSAGE = "receiveMessage";
@@ -199,36 +202,45 @@ public class SignalRService extends Service implements RecyclerMessagesOneToOneA
                 Log.e("onMessageReceived ", json.toString());
                 if (!statusId.equals("7")) {
                     mHandler.post(new Runnable() {
-                    @Override
-                    public void run() {
-                        //     Toast.makeText(getApplicationContext(), json.toString(), Toast.LENGTH_SHORT).show();
-                        Log.d("<De", "run: " + json.toString());
-                        JsonParser parser = new JsonParser();
-                        JsonObject jsonObject = parser.parse(json.toString()).getAsJsonObject();
+                        @Override
+                        public void run() {
+                            //     Toast.makeText(getApplicationContext(), json.toString(), Toast.LENGTH_SHORT).show();
+                            Log.d("<De", "run: " + json.toString());
+                            JsonParser parser = new JsonParser();
+                            JsonObject jsonObject = parser.parse(json.toString()).getAsJsonObject();
 
 
-                        try {
-                            JsonArray jsonArray = jsonObject.getAsJsonArray("A");
-                            String msg = jsonArray.get(0).toString().replace("\"", "").trim();
+                            try {
+                                JsonArray jsonArray = jsonObject.getAsJsonArray("A");
+                                String msg = jsonArray.get(0).toString().replace("\"", "").trim();
 
-                            // Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT).show();
-                            Log.d("<De", "run: " + msg);
+                                // Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT).show();
+                                Log.d("<De", "run: " + msg);
 
 
-                            messagesOneToOneAdapter.addItem(new Message(Message.MSG_TYPE_RECEIVED, msg));
-                            messagesOneToOneAdapter.notifyDataSetChanged();
+                                new Handler().postDelayed(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        itemViewModel.invalidateDataSource();
+                                        itemViewModel.invalidateDataSource();
+                                    }
+                                }, 500);
 
-                            mRecyclerViewOneToOne.setAdapter(messagesOneToOneAdapter);
-                            mRecyclerViewOneToOne.smoothScrollToPosition(1);
+                                mRecyclerViewOneToOne.smoothScrollToPosition(1);
 
-                        } catch (NullPointerException ignored) {
+                                //messagesOneToOneAdapter.addItem(new Message(Message.MSG_TYPE_RECEIVED, msg));
+                                // messagesOneToOneAdapter.notifyDataSetChanged();
+
+//                            mRecyclerViewOneToOne.setAdapter(messagesOneToOneAdapter);
+//                            mRecyclerViewOneToOne.smoothScrollToPosition(messagesOneToOneAdapter.getItemCount() - 1);
+                            } catch (NullPointerException ignored) {
+
+                            }
+
 
                         }
-
-
-                    }
-                });
-                 }
+                    });
+                }
             }
         });
 
