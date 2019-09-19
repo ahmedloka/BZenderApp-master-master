@@ -9,84 +9,81 @@ public class ChatList {
 
     private String StatusId;
 
-    private int PagesCount ;
+    private String PagesCount;
 
-    private String RoomId;
+    private int RoomId;
 
     private String SenderId;
 
-    public int getPagesCount() {
-        return PagesCount;
-    }
+    private String UserChatStatus;
 
-    public void setPagesCount(int pagesCount) {
-        PagesCount = pagesCount;
-    }
-
-    public String getTenderName ()
-    {
+    public String getTenderName() {
         return TenderName;
     }
 
-    public void setTenderName (String TenderName)
-    {
+    public void setTenderName(String TenderName) {
         this.TenderName = TenderName;
     }
 
-    public String getLastMessage ()
-    {
+    public String getLastMessage() {
         return LastMessage;
     }
 
-    public void setLastMessage (String LastMessage)
-    {
+    public void setLastMessage(String LastMessage) {
         this.LastMessage = LastMessage;
     }
 
-    public String getSenderName ()
-    {
+    public String getSenderName() {
         return SenderName;
     }
 
-    public void setSenderName (String SenderName)
-    {
+    public void setSenderName(String SenderName) {
         this.SenderName = SenderName;
     }
 
-    public String getStatusId ()
-    {
+    public String getStatusId() {
         return StatusId;
     }
 
-    public void setStatusId (String StatusId)
-    {
+    public void setStatusId(String StatusId) {
         this.StatusId = StatusId;
     }
 
-    public String getRoomId ()
-    {
+    public String getPagesCount() {
+        return PagesCount;
+    }
+
+    public void setPagesCount(String PagesCount) {
+        this.PagesCount = PagesCount;
+    }
+
+    public int getRoomId() {
         return RoomId;
     }
 
-    public void setRoomId (String RoomId)
-    {
+    public void setRoomId(int RoomId) {
         this.RoomId = RoomId;
     }
 
-    public String getSenderId ()
-    {
+    public String getSenderId() {
         return SenderId;
     }
 
-    public void setSenderId (String SenderId)
-    {
+    public void setSenderId(String SenderId) {
         this.SenderId = SenderId;
     }
 
+    public String getUserChatStatus() {
+        return UserChatStatus;
+    }
+
+    public void setUserChatStatus(String UserChatStatus) {
+        this.UserChatStatus = UserChatStatus;
+    }
+
     @Override
-    public String toString()
-    {
-        return "ClassPojo [TenderName = "+TenderName+", LastMessage = "+LastMessage+", SenderName = "+SenderName+", StatusId = "+StatusId+", RoomId = "+RoomId+", SenderId = "+SenderId+"]";
+    public String toString() {
+        return "ClassPojo [TenderName = " + TenderName + ", LastMessage = " + LastMessage + ", SenderName = " + SenderName + ", StatusId = " + StatusId + ", PagesCount = " + PagesCount + ", RoomId = " + RoomId + ", SenderId = " + SenderId + ", UserChatStatus = " + UserChatStatus + "]";
     }
 }
 

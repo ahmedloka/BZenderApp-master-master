@@ -67,9 +67,9 @@
     <string name="change_language">تغيير اللغة</string>
     <string name="terms_and_conditions">الأحكام والشروط</string>
     <string name="profile">الصفحة الشخصية</string>
-    <string name="my_tender">مناقصتي</string>
-    <string name="reserved_tender">المناقصة المحجوزة</string>
-    <string name="my_points">نقاطي</string>
+    <string name="my_tender">مناقصاتي</string>
+    <string name="reserved_tender">حجزاتي</string>
+    <string name="my_points">النقاط</string>
     <string name="edit_profile">تعديل الصفحة الشخصية</string>
     <string name="save">حفظ</string>
     <string name="old_password">كلمة المرور القديمة</string>
@@ -111,8 +111,8 @@
     <string name="intro_four_second_txt">أفضل أسعار وجودة للصناع وافضل تسويق ومبيعات للمزايدات</string>
 
     <string name="complete_add_tinder_sec">تمت العلمية بنجاح و سوف يتم خصم 400 نقطة بمجرد موافقة الأدمن .</string>
-    <string name="individual_person">الشخص منفرد</string>
-    <string name="business">اعمال</string>
+    <string name="individual_person">افراد</string>
+    <string name="business">شركات</string>
     <string name="fill_data">أكمل بيانات المناقصة
 </string>
     <string name="default_notification_channel_id">defaultNotificationId</string>
@@ -252,10 +252,10 @@
     <string name="point">نقطة</string>
     <string name="error_verfication">برجاء التأكد من رمز التحقق</string>
     <string name="item_details">تفاصيل العنصر</string>
-    <string name="show_success_for_edit">تم تعديل الأكونت بنجاح</string>
+    <string name="show_success_for_edit">تمت العملية بنجاح</string>
     <string name="password_changed">لقد تم تغير الباسورد بنجاح</string>
     <string name="please_downlaod_whats_app"> اولا لأستخدام هذه الخدمة What\'s App الرجاء تحميل</string>
-    <string name="slogan">They Compete Makes You Win</string>
+    <string name="slogan">There Compete Makes You Win</string>
     <string name="gellery">المعرض</string>
     <string name="camera">الكاميرا</string>
     <string name="choose_an_img">اختار صورة</string>
@@ -269,7 +269,7 @@
     <string name="upload_images">رفع الصور</string>
     <string name="ele_un_type">نوع المنتج :</string>
     <string name="modell">الموديل :</string>
-    <string name="year_of_man">سنة الصنع :</string>
+    <string name="year_of_man">سنة الصناعة :</string>
     <string name="numb_of_un">عدد الوحدات :</string>
     <string name="elec_uni_stat">حالة المنتج :</string>
     <string name="origin_of_man">بلد الصنع :</string>
@@ -280,7 +280,7 @@
     <string name="desc">الوصف</string>
     <string name="car_typ">نوع السيارة :</string>
     <string name="car_mo">موديل السيارة :</string>
-    <string name="year_of_ccar">سنة الصنع :</string>
+    <string name="year_of_ccar">سنة الصناعة :</string>
     <string name="num_of_ccar">عدد السيارات :</string>
     <string name="km">كم :</string>
     <string name="tra_type">ناقل الحركة :</string>
@@ -311,7 +311,18 @@
     <string name="terms_and_conditions_agree">أفهم جميع البنود والشروط ، ووافقت عليها جميعًا ، <u> <font color='#000000' size='18'>انقر هنا</font></u></string>
     <string name="have_to_mark">يجب عليك قبول جميع الشروط والأحكام</string>
     <string name="soon">سوف تبدأ المناقصة قريبا</string>
-    <string name="chat_not">Chat Not Available Now , Cause Tender Is Finished</string>
+    <string name="chat_not">الشات غير متاح بسبب انتهاء المناقصة</string>
+    <string name="check_network_and">لا يوجد اتصال بالأنترنت</string>
+    <string name="complete_your_data">أكمل بياناتك</string>
+    <string name="commercial_record">رقم السجل تجاري</string>
+    <string name="tax_card">رقم البطاقة الضريبية</string>
+    <string name="chat_nott">لا يمكن ارسال رسائل</string>
+    <string name="id_taken">رقم البطاقة مأخوذ بالفعل</string>
+    <string name="tax_or_comm_taken">الرقم الضريبي أو رقم السجل التجاري مأخوذ بالفعل</string>
+    <string name="national_id_required">National Id Is Required</string>
+    <string name="tax_num_required">Tax Card Number Is Required</string>
+    <string name="commercial_record_required">Commercial Record Number Is Required</string>
+    <string name="verfied_successfullty">Your Account Was Verified Successfully</string>
 
 
 </resources>

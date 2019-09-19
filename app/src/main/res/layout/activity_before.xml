@@ -1,0 +1,401 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.before.BeforerActivity">
+
+    <android.support.v7.widget.AppCompatImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:scaleType="fitXY"
+        android:src="@drawable/background" />
+
+    <android.support.v7.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:alpha="0.65"
+        android:background="@color/blakcolor" />
+
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <android.support.v7.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center">
+
+                <android.support.v7.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <Space
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_20_height" />
+
+                    <Space
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_10_height" />
+
+                    <android.support.v7.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:weightSum="411">
+
+                        <android.support.v7.widget.AppCompatImageView
+                            android:layout_width="0dp"
+                            android:layout_height="@dimen/category_recycler_item_height"
+                            android:layout_gravity="center"
+                            android:layout_weight="120"
+                            android:scaleType="centerInside"
+                            android:src="@drawable/logoo" />
+                    </android.support.v7.widget.LinearLayoutCompat>
+
+                    <Space
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_15_height" />
+
+                    <android.support.v7.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:weightSum="411">
+
+                        <Space
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="89" />
+
+                        <android.support.v7.widget.LinearLayoutCompat
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="@dimen/_40sdp"
+                            android:layout_marginEnd="@dimen/_40sdp"
+                            android:layout_weight="233"
+                            android:orientation="vertical">
+
+                            <android.support.v7.widget.LinearLayoutCompat
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:gravity="center"
+                                android:weightSum="411">
+
+                                <apps.sharabash.bzender.Utills.MyTextViewBold
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:gravity="center"
+                                    android:text="@string/register"
+                                    android:textColor="@color/whitecolor"
+                                    android:textSize="@dimen/_16ssp"
+                                    android:textStyle="bold"
+                                    android:visibility="gone" />
+                            </android.support.v7.widget.LinearLayoutCompat>
+
+                            <Space
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_4_height" />
+
+                            <Space
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_10_height" />
+
+                            <apps.sharabash.bzender.Utills.MyTextView
+                                android:id="@+id/txt_record"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/commercial_record"
+                                android:textColor="@color/whitecolor"
+                                android:textSize="@dimen/_8ssp"
+                                android:textStyle="bold" />
+
+                            <Space
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_4_height" />
+
+                            <apps.sharabash.bzender.Utills.MyEditText
+                                android:id="@+id/et_record"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/pin_height"
+                                android:background="@color/whitecolor"
+                                android:inputType="text"
+                                android:maxLines="1"
+                                android:paddingStart="@dimen/_4_height"
+                                android:paddingEnd="@dimen/_4_height"
+                                android:textColor="@color/blakcolor"
+                                android:textColorHint="@color/blakcolor"
+                                android:textSize="@dimen/_13ssp" />
+
+
+                            <Space
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_10_height" />
+
+                            <apps.sharabash.bzender.Utills.MyTextView
+                                android:id="@+id/txt_card"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/tax_card"
+                                android:textColor="@color/whitecolor"
+                                android:textSize="@dimen/_8ssp"
+                                android:textStyle="bold" />
+
+                            <Space
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_4_height" />
+
+                            <apps.sharabash.bzender.Utills.MyEditText
+                                android:id="@+id/et_card"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/pin_height"
+                                android:background="@color/whitecolor"
+                                android:inputType="text"
+                                android:maxLines="1"
+                                android:paddingStart="@dimen/_4_height"
+                                android:paddingEnd="@dimen/_4_height"
+                                android:textColor="@color/blakcolor"
+                                android:textColorHint="@color/blakcolor"
+                                android:textSize="@dimen/_13ssp" />
+
+                            <Space
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_10_height" />
+
+                            <apps.sharabash.bzender.Utills.MyTextView
+                                android:id="@+id/txt_id"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:inputType="number"
+                                android:text="@string/national_id"
+                                android:textColor="@color/whitecolor"
+                                android:textSize="@dimen/_8ssp"
+                                android:textStyle="bold"
+                                android:visibility="gone" />
+
+                            <Space
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_4_height" />
+
+                            <apps.sharabash.bzender.Utills.MyEditText
+                                android:id="@+id/et_id"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/pin_height"
+                                android:background="@color/whitecolor"
+                                android:inputType="textPassword"
+                                android:maxLines="1"
+                                android:paddingStart="@dimen/_4_height"
+                                android:paddingEnd="@dimen/_4_height"
+                                android:textColor="@color/blakcolor"
+                                android:textColorHint="@color/blakcolor"
+                                android:textSize="@dimen/_13ssp"
+                                android:visibility="gone" />
+
+                            <Space
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_10_height" />
+
+                            <!--<apps.sharabash.bzender.Utills.MyTextView-->
+                            <!--android:layout_width="wrap_content"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:text="@string/select_type"-->
+                            <!--android:textColor="@color/whitecolor"-->
+                            <!--android:textSize="@dimen/_8ssp"-->
+                            <!--android:textStyle="bold" />-->
+
+                            <Space
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_4_height" />
+
+
+                            <io.ghyeok.stickyswitch.widget.StickySwitch
+                                android:id="@+id/sticky_switch"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_50sdp"
+                                android:layout_centerInParent="true"
+                                android:layout_gravity="center"
+                                android:paddingStart="@dimen/_10sdp"
+                                android:paddingEnd="@dimen/_10sdp"
+                                app:ss_animationDuration="600"
+                                app:ss_animationType="line"
+                                app:ss_iconPadding="@dimen/_15sdp"
+                                app:ss_iconSize="@dimen/_16sdp"
+                                app:ss_leftIcon="@drawable/ic_bussiness"
+                                app:ss_rightIcon="@drawable/ic_ibdividual_person"
+                                app:ss_selectedTextSize="@dimen/_12ssp"
+                                app:ss_sliderBackgroundColor="@color/blakcolor"
+                                app:ss_switchColor="@color/dark_blue"
+                                app:ss_textColor="@color/whitecolor"
+                                app:ss_textSize="@dimen/_10ssp" />
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/_5sdp"
+                                android:layout_marginTop="@dimen/_5sdp"
+                                android:layoutDirection="rtl"
+                                android:orientation="horizontal">
+
+
+                                <apps.sharabash.bzender.Utills.MyTextView
+                                    android:id="@+id/txt_bussiness"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentEnd="true"
+                                    android:inputType="number"
+                                    android:text="@string/business"
+                                    android:textColor="@color/whitecolor"
+                                    android:textSize="@dimen/_10ssp"
+                                    android:textStyle="bold" />
+
+                                <apps.sharabash.bzender.Utills.MyTextView
+                                    android:id="@+id/txt_individual"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentStart="true"
+                                    android:inputType="number"
+                                    android:text="@string/individual_person"
+                                    android:textColor="@color/graycolor"
+                                    android:textSize="@dimen/_10ssp"
+                                    android:textStyle="bold" />
+
+                            </RelativeLayout>
+
+                            <Space
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_4_height" />
+
+
+                        </android.support.v7.widget.LinearLayoutCompat>
+
+                        <Space
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="89" />
+                    </android.support.v7.widget.LinearLayoutCompat>
+
+                    <Space
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_4_height" />
+
+                    <Space
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_15_height" />
+
+                    <android.support.v7.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:weightSum="411">
+
+                        <Space
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="146" />
+
+                        <apps.sharabash.bzender.Utills.ButtonBook
+                            android:id="@+id/next"
+                            android:layout_width="0dp"
+                            android:layout_height="@dimen/_45_height"
+                            android:layout_gravity="center"
+                            android:layout_weight="125"
+                            android:background="@color/colorAccent"
+                            android:gravity="center"
+                            android:text="@string/next"
+                            android:textColor="@color/whitecolor"
+                            android:textSize="@dimen/_13ssp"
+                            android:textStyle="bold"
+                            tools:ignore="TooManyViews" />
+
+                        <Space
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="144" />
+                    </android.support.v7.widget.LinearLayoutCompat>
+
+                    <Space
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_30_height" />
+
+                </android.support.v7.widget.LinearLayoutCompat>
+
+            </FrameLayout>
+        </android.support.v7.widget.LinearLayoutCompat>
+
+
+    </android.support.v4.widget.NestedScrollView>
+
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:background="@color/colorPrimary"
+        app:contentInsetLeft="0dp"
+        app:contentInsetStart="0dp"
+        app:layout_collapseMode="pin"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        tools:ignore="UnusedAttribute">
+
+        <LinearLayout
+            android:id="@+id/title_appbar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:visibility="visible"
+            android:weightSum="411">
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="20" />
+
+            <android.support.v7.widget.AppCompatImageView
+                android:id="@+id/imageNavigationIcon"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="25"
+                android:scaleType="centerInside"
+                android:src="@drawable/reply" />
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="22" />
+
+            <apps.sharabash.bzender.Utills.MyTextViewBold
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="start|center"
+                android:layout_weight="344"
+                android:gravity="start|center"
+                android:text="@string/complete_your_data"
+                android:textColor="@color/whitecolor"
+                android:textSize="@dimen/_14ssp"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </android.support.v7.widget.Toolbar>
+
+
+</RelativeLayout>

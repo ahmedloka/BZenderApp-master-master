@@ -2,8 +2,6 @@ package apps.sharabash.bzender.activities;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.v4.app.NavUtils;
-import android.support.v4.widget.NestedScrollView;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatCheckBox;
 import android.support.v7.widget.AppCompatImageView;
@@ -51,6 +49,8 @@ public class TenderCarDetails extends AppCompatActivity implements View.OnClickL
     private MyTextView txtScan;
     private MyTextView txtEngine;
     private MyTextView txtExtra;
+    private MyTextView txtViol;
+    private AppCompatCheckBox checkboxViolo;
 
 
     private String YearOfCar = "false";
@@ -133,6 +133,10 @@ public class TenderCarDetails extends AppCompatActivity implements View.OnClickL
 
         MyEditText etDesc = findViewById(R.id.et_desc);
         etPrice = findViewById(R.id.et_price);
+
+
+        txtViol = (MyTextView) findViewById(R.id.txt_viol);
+        checkboxViolo = (AppCompatCheckBox) findViewById(R.id.checkbox_violo);
 
         txtType = findViewById(R.id.txt_type);
         txtModel = findViewById(R.id.txt_model);
@@ -294,6 +298,7 @@ public class TenderCarDetails extends AppCompatActivity implements View.OnClickL
 
         tenderId = tenderDetails.getId();
 
+
         txtYear.append("  " + tenderDetails.getTenderCar().getYearOfCar());
         txtNumber.append("  " + tenderDetails.getTenderCar().getNumberOfCar());
         txtKilometers.append("  " + tenderDetails.getTenderCar().getFromKMToKM());
@@ -317,6 +322,16 @@ public class TenderCarDetails extends AppCompatActivity implements View.OnClickL
         txtScan.append("  " + tenderDetails.getTenderCar().getPossibilityOfExamination());
         txtEngine.append("  " + tenderDetails.getTenderCar().getEngineCapacity());
         txtExtra.append("  " + tenderDetails.getTenderCar().getNote());
+
+
+        if (tenderDetails.getTenderCar().getViolationDocument().equals("false".trim()))
+            txtViol.append("  " + getString(R.string.no));
+        else
+            txtViol.append("  " + getString(R.string.yes));
+
+
+        Log.d("AAAAAAAAAAA", "handleSuccess: " + tenderDetails.getTenderCar().getViolationDocument());
+
     }
 
     @Override

@@ -16,7 +16,7 @@ import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
 import apps.sharabash.bzender.R;
-import apps.sharabash.bzender.activities.Home.Home;
+import apps.sharabash.bzender.activities.notification.Notifications;
 
 public class MyFireBaseMessagingService extends FirebaseMessagingService {
 
@@ -94,7 +94,7 @@ public class MyFireBaseMessagingService extends FirebaseMessagingService {
      * @param messageBody FCM message body received.
      */
     private void sendNotification(String messageBody) {
-        Intent intent = new Intent(this, Home.class);
+        Intent intent = new Intent(this, Notifications.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0 /* Request code */, intent,
                 PendingIntent.FLAG_ONE_SHOT);
@@ -105,10 +105,10 @@ public class MyFireBaseMessagingService extends FirebaseMessagingService {
                 new NotificationCompat.Builder(this, channelId)
                         .setSmallIcon(R.drawable.logo)
                         .setContentTitle("B-Zender")
-                        .setContentText(messageBody)
+                        .setStyle(new NotificationCompat.BigTextStyle().bigText(messageBody))
                         .setAutoCancel(true)
                         .setLargeIcon(BitmapFactory.decodeResource(getResources(),
-                                R.drawable.logo_white))
+                                R.drawable.logo))
                         .setSmallIcon(R.drawable.ic_bell)
                         .setShowWhen(true)
                         .setSound(defaultSoundUri)

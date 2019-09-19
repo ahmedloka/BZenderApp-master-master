@@ -55,8 +55,8 @@ class LoginPresenter {
             Constant.showErrorDialog(context, context.getString(R.string.password_size));
         } else {
             loginRequestModel loginRequestModel = new loginRequestModel();
-            loginRequestModel.setEmail(userName);
-            loginRequestModel.setPassword(password);
+            loginRequestModel.setEmail(userName.trim());
+            loginRequestModel.setPassword(password.trim());
             login(loginRequestModel);
 
             emailFor = userName;
@@ -114,6 +114,8 @@ class LoginPresenter {
         SharedPreferences.Editor edit = sharedPreferences.edit();
         edit.putString(Constant.UserID, loginResponse.getToken());
         edit.putString(Constant.Username, loginResponse.getFullName());
+        edit.putString(Constant.BUSSINESS_PERSON, loginResponse.getBusinessPerson());
+        edit.putString(Constant.INVIDUAL_PERSON, loginResponse.getVerifiedPerson());
         Log.d("RESPONSE", "handleResponse: " + loginResponse.getUserId());
 
         try {
@@ -123,7 +125,7 @@ class LoginPresenter {
         }
 
         Constant.NAME = loginResponse.getFullName();
-        edit.putString(Constant.USER_ID_CHAT , loginResponse.getUserId());
+        edit.putString(Constant.USER_ID_CHAT, loginResponse.getUserId());
         edit.apply();
         Log.d("TEST SENDER ID", "handleResponse: " + sharedPreferences.getString(Constant.USER_ID_CHAT, ""));
 

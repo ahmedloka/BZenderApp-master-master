@@ -65,16 +65,17 @@ public class ChatListAdapter extends RecyclerView.Adapter<ChatListAdapter.ViewHo
             Intent intent = new Intent(context, ChatRoom.class);
             intent.putExtra(Constant.SENDER_ID, itemList.get(listPosition).getSenderId());
             intent.putExtra(Constant.ROOM_ID, itemList.get(listPosition).getRoomId());
-            intent.putExtra(Constant.STATUS_ID_CHAT, itemList.get(listPosition).getSenderId());
+            intent.putExtra(Constant.STATUS_ID_CHAT, itemList.get(listPosition).getStatusID());
+            intent.putExtra(Constant.USER_CHAT_STATUS, itemList.get(listPosition).getUserChatStatus());
             intent.putExtra(Constant.PAGES_COUNT, itemList.get(listPosition).getPagesCount());
             intent.putExtra(Constant.TENDER_NAME, itemList.get(listPosition).getName());
 
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.putInt(Constant.PAGES_COUNT, itemList.get(listPosition).getPagesCount());
-            editor.putString(Constant.ROOM_ID, itemList.get(listPosition).getRoomId());
+            editor.putInt(Constant.ROOM_ID, itemList.get(listPosition).getRoomId());
             editor.apply();
 
-            String roomId = sharedPreferences.getString(Constant.ROOM_ID, "");
+            int roomId = sharedPreferences.getInt(Constant.ROOM_ID, 1);
             int pages_size = sharedPreferences.getInt(Constant.PAGES_COUNT, 0);
 
             Log.d("DATA_SIZE_PAGE", "ItemDataSource: " + pages_size);
@@ -101,6 +102,7 @@ public class ChatListAdapter extends RecyclerView.Adapter<ChatListAdapter.ViewHo
 
 
     }
+
 
     public Context getContext() {
         return context;

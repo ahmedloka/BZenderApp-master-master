@@ -3,7 +3,6 @@ package apps.sharabash.bzender.Network;
 
 import java.util.List;
 
-import apps.sharabash.bzender.activities.webPaymnet.EmptyResponse;
 import apps.sharabash.bzender.Models.AddTenders.AddTinderPojo;
 import apps.sharabash.bzender.Models.AddTenders.AddTinderResponse;
 import apps.sharabash.bzender.Models.AddTenders.AllCitiesModel;
@@ -47,6 +46,11 @@ import apps.sharabash.bzender.Models.signUp.CountryCodeResponse;
 import apps.sharabash.bzender.Models.signUp.SignUpRequest;
 import apps.sharabash.bzender.Models.signUp.signUpResponse;
 import apps.sharabash.bzender.Models.singleChat.SingleChatResponse;
+import apps.sharabash.bzender.Models.verify.bussniess.VerifyBussniess;
+import apps.sharabash.bzender.Models.verify.bussniess.VerifyBussniessResponse;
+import apps.sharabash.bzender.Models.verify.invidual.VerifyInvidual;
+import apps.sharabash.bzender.Models.verify.invidual.VerifyInvidualResponse;
+import apps.sharabash.bzender.activities.webPaymnet.EmptyResponse;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
@@ -156,7 +160,7 @@ public interface RetrofitInterface {
 
 
     @GET("api/GetChatMessages")
-    Call<SingleChatResponse> getChatChatRoomData(@Query("RoomId") String roomID , @Query("page") int page);
+    Call<SingleChatResponse> getChatChatRoomData(@Query("RoomId") int roomID, @Query("page") int page);
 
     @GET("api/packages")
     Observable<List<ResponsePackages>> getPackages();
@@ -165,5 +169,11 @@ public interface RetrofitInterface {
     @POST("Payment/index")
     Observable<EmptyResponse> openUrl(@Query("packageId") String id);
 
+
+    @POST("api/BusinessPersons")
+    Observable<VerifyBussniessResponse> verifyBussniess(@Body VerifyBussniess verifyBussniess);
+
+    @POST("api/VerefiedPersons")
+    Observable<VerifyInvidualResponse> verifyInvidual(@Body VerifyInvidual verifyInvidual);
 
 }

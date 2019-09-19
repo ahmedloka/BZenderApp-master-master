@@ -3,17 +3,18 @@ package apps.sharabash.bzender.adapters;
 public class ChatModel {
 
     private String senderId;
-    private String RoomId;
+    private int RoomId;
     //private String img;
     private String Name;
     private String TenderName;
     private String statusID;
     private String msg;
+    private String userChatStatus;
     private int PagesCount;
 
     //, String img
 
-    public ChatModel(String senderId, String RoomId, String name, String msg, String TenderName, String statusID, int PagesCount) {
+    public ChatModel(String senderId, int RoomId, String name, String msg, String TenderName, String statusID, int PagesCount, String userChatStatus) {
         this.senderId = senderId;
         this.RoomId = RoomId;
         //this.img = img;
@@ -22,23 +23,7 @@ public class ChatModel {
         this.PagesCount = PagesCount;
         this.statusID = statusID;
         this.TenderName = TenderName;
-    }
-
-
-    public int getPagesCount() {
-        return PagesCount;
-    }
-
-    public void setPagesCount(int pagesCount) {
-        PagesCount = pagesCount;
-    }
-
-    public String getStatusID() {
-        return statusID;
-    }
-
-    public void setStatusID(String statusID) {
-        this.statusID = statusID;
+        this.userChatStatus = userChatStatus;
     }
 
     public String getSenderId() {
@@ -49,37 +34,12 @@ public class ChatModel {
         this.senderId = senderId;
     }
 
-    public String getReceiverId() {
+    public int getRoomId() {
         return RoomId;
     }
 
-    public void setReceiverId(String receiverId) {
-        this.RoomId = receiverId;
-    }
-
-//    public String getImg() {
-//        return img;
-//    }
-//
-//    public void setImg(String img) {
-//        this.img = img;
-//    }
-
-
-    public String getRoomId() {
-        return RoomId;
-    }
-
-    public void setRoomId(String roomId) {
+    public void setRoomId(int roomId) {
         RoomId = roomId;
-    }
-
-    public String getTenderName() {
-        return TenderName;
-    }
-
-    public void setTenderName(String tenderName) {
-        TenderName = tenderName;
     }
 
     public String getName() {
@@ -90,11 +50,43 @@ public class ChatModel {
         Name = name;
     }
 
+    public String getTenderName() {
+        return TenderName;
+    }
+
+    public void setTenderName(String tenderName) {
+        TenderName = tenderName;
+    }
+
+    public String getStatusID() {
+        return statusID;
+    }
+
+    public void setStatusID(String statusID) {
+        this.statusID = statusID;
+    }
+
     public String getMsg() {
         return msg;
     }
 
     public void setMsg(String msg) {
         this.msg = msg;
+    }
+
+    public String getUserChatStatus() {
+        return userChatStatus;
+    }
+
+    public void setUserChatStatus(String userChatStatus) {
+        this.userChatStatus = userChatStatus;
+    }
+
+    public int getPagesCount() {
+        return PagesCount;
+    }
+
+    public void setPagesCount(int pagesCount) {
+        PagesCount = pagesCount;
     }
 }

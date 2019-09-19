@@ -67,7 +67,7 @@
     <string name="profile">Profile</string>
     <string name="my_tender">My Tender</string>
     <string name="reserved_tender">Reserved Tender</string>
-    <string name="my_points">My Points</string>
+    <string name="my_points">Points</string>
     <string name="edit_profile">Edit Profile</string>
     <string name="save">Save</string>
     <string name="old_password">Old Password</string>
@@ -127,13 +127,13 @@
     <string name="year_of_cars">Year of cars</string>
     <string name="num_of_cars">Number of cars</string>
     <string name="origin_in_man">Origin of manufacture</string>
-    <string name="electrical_until">Electrical until status</string>
+    <string name="electrical_until">Electrical unit status</string>
     <string name="neww">New</string>
     <string name="used">Used</string>
     <string name="guarantee">Guarantee</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
-    <string name="electrical_type">Electrical until type</string>
+    <string name="electrical_type">Electrical type</string>
     <string name="model">Model</string>
     <string name="year_of_manu">Year of manufacture</string>
     <string name="number_of_unit">Number of unit</string>
@@ -262,6 +262,17 @@
     <string name="have_to_mark">You have to accept to all terms and conditions</string>
     <string name="soon">Tender Will Start Soon</string>
     <string name="chat_not">Chat Not Available Now , Cause Tender Is Finished</string>
+    <string name="check_network_and">There\'s No Internet Connection</string>
+    <string name="complete_your_data">Complete Your Data</string>
+    <string name="commercial_record">Commercial Record Number</string>
+    <string name="tax_card">Tax Card Number</string>
+    <string name="chat_nott">You Can Not Send Messages</string>
+    <string name="id_taken">This National ID Is Already Taken</string>
+    <string name="tax_or_comm_taken">Tax Number Or Commercial Registration Number Is Already Taken</string>
+    <string name="national_id_required">National Id Is Required</string>
+    <string name="tax_num_required">Tax Card Number Is Required</string>
+    <string name="commercial_record_required">Commercial Record Number Is Required</string>
+    <string name="verfied_successfullty">Your Account Was Verified Successfully</string>
 
 
 </resources>

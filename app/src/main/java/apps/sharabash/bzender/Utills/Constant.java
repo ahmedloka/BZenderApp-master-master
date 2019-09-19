@@ -55,6 +55,7 @@ import apps.sharabash.bzender.R;
 import apps.sharabash.bzender.activities.ChooseHowItWork;
 import apps.sharabash.bzender.activities.Home.Home;
 import apps.sharabash.bzender.activities.imagesBook.ImagesActivity;
+import apps.sharabash.bzender.activities.profile.Profile;
 import apps.sharabash.bzender.activities.verfication.VerificationActivity;
 import de.hdodenhof.circleimageview.CircleImageView;
 import libs.mjn.prettydialog.PrettyDialog;
@@ -118,6 +119,10 @@ public class Constant {
     public static final String STATUS_ID_CHAT = "STATUS_ID_CHAT";
     public static final String PAGES_COUNT = "PAGES_COUNT";
     public static final String TENDER_NAME = "TENDER_NAME";
+    public static final String BUSSINESS_PERSON = "BUSSNIES_PERSON";
+    public static final String INVIDUAL_PERSON = "VERFIED_PERSON";
+    public static final String USER_CHAT_STATUS = "USER_CHAT_STATUS";
+    public static final String FROM = "FROM";
     public static String ROOM_ID_FOR_SIGNAL_R = "ROOM_ID_FOR_SIGNALR";
     public static boolean ENTERED_HERE = false;
     public static String INSTGRAM_URL;
@@ -300,6 +305,26 @@ public class Constant {
 
     }
 
+    public static void showSuccessVERFIED(Context context, String message, Class<?> cls) {
+        PrettyDialog prettyDialog = new PrettyDialog(context);
+
+        prettyDialog.setCancelable(true);
+        prettyDialog
+                .setIcon(R.drawable.ic_success)
+                .setTitle(message)
+                .addButton(context.getString(R.string.done), android.R.color.white, R.color.color_green, () -> {
+                    Intent intent = new Intent(context, cls);
+                    context.startActivity(intent);
+                    Animatoo.animateSlideRight(context);
+                    ((Activity) context).finish();
+
+                    if (prettyDialog.isShowing()) {
+                        prettyDialog.dismiss();
+                    }
+
+                })
+                .show();
+    }
 
     public static void showSuccessTenderBookDialog(Context context, String message, String id, String type) {
         PrettyDialog prettyDialog = new PrettyDialog(context);
@@ -365,6 +390,25 @@ public class Constant {
                         prettyDialog.dismiss();
 
                     Intent intent = new Intent(context, Home.class);
+                    ((Activity) context).overridePendingTransition(R.anim.pull_in_left, R.anim.pull_in_right);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    context.startActivity(intent);
+                    ((Activity) context).finish();
+                })
+                .show();
+    }
+
+    public static void showSuccessDialogAndSetClassForEditProfile(Context context, String message) {
+        PrettyDialog prettyDialog = new PrettyDialog(context);
+        prettyDialog
+                .setTitle(message)
+                .setIcon(R.drawable.ic_success)
+                .addButton(context.getString(R.string.done), android.R.color.white, R.color.color_green, () -> {
+                    NavUtils.navigateUpFromSameTask(((Activity) context));
+                    if (prettyDialog.isShowing())
+                        prettyDialog.dismiss();
+
+                    Intent intent = new Intent(context, Profile.class);
                     ((Activity) context).overridePendingTransition(R.anim.pull_in_left, R.anim.pull_in_right);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     context.startActivity(intent);
@@ -527,6 +571,12 @@ public class Constant {
                 break;
             case "101":
                 message = context.getString(R.string.response_one_hundred_and_one);
+                break;
+            case "201":
+                message = context.getString(R.string.id_taken);
+                break;
+            case "202":
+                message = context.getString(R.string.tax_or_comm_taken);
                 break;
             default:
                 message = context.getString(R.string.default_error);

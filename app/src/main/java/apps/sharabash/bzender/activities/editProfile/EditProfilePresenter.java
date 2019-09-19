@@ -116,7 +116,7 @@ class EditProfilePresenter {
         edit.apply();
 
 
-        Constant.showSuccessDialogAndSetClassForEdit(mContext, mContext.getString(R.string.show_success_for_edit));
+        Constant.showSuccessDialogAndSetClassForEditProfile(mContext, mContext.getString(R.string.show_success_for_edit));
 
 
         editProfileInterface.getEditProfileData(editProfileModel);

@@ -23,12 +23,14 @@ public class TenderDetails {
 
     private String statusId;
 
-   private TenderElectrical TenderElectrical;
+    private TenderElectrical TenderElectrical;
 
     private String CountryArabicName;
 
     private String Id;
 
+
+    private String ViolationDocument ;
     private String CityArabicName;
 
     private String statudName;
@@ -37,113 +39,99 @@ public class TenderDetails {
 
     private String TenderType;
 
-    public TenderCar getTenderCar ()
-    {
+    public TenderCar getTenderCar() {
         return TenderCar;
     }
 
-    public void setTenderCar (TenderCar TenderCar)
-    {
+    public void setTenderCar(TenderCar TenderCar) {
         this.TenderCar = TenderCar;
     }
 
-    public String getDescription ()
-    {
+    public String getViolationDocument() {
+        return ViolationDocument;
+    }
+
+    public void setViolationDocument(String violationDocument) {
+        ViolationDocument = violationDocument;
+    }
+
+    public String getDescription() {
         return Description;
     }
 
-    public void setDescription (String Description)
-    {
+    public void setDescription(String Description) {
         this.Description = Description;
     }
 
-    public String getSponserCount ()
-    {
+    public String getSponserCount() {
         return SponserCount;
     }
 
-    public void setSponserCount (String SponserCount)
-    {
+    public void setSponserCount(String SponserCount) {
         this.SponserCount = SponserCount;
     }
 
-    public String getPathFile ()
-    {
+    public String getPathFile() {
         return PathFile;
     }
 
-    public void setPathFile (String PathFile)
-    {
+    public void setPathFile(String PathFile) {
         this.PathFile = PathFile;
     }
 
-    public String getImageUrl ()
-    {
+    public String getImageUrl() {
         return ImageUrl;
     }
 
-    public void setImageUrl (String ImageUrl)
-    {
+    public void setImageUrl(String ImageUrl) {
         this.ImageUrl = ImageUrl;
     }
 
-    public String getEndDate ()
-    {
+    public String getEndDate() {
         return EndDate;
     }
 
-    public void setEndDate (String EndDate)
-    {
+    public void setEndDate(String EndDate) {
         this.EndDate = EndDate;
     }
 
-    public String getCityEnglishName ()
-    {
+    public String getCityEnglishName() {
         return CityEnglishName;
     }
 
-    public void setCityEnglishName (String CityEnglishName)
-    {
+    public void setCityEnglishName(String CityEnglishName) {
         this.CityEnglishName = CityEnglishName;
     }
 
-    public String getStartDate ()
-    {
+    public String getStartDate() {
         return StartDate;
     }
 
-    public void setStartDate (String StartDate)
-    {
+    public void setStartDate(String StartDate) {
         this.StartDate = StartDate;
     }
 
-    public String getTenderName ()
-    {
+    public String getTenderName() {
         return TenderName;
     }
 
-    public void setTenderName (String TenderName)
-    {
+    public void setTenderName(String TenderName) {
         this.TenderName = TenderName;
     }
 
-    public String getPayed ()
-    {
+    public String getPayed() {
         return Payed;
     }
 
-    public void setPayed (String Payed)
-    {
+    public void setPayed(String Payed) {
         this.Payed = Payed;
     }
 
-    public String getStatusId ()
-    {
+    public String getStatusId() {
         return statusId;
     }
 
-    public void setStatusId (String statusId)
-    {
+    public void setStatusId(String statusId) {
         this.statusId = statusId;
     }
 
@@ -155,70 +143,77 @@ public class TenderDetails {
         this.TenderElectrical = TenderElectrical;
     }
 
-    public String getCountryArabicName ()
-    {
+    public String getCountryArabicName() {
         return CountryArabicName;
     }
 
-    public void setCountryArabicName (String CountryArabicName)
-    {
+    public void setCountryArabicName(String CountryArabicName) {
         this.CountryArabicName = CountryArabicName;
     }
 
-    public String getId ()
-    {
+    public String getId() {
         return Id;
     }
 
-    public void setId (String Id)
-    {
+    public void setId(String Id) {
         this.Id = Id;
     }
 
-    public String getCityArabicName ()
-    {
+    public String getCityArabicName() {
         return CityArabicName;
     }
 
-    public void setCityArabicName (String CityArabicName)
-    {
+    public void setCityArabicName(String CityArabicName) {
         this.CityArabicName = CityArabicName;
     }
 
-    public String getStatudName ()
-    {
+    public String getStatudName() {
         return statudName;
     }
 
-    public void setStatudName (String statudName)
-    {
+    public void setStatudName(String statudName) {
         this.statudName = statudName;
     }
 
-    public String getCountryEnglishName ()
-    {
+    public String getCountryEnglishName() {
         return CountryEnglishName;
     }
 
-    public void setCountryEnglishName (String CountryEnglishName)
-    {
+    public void setCountryEnglishName(String CountryEnglishName) {
         this.CountryEnglishName = CountryEnglishName;
     }
 
-    public String getTenderType ()
-    {
+    public String getTenderType() {
         return TenderType;
     }
 
-    public void setTenderType (String TenderType)
-    {
+    public void setTenderType(String TenderType) {
         this.TenderType = TenderType;
     }
 
     @Override
-    public String toString()
-    {
-        return "ClassPojo [TenderCar = "+TenderCar+", Description = "+Description+", SponserCount = "+SponserCount+", PathFile = "+PathFile+", ImageUrl = "+ImageUrl+", EndDate = "+EndDate+", CityEnglishName = "+CityEnglishName+", StartDate = "+StartDate+", TenderName = "+TenderName+", Payed = "+Payed+", statusId = "+statusId+", CountryArabicName = "+CountryArabicName+", Id = "+Id+", CityArabicName = "+CityArabicName+", statudName = "+statudName+", CountryEnglishName = "+CountryEnglishName+", TenderType = "+TenderType+"]";
+    public String toString() {
+        return "TenderDetails{" +
+                "TenderCar=" + TenderCar +
+                ", Description='" + Description + '\'' +
+                ", SponserCount='" + SponserCount + '\'' +
+                ", PathFile='" + PathFile + '\'' +
+                ", ImageUrl='" + ImageUrl + '\'' +
+                ", EndDate='" + EndDate + '\'' +
+                ", CityEnglishName='" + CityEnglishName + '\'' +
+                ", StartDate='" + StartDate + '\'' +
+                ", TenderName='" + TenderName + '\'' +
+                ", Payed='" + Payed + '\'' +
+                ", statusId='" + statusId + '\'' +
+                ", TenderElectrical=" + TenderElectrical +
+                ", CountryArabicName='" + CountryArabicName + '\'' +
+                ", Id='" + Id + '\'' +
+                ", ViolationDocument='" + ViolationDocument + '\'' +
+                ", CityArabicName='" + CityArabicName + '\'' +
+                ", statudName='" + statudName + '\'' +
+                ", CountryEnglishName='" + CountryEnglishName + '\'' +
+                ", TenderType='" + TenderType + '\'' +
+                '}';
     }
 }
 

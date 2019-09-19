@@ -69,21 +69,21 @@ public class AddTinderPresenter {
 
     }
 
-
     private void addTinder(AddTinderPojo addTinderPojo) {
+
         if (Validation.isConnected(mContext)) {
-            dialogLoader.show(((AppCompatActivity) mContext).getSupportFragmentManager(), "");
 
             mSubscriptions.add(NetworkUtil.getRetrofitByToken(sharedPreferences.getString("UserID", ""))
                     .addTinder(addTinderPojo)
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribeOn(Schedulers.io())
-                    .subscribe(this::handleResponse, this::handleError));
+                    .subscribe(this::handleResponseTender, this::handleError));
+
         } else {
             buildDialog((Activity) mContext).show().setCanceledOnTouchOutside(false);
         }
-    }
 
+    }
 
     private void handleError(Throwable throwable) {
         String message = "";
@@ -98,14 +98,14 @@ public class AddTinderPresenter {
             Constant.getErrorDependingOnResponse(mContext, message);
 
         }
-        dialogLoader.dismiss();
-        dialogLoaderTwo.dismiss();
+
+        if (dialogLoaderTwo.isAdded())
+            dialogLoaderTwo.dismiss();
 
 
     }
 
-    private void handleResponse(AddTinderResponse addTinderResponse) {
-        dialogLoader.dismiss();
+    private void handleResponseTender(AddTinderResponse addTinderResponse) {
 
         Constant.ADD_TENDER_ID = addTinderResponse.getTenderId();
         addTinderInterface.tenderAddedSuccessfully();

@@ -22,7 +22,6 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.ScrollView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.blogspot.atifsoftwares.animatoolib.Animatoo;
 
@@ -99,7 +98,7 @@ public class AddTender extends AppCompatActivity implements homeInterface, com.w
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        Animatoo.animateSlideDown(this);
+        Animatoo.animateSlideLeft(this);
     }
 
     @Override
@@ -355,7 +354,7 @@ public class AddTender extends AppCompatActivity implements homeInterface, com.w
         AppCompatImageView mImgBack = findViewById(R.id.imageNavigationIcon);
         mImgBack.setOnClickListener(v -> {
             NavUtils.navigateUpFromSameTask(this);
-            Animatoo.animateSlideDown(this);
+            Animatoo.animateSlideLeft(this);
         });
 
         mTinderTitle = findViewById(R.id.tinder_title);
@@ -677,8 +676,8 @@ public class AddTender extends AppCompatActivity implements homeInterface, com.w
     public void onDateSet(com.wdullaer.materialdatetimepicker.date.DatePickerDialog view, int year, int monthOfYear, int dayOfMonth) {
         loginCalender(year, monthOfYear, dayOfMonth);
 
-       // Log.d(TAG, "onDateSet: " + "CHANGED");
-       // Toast.makeText(this, "CHANGED", Toast.LENGTH_SHORT).show();
+        // Log.d(TAG, "onDateSet: " + "CHANGED");
+        // Toast.makeText(this, "CHANGED", Toast.LENGTH_SHORT).show();
     }
 }
 

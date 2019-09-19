@@ -13,7 +13,7 @@
         android:clickable="true"
         android:focusable="true"
         android:focusableInTouchMode="true"
-    android:scaleType="fitXY"
+        android:scaleType="fitXY"
         android:src="@drawable/app_bg" />
 
     <android.support.v7.widget.Toolbar
@@ -148,8 +148,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:src="@drawable/shape_wheel_white"
-                        android:contentDescription="TODO" />
+                        android:contentDescription="TODO"
+                        android:src="@drawable/shape_wheel_white" />
 
                     <com.wx.wheelview.widget.WheelView
                         android:id="@+id/wheelviewTwo"
@@ -236,8 +236,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:src="@drawable/shape_wheel_white"
-                        android:contentDescription="TODO" />
+                        android:contentDescription="TODO"
+                        android:src="@drawable/shape_wheel_white" />
 
                     <com.wx.wheelview.widget.WheelView
                         android:id="@+id/wheelview_four"
@@ -316,49 +316,6 @@
                 android:layout_below="@+id/linear_radio_btns_one"
                 android:orientation="horizontal">
 
-
-                <apps.sharabash.bzender.Utills.MyTextViewBold
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_20sdp"
-                    android:text="@string/guarantee"
-                    android:textColor="@color/whitecolor"
-                    android:textSize="@dimen/_12ssp" />
-
-
-                <RadioGroup
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_10sdp"
-                    android:layout_marginEnd="@dimen/_20sdp"
-                    android:gravity="center|start"
-                    android:paddingStart="@dimen/_4sdp"
-                    android:paddingTop="@dimen/_4sdp"
-                    android:paddingEnd="@dimen/_4sdp"
-                    android:paddingBottom="@dimen/_4sdp">
-
-
-                    <android.support.v7.widget.AppCompatRadioButton
-                        android:id="@+id/radio_btn_yes"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:checked="true"
-                        android:text="@string/yes"
-                        android:textColor="@color/whitecolor"
-                        android:textSize="@dimen/_10ssp"
-                        android:theme="@style/RadioButtonStyle" />
-
-                    <android.support.v7.widget.AppCompatRadioButton
-                        android:id="@+id/radio_btn_no"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:checked="false"
-                        android:text="@string/no"
-                        android:textColor="@color/whitecolor"
-                        android:textSize="@dimen/_10ssp"
-                        android:theme="@style/RadioButtonStyle" />
-
-                </RadioGroup>
 
             </android.support.v7.widget.LinearLayoutCompat>
 

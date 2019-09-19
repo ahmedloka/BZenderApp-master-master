@@ -104,7 +104,11 @@ public class Profile extends AppCompatActivity implements ProfileInterface, View
         txtReversedTenderCount.setText(profileModel.getMyReservedTenderCount());
         txtPoints.setText(profileModel.getPoints());
         txtPhoneNumber.setText(profileModel.getPhoneNumber());
-        txtCityName.setText(profileModel.getCityName());
+        if (language.equals("ar")) {
+            txtCityName.setText(profileModel.getCityNameLT());
+        } else {
+            txtCityName.setText(profileModel.getCityName());
+        }
         etEmail.setText(profileModel.getEmail());
     }
 

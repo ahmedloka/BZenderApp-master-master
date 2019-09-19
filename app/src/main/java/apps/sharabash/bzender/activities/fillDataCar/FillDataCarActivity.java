@@ -70,7 +70,7 @@ public class FillDataCarActivity extends AppCompatActivity implements CompoundBu
 
     private String engineCapacity = "0 to 800";
     private String fromToKm = "0 to 999";
-
+    private String language;
     private AddTinderPresenter addTinderPresenter;
 
 
@@ -85,6 +85,9 @@ public class FillDataCarActivity extends AppCompatActivity implements CompoundBu
         super.onCreate(savedInstanceState);
         Constant.changeLang(this, Constant.getLng(this));
         setContentView(R.layout.activity_fill_data_car);
+
+        SharedPreferences mSharedPreferences = getSharedPreferences("MySharedPreference", MODE_PRIVATE);
+        language = mSharedPreferences.getString(Constant.language, Locale.getDefault().getDisplayLanguage());
 
         addTinderPresenter = new AddTinderPresenter(this, this);
 
@@ -105,9 +108,6 @@ public class FillDataCarActivity extends AppCompatActivity implements CompoundBu
     }
 
     private void initViews() {
-
-        SharedPreferences mSharedPreferences = getSharedPreferences("tokenDetail", MODE_PRIVATE);
-        String language = mSharedPreferences.getString(Constant.language, Locale.getDefault().getDisplayLanguage());
 
 
         AppCompatImageView mImgBack = findViewById(R.id.imageNavigationIcon);
@@ -162,8 +162,10 @@ public class FillDataCarActivity extends AppCompatActivity implements CompoundBu
         for (int i = 0; i < Constant.wheelDataCarType.size(); i++) {
             if (language.equals("ar")) {
                 wheelDataType.add(Constant.wheelDataCarType.get(i).getNameLT());
+                Log.d(TAG, "initViews: " + Constant.wheelDataCarType.get(i).getNameLT());
             } else {
                 wheelDataType.add(Constant.wheelDataCarType.get(i).getName());
+                Log.d(TAG, "initViews: " + Constant.wheelDataCarType.get(i).getNameLT());
             }
         }
 
@@ -171,7 +173,8 @@ public class FillDataCarActivity extends AppCompatActivity implements CompoundBu
 
         wheelViewCarTypes.setOnWheelItemSelectedListener((position, s) -> {
 
-            carType = String.valueOf(++position);
+            carType = String.valueOf(Constant.wheelDataCarType.get(position).getId());
+            Log.d(TAG, "carType_: "+carType );
         });
 
         //2
@@ -187,15 +190,19 @@ public class FillDataCarActivity extends AppCompatActivity implements CompoundBu
         for (int i = 0; i < Constant.wheelDataCarModel.size(); i++) {
             if (language.equals("ar")) {
                 wheelDataModel.add(Constant.wheelDataCarModel.get(i).getNameLT());
+
             } else {
                 wheelDataModel.add(Constant.wheelDataCarModel.get(i).getName());
+
             }
         }
 
         wheelviewCarModels.setWheelData(wheelDataModel);
 
         wheelviewCarModels.setOnWheelItemSelectedListener((position, s) -> {
-            carModel = String.valueOf(++position);
+            carModel = Constant.wheelDataCarModel.get(position).getId();
+
+            Log.d(TAG, "carModel_: "+carModel );
 
         });
 
@@ -373,7 +380,7 @@ public class FillDataCarActivity extends AppCompatActivity implements CompoundBu
                 radioBtnManual.setChecked(true);
                 radioBtnAuto.setChecked(false);
 
-                transmissionType = "true";
+                transmissionType = "false";
 
 
                 break;
@@ -382,7 +389,7 @@ public class FillDataCarActivity extends AppCompatActivity implements CompoundBu
                 Log.d(TAG, "onClick: " + radioBtnAuto.getText().toString());
                 radioBtnManual.setChecked(false);
 
-                transmissionType = "false";
+                transmissionType = "true";
                 break;
             case R.id.btn_next:
                 addTinderPresenter.validationAddTinder(getIntent().getStringExtra(Constant.TITLE), getIntent().getStringExtra(Constant.DESC),

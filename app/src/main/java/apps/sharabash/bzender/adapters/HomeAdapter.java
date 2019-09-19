@@ -1,8 +1,8 @@
 package apps.sharabash.bzender.adapters;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -17,19 +17,22 @@ import java.util.List;
 
 import apps.sharabash.bzender.R;
 import apps.sharabash.bzender.Utills.Constant;
-import apps.sharabash.bzender.activities.Tenders.AllTenderActivity;
+import apps.sharabash.bzender.activities.before.BeforerActivity;
 
 
 public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
 
 
-    private Context context;
     private final List<String> nameList;
+    private Context context;
+    private SharedPreferences sharedPreferences;
 
 
     public HomeAdapter(Context context, List<String> nameList) {
         this.context = context;
         this.nameList = nameList;
+
+        sharedPreferences = getContext().getSharedPreferences("MySharedPreference", Context.MODE_PRIVATE);
     }
 
     @Override
@@ -70,7 +73,11 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
             } else {
                 Constant.categoryId = "10022";
             }
-            Intent intent = new Intent(context, AllTenderActivity.class);
+
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            Intent intent = new Intent(context, BeforerActivity.class);
+            editor.putString(Constant.FROM, "book");
+            editor.apply();
             context.startActivity(intent);
             Animatoo.animateFade(context);
         });

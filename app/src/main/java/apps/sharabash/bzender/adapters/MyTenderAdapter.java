@@ -89,7 +89,7 @@ public class MyTenderAdapter extends RecyclerView.Adapter<MyTenderAdapter.ViewHo
                 else
                     holder.imgTypeBg.setImageResource(R.drawable.rejected_img_en);
                 break;
-            case 7:
+            case 7 :// finished
                 if (lang.equals("ar"))
                     holder.imgTypeBg.setImageResource(R.drawable.finished_ar);
                 else

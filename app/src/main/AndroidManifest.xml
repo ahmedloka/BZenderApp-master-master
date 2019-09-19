@@ -48,11 +48,14 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".activities.before.BeforerActivity"
+            android:parentActivityName=".activities.Home.Home"></activity>
+        <activity
             android:name=".activities.webPaymnet.WebPaymentActivity"
             android:parentActivityName=".activities.packages.PackagesActivity" />
         <activity
             android:name=".activities.PaymentActivity"
-            android:parentActivityName=".activities.packages.PackagesActivity"></activity>
+            android:parentActivityName=".activities.packages.PackagesActivity" />
         <activity
             android:name=".activities.packages.PackagesActivity"
             android:parentActivityName=".activities.Home.Home" />
@@ -83,7 +86,7 @@
             android:parentActivityName=".activities.Home.Home" />
         <activity
             android:name=".activities.CompleteAddTiner"
-            android:parentActivityName=".activities.Home.Home" />
+            android:parentActivityName=".activities.before.BeforerActivity" />
         <activity
             android:name=".activities.webViewContactUs.WebViewActivity"
             android:parentActivityName=".activities.ContactUs" />
@@ -120,7 +123,8 @@
         <activity android:name=".activities.WelcomeActivity" />
         <activity
             android:name=".activities.chatRoom.ChatRoom"
-            android:parentActivityName=".activities.chatRoom.ChatRoom"></activity>
+            android:windowSoftInputMode="adjustResize"
+            android:parentActivityName=".activities.chatRoom.ChatRoom" />
         <activity
             android:name=".activities.notification.Notifications"
             android:parentActivityName=".activities.Home.Home" />
@@ -135,7 +139,7 @@
             android:parentActivityName=".activities.Tenders.AllTenderActivity" />
         <activity
             android:name=".activities.Tenders.AllTenderActivity"
-            android:parentActivityName=".activities.Home.Home" />
+            android:parentActivityName=".activities.before.BeforerActivity" />
         <activity
             android:name=".activities.AddTender.AddTender"
             android:parentActivityName=".activities.Home.Home" />

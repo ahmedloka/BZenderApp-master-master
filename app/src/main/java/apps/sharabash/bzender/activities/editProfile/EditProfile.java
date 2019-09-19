@@ -342,7 +342,13 @@ public class EditProfile extends AppCompatActivity implements View.OnClickListen
     @Override
     public void getProfile(ProfileModel profileModel) {
         firstname.setText(profileModel.getUserName());
-        address.setText(profileModel.getCityName());
+        if (language.equals("ar")) {
+            address.setText(profileModel.getCityNameLT());
+
+        } else {
+            address.setText(profileModel.getCityName());
+
+        }
         EmailAddress.setText(profileModel.getEmail());
 
         Log.d(TAG, "getProfile: " + profileModel.toString());

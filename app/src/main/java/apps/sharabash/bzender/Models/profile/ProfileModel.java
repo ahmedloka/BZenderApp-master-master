@@ -16,107 +16,98 @@ public class ProfileModel {
 
     private String PhoneNumber;
 
+    private String CityNameLT;
+
     private String CityName;
 
     private String CountryCode;
 
     private String ImgUrl;
 
-    public String getMyReservedTenderCount ()
-    {
+    public String getMyReservedTenderCount() {
         return MyReservedTenderCount;
     }
 
-    public void setMyReservedTenderCount (String MyReservedTenderCount)
-    {
+    public void setMyReservedTenderCount(String MyReservedTenderCount) {
         this.MyReservedTenderCount = MyReservedTenderCount;
     }
 
-    public String getPoints ()
-    {
+    public String getCityNameLT() {
+        return CityNameLT;
+    }
+
+    public void setCityNameLT(String cityNameLT) {
+        CityNameLT = cityNameLT;
+    }
+
+    public String getPoints() {
         return Points;
     }
 
-    public void setPoints (String Points)
-    {
+    public void setPoints(String Points) {
         this.Points = Points;
     }
 
-    public String getEmail ()
-    {
+    public String getEmail() {
         return Email;
     }
 
-    public void setEmail (String Email)
-    {
+    public void setEmail(String Email) {
         this.Email = Email;
     }
 
-    public String getUserName ()
-    {
+    public String getUserName() {
         return UserName;
     }
 
-    public void setUserName (String UserName)
-    {
+    public void setUserName(String UserName) {
         this.UserName = UserName;
     }
 
-    public String getMytenderCount ()
-    {
+    public String getMytenderCount() {
         return MytenderCount;
     }
 
-    public void setMytenderCount (String MytenderCount)
-    {
+    public void setMytenderCount(String MytenderCount) {
         this.MytenderCount = MytenderCount;
     }
 
-    public String getPhoneNumber ()
-    {
+    public String getPhoneNumber() {
         return PhoneNumber;
     }
 
-    public void setPhoneNumber (String PhoneNumber)
-    {
+    public void setPhoneNumber(String PhoneNumber) {
         this.PhoneNumber = PhoneNumber;
     }
 
-    public String getCityName ()
-    {
+    public String getCityName() {
         return CityName;
     }
 
-    public void setCityName (String CityName)
-    {
+    public void setCityName(String CityName) {
         this.CityName = CityName;
     }
 
-    public String getCountryCode ()
-    {
+    public String getCountryCode() {
         return CountryCode;
     }
 
-    public void setCountryCode (String CountryCode)
-    {
+    public void setCountryCode(String CountryCode) {
         this.CountryCode = CountryCode;
     }
 
-    public String getImgUrl ()
-    {
+    public String getImgUrl() {
         return ImgUrl;
     }
 
-    public void setImgUrl (String ImgUrl)
-    {
+    public void setImgUrl(String ImgUrl) {
         this.ImgUrl = ImgUrl;
     }
 
     @NotNull
     @Override
-    public String toString()
-    {
-        return "ClassPojo [MyReservedTenderCount = "+MyReservedTenderCount+", Points = "+Points+", Email = "+Email+", UserName = "+UserName+", MytenderCount = "+MytenderCount+", PhoneNumber = "+PhoneNumber+", CityName = "+CityName+", CountryCode = "+CountryCode+", ImgUrl = "+ImgUrl+"]";
+    public String toString() {
+        return "ClassPojo [MyReservedTenderCount = " + MyReservedTenderCount + ", Points = " + Points + ", Email = " + Email + ", UserName = " + UserName + ", MytenderCount = " + MytenderCount + ", PhoneNumber = " + PhoneNumber + ", CityName = " + CityName + ", CountryCode = " + CountryCode + ", ImgUrl = " + ImgUrl + "]";
     }
 }
 

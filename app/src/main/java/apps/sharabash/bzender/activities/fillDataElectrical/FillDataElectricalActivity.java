@@ -115,12 +115,6 @@ public class FillDataElectricalActivity extends AppCompatActivity implements Vie
         radioBtnUsed = findViewById(R.id.radio_btn_used);
         radioBtnUsed.setOnClickListener(this);
 
-        radioBtnYes = findViewById(R.id.radio_btn_yes);
-        radioBtnYes.setOnClickListener(this);
-
-        radioBtnNo = findViewById(R.id.radio_btn_no);
-        radioBtnNo.setOnClickListener(this);
-
 
         checkbox = findViewById(R.id.checkbox);
         checkbox.setOnClickListener(this);
@@ -250,20 +244,6 @@ public class FillDataElectricalActivity extends AppCompatActivity implements Vie
 
                 status = "false";
                 break;
-
-            case R.id.radio_btn_yes:
-                radioBtnYes.setChecked(true);
-                radioBtnNo.setChecked(false);
-
-                guaratntee = "true";
-                break;
-            case R.id.radio_btn_no:
-                radioBtnNo.setChecked(true);
-                radioBtnYes.setChecked(false);
-
-                guaratntee = "false";
-                break;
-
             case R.id.btn_send:
 
                 Log.d("TESTELECT", "onClick: " + "   Status   " + status + "  TenderId    " + (Constant.ADD_TENDER_ID) +
@@ -294,9 +274,10 @@ public class FillDataElectricalActivity extends AppCompatActivity implements Vie
 
     @Override
     public void tenderAddedSuccessfully() {
-        Log.d("DATA", "TYPE: " + type + "MODEL: " + model + "Year: " + year + "Number: " + number + "Status: " + status + "guaratntee: " + guaratntee +
+
+        Log.d("DATA", "TYPE: " + type + "MODEL: " + model + "Year: " + year + "Number: " + number + "Status: " + status +
                 "country: " + country + "NOTE: " + etNote.getText().toString() + "ID: " + String.valueOf(Constant.ADD_TENDER_ID));
         fillDataElectricalPresenter.validateFillElectrical(type, model, year, number, status
-                , guaratntee, country, etNote.getText().toString(), String.valueOf(Constant.ADD_TENDER_ID));
+                , country, etNote.getText().toString(), String.valueOf(Constant.ADD_TENDER_ID));
     }
 }

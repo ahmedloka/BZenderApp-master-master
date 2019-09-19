@@ -21,6 +21,7 @@ import android.widget.Button;
 import com.blogspot.atifsoftwares.animatoolib.Animatoo;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
+import com.google.firebase.FirebaseApp;
 import com.viewpagerindicator.CirclePageIndicator;
 
 import java.util.ArrayList;
@@ -36,10 +37,10 @@ import apps.sharabash.bzender.R;
 import apps.sharabash.bzender.Utills.Constant;
 import apps.sharabash.bzender.Utills.MyTextViewBold;
 import apps.sharabash.bzender.activities.AboutUs;
-import apps.sharabash.bzender.activities.AddTender.AddTender;
 import apps.sharabash.bzender.activities.ChooseHowItWork;
 import apps.sharabash.bzender.activities.ContactUs;
 import apps.sharabash.bzender.activities.Setting;
+import apps.sharabash.bzender.activities.before.BeforerActivity;
 import apps.sharabash.bzender.activities.chatAllUsers.ChatListActivity;
 import apps.sharabash.bzender.activities.login.Login;
 import apps.sharabash.bzender.activities.myBooking.MyBooking;
@@ -135,7 +136,11 @@ public class Home extends AppCompatActivity implements homeInterface {
         });
 
         add_tinder.setOnClickListener(v -> {
-            Intent intent = new Intent(getApplicationContext(), AddTender.class);
+            SharedPreferences.Editor editor = mSharedPreferences.edit();
+
+            Intent intent = new Intent(getApplicationContext(), BeforerActivity.class);
+            editor.putString(Constant.FROM, "add");
+            editor.apply();
             startActivity(intent);
             Animatoo.animateSlideUp(this);
             //finish();
@@ -248,6 +253,11 @@ public class Home extends AppCompatActivity implements homeInterface {
     protected void onResume() {
         super.onResume();
 
+
+        Constant.wheelDataCarType.clear();
+        Constant.wheelDataCarModel.clear();
+        Constant.wheelDataElectricalType.clear();
+        Constant.wheelDataElectricalModel.clear();
     }
 
 
@@ -256,6 +266,8 @@ public class Home extends AppCompatActivity implements homeInterface {
         super.onCreate(savedInstanceState);
         Constant.changeLang(this, Constant.getLng(this));
         setContentView(R.layout.activity_home);
+        FirebaseApp.initializeApp(this);
+
 
         initViews();
         mainCode();
@@ -267,6 +279,8 @@ public class Home extends AppCompatActivity implements homeInterface {
 
         Constant.wheelDataCarType.clear();
         Constant.wheelDataCarModel.clear();
+        Constant.wheelDataElectricalType.clear();
+        Constant.wheelDataElectricalModel.clear();
 
         mSharedPreferences = getSharedPreferences("MySharedPreference", MODE_PRIVATE);
 

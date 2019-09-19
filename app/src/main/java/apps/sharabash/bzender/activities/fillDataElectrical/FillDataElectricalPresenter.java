@@ -14,8 +14,6 @@ import android.view.Window;
 
 import com.blogspot.atifsoftwares.animatoolib.Animatoo;
 
-import org.json.JSONObject;
-
 import apps.sharabash.bzender.Models.FillDataElectrical;
 import apps.sharabash.bzender.Models.bookElectrical.BookElectricalBody;
 import apps.sharabash.bzender.Models.bookElectrical.BookElectricalResponse;
@@ -28,7 +26,6 @@ import apps.sharabash.bzender.Utills.MyTextViewBold;
 import apps.sharabash.bzender.Utills.Validation;
 import apps.sharabash.bzender.activities.Home.Home;
 import apps.sharabash.bzender.dialog.DialogLoader;
-import retrofit2.HttpException;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 import rx.subscriptions.CompositeSubscription;
@@ -101,7 +98,7 @@ class FillDataElectricalPresenter {
     }
 
     public void validateFillElectrical(String type, String model, String year
-            , String number, String electricalUntilStatus, String guarantee,
+            , String number, String electricalUntilStatus,
                                        String country, String extraFeatures, String tenderId) {
 
         //TODO Do not forgot Orgin Of Manufurance
@@ -117,10 +114,7 @@ class FillDataElectricalPresenter {
         } else if (Validation.validateFields(number)) {
             Constant.showErrorDialog(mContext, mContext.getString(R.string.number_of_error));
 
-        } else if (Validation.validateFields(extraFeatures)) {
-            Constant.showErrorDialog(mContext, mContext.getString(R.string.note_error));
-
-        } else if (Validation.validateFields(country)) {
+        } else if (Validation.validateFields(country) || country.equals(mContext.getString(R.string.origin_in_man))) {
             Constant.showErrorDialog(mContext, mContext.getString(R.string.country_error));
 
         } else {
@@ -162,18 +156,19 @@ class FillDataElectricalPresenter {
         if (dialogLoader.isAdded()) {
             dialogLoader.dismiss();
         }
-        String message = "";
-        if (throwable instanceof retrofit2.HttpException) {
-            try {
-                retrofit2.HttpException error = (retrofit2.HttpException) throwable;
-                JSONObject jsonObject = new JSONObject(((HttpException) throwable).response().errorBody().string());
-                message = jsonObject.getString("Message");
-            } catch (Exception e) {
-                message = throwable.getMessage();
-            }
-            Constant.getErrorDependingOnResponse(mContext, message);
-
-        }
+        Constant.showErrorDialog(mContext, throwable.getCause().toString());
+//        String message = "";
+//        if (throwable instanceof retrofit2.HttpException) {
+//            try {
+//                retrofit2.HttpException error = (retrofit2.HttpException) throwable;
+//                JSONObject jsonObject = new JSONObject(((HttpException) throwable).response().errorBody().string());
+//                message = jsonObject.getString("Message");
+//            } catch (Exception e) {
+//                message = throwable.getMessage();
+//            }
+//            Constant.getErrorDependingOnResponse(mContext, message);
+//
+//        }
     }
 
 

@@ -1,8 +1,11 @@
 package apps.sharabash.bzender.Models.login;
 
 public class loginResponse
-{
+{ private String BusinessPerson;
+
     private String Points;
+
+    private String VerifiedPerson;
 
     private String Email;
 
@@ -16,6 +19,16 @@ public class loginResponse
 
     private String Token;
 
+    public String getBusinessPerson ()
+    {
+        return BusinessPerson;
+    }
+
+    public void setBusinessPerson (String BusinessPerson)
+    {
+        this.BusinessPerson = BusinessPerson;
+    }
+
     public String getPoints ()
     {
         return Points;
@@ -24,6 +37,16 @@ public class loginResponse
     public void setPoints (String Points)
     {
         this.Points = Points;
+    }
+
+    public String getVerifiedPerson ()
+    {
+        return VerifiedPerson;
+    }
+
+    public void setVerifiedPerson (String VerifiedPerson)
+    {
+        this.VerifiedPerson = VerifiedPerson;
     }
 
     public String getEmail ()
@@ -89,6 +112,7 @@ public class loginResponse
     @Override
     public String toString()
     {
-        return "ClassPojo [Points = "+Points+", Email = "+Email+", IsImgProfileUploaded = "+IsImgProfileUploaded+", UserId = "+UserId+", FullName = "+FullName+", ImageUrl = "+ImageUrl+", Token = "+Token+"]";
+        return "ClassPojo [BusinessPerson = "+BusinessPerson+", Points = "+Points+", VerifiedPerson = "+VerifiedPerson+", Email = "+Email+", IsImgProfileUploaded = "+IsImgProfileUploaded+", UserId = "+UserId+", FullName = "+FullName+", ImageUrl = "+ImageUrl+", Token = "+Token+"]";
     }
 }
+

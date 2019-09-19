@@ -1,7 +1,6 @@
 package apps.sharabash.bzender.services;
 
 import android.app.Service;
-import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -10,19 +9,18 @@ import android.os.Handler;
 import android.os.IBinder;
 import android.os.Looper;
 import android.util.Log;
-import android.widget.Toast;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
+import java.util.Objects;
 import java.util.concurrent.ExecutionException;
 
 import apps.sharabash.bzender.Models.message.Message;
 import apps.sharabash.bzender.Utills.Constant;
 import apps.sharabash.bzender.adapters.RecyclerMessagesOneToOneAdapter;
-import apps.sharabash.bzender.paging.ItemViewModel;
 import microsoft.aspnet.signalr.client.Credentials;
 import microsoft.aspnet.signalr.client.MessageReceivedHandler;
 import microsoft.aspnet.signalr.client.Platform;
@@ -34,8 +32,8 @@ import microsoft.aspnet.signalr.client.hubs.HubProxy;
 import microsoft.aspnet.signalr.client.transport.ClientTransport;
 import microsoft.aspnet.signalr.client.transport.ServerSentEventsTransport;
 
-import static apps.sharabash.bzender.activities.chatRoom.ChatRoom.itemViewModel;
 import static apps.sharabash.bzender.activities.chatRoom.ChatRoom.mRecyclerViewOneToOne;
+import static apps.sharabash.bzender.activities.chatRoom.ChatRoom.paginateChatRoom;
 //import static apps.sharabash.bzender.activities.chatRoom.ChatRoom.messagesOneToOneAdapter;
 
 public class SignalRService extends Service implements RecyclerMessagesOneToOneAdapter.OnClickHandler {
@@ -50,6 +48,8 @@ public class SignalRService extends Service implements RecyclerMessagesOneToOneA
     private String USER_ID, statusId;
 
 
+    private int ROOM_ID;
+
     @Override
     public void onCreate() {
         super.onCreate();
@@ -58,6 +58,10 @@ public class SignalRService extends Service implements RecyclerMessagesOneToOneA
         USER_ID = sharedPreferences.getString(Constant.USER_ID_CHAT, "");
         statusId = sharedPreferences.getString(Constant.STATUS_ID_CHAT, "");
         Log.d("USER_ID", "onCreate: " + USER_ID);
+
+        ROOM_ID = sharedPreferences.getInt(Constant.ROOM_ID, 1);
+
+        Log.d("ROOM_ID_", "onCreate: " + ROOM_ID);
 
     }
 
@@ -85,14 +89,15 @@ public class SignalRService extends Service implements RecyclerMessagesOneToOneA
      * method for clients (activities)
      */
 
-    public void sendMessage(String RoomId, String message) {
+    public void sendMessage(int RoomId, String message) {
         String SERVER_METHOD_SEND = "Send";
         mHubProxy.invoke(SERVER_METHOD_SEND, RoomId, message)
                 .done(aVoid -> {
-                            Toast.makeText(getApplicationContext(), "Join", Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(getApplicationContext(), "Join", Toast.LENGTH_SHORT).show();
                             Log.d("<Debug", "Join"); // work!
-
-                            Log.d("TEEEST", "sendMessage: " + message + Message.MSG_TYPE_SENT);
+//                            paginateChatRoom.add(new Message(Message.MSG_TYPE_SENT, message));
+//                            mRecyclerViewOneToOne.scrollToPosition(0);
+                            Log.d("TEEEST_SEND", "sendMessage: " + message + Message.MSG_TYPE_SENT);
 //                            messagesOneToOneAdapter = new RecyclerMessagesOneToOneAdapter(messageList, this);
 //                            messagesOneToOneAdapter.addItem(new Message(Message.MSG_TYPE_SENT, message.trim()));
 //                            mRecyclerViewOneToOne.setAdapter(messagesOneToOneAdapter);
@@ -141,8 +146,8 @@ public class SignalRService extends Service implements RecyclerMessagesOneToOneA
 
 
         String METHOD_JOIN = "Join";
-        Log.d("USER_ID", "onCreate: " + USER_ID);
-        mHubProxy.invoke(METHOD_JOIN, sharedPreferences.getString(Constant.ROOM_ID_FOR_SIGNAL_R, ""))
+        Log.d("<Debug", "onCreate: " + USER_ID + "___" + sharedPreferences.getString(Constant.ROOM_ID_FOR_SIGNAL_R, ""));
+        mHubProxy.invoke(METHOD_JOIN, ROOM_ID)
                 .done(
                         aVoid -> {
                             //Toast.makeText(getApplicationContext(), "Join", Toast.LENGTH_SHORT).show();
@@ -187,10 +192,10 @@ public class SignalRService extends Service implements RecyclerMessagesOneToOneA
         /* ****seems useless but should be here!**** */
         mHubProxy.subscribe(new Object() {
             @SuppressWarnings("unused")
-            public void newMessage(final String message, final String senderIdentityId) {
+            public void newMessage(final String message, String fullName, final String senderIdentityId) {
 
                 //  Toast.makeText(getApplicationContext(), message.toString() + " " + senderIdentityId, Toast.LENGTH_SHORT).show();
-                Log.d("<Debug>", "newMessage: " + message.toString() + " " + senderIdentityId);
+                Log.d("<Debug>", "newMessage: " + message.toString() + fullName.toString() + " " + senderIdentityId);
             }
         });
 
@@ -199,48 +204,103 @@ public class SignalRService extends Service implements RecyclerMessagesOneToOneA
 
             @Override
             public void onMessageReceived(final JsonElement json) {
-                Log.e("onMessageReceived ", json.toString());
-                if (!statusId.equals("7")) {
-                    mHandler.post(new Runnable() {
-                        @Override
-                        public void run() {
-                            //     Toast.makeText(getApplicationContext(), json.toString(), Toast.LENGTH_SHORT).show();
-                            Log.d("<De", "run: " + json.toString());
-                            JsonParser parser = new JsonParser();
-                            JsonObject jsonObject = parser.parse(json.toString()).getAsJsonObject();
+                Log.d("<De", "onMessageReceived: " + json.toString());
+                Log.e("<De ", json.toString());
+
+                try {
+                    JsonParser parser = new JsonParser();
+                    JsonObject jsonObject = parser.parse(json.toString()).getAsJsonObject();
+                    Log.d("<De", "run: " + jsonObject.toString());
+                    JsonArray jsonArray = jsonObject.getAsJsonArray("A");
+                    Log.d("<De", "run: " + jsonArray.toString());
 
 
-                            try {
-                                JsonArray jsonArray = jsonObject.getAsJsonArray("A");
-                                String msg = jsonArray.get(0).toString().replace("\"", "").trim();
+                } catch (Exception e) {
+                    Log.d("<De", "onMessageReceived: " + e.getMessage() + "____" + e.getCause());
+                }
+                mHandler.post(() -> {
+                    //     Toast.makeText(getApplicationContext(), json.toString(), Toast.LENGTH_SHORT).show();
+                    JsonParser parser = new JsonParser();
+                    JsonObject jsonObject = parser.parse(json.toString()).getAsJsonObject();
 
-                                // Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT).show();
-                                Log.d("<De", "run: " + msg);
 
+                    try {
+                        JsonArray jsonArray = jsonObject.getAsJsonArray("A");
+                        String msg = jsonArray.get(0).toString().replace("\"", "").trim();
+                        String partnerID = jsonArray.get(1).toString().replace("\"", "").trim();
+                        String name = jsonArray.get(3).toString().replace("\"", "").trim();
 
-                                new Handler().postDelayed(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        itemViewModel.invalidateDataSource();
-                                        itemViewModel.invalidateDataSource();
-                                    }
-                                }, 500);
+                        // Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT).show();
+                        Log.d("<De+MESSAGE", "run: " + msg);
 
-                                mRecyclerViewOneToOne.smoothScrollToPosition(1);
-
-                                //messagesOneToOneAdapter.addItem(new Message(Message.MSG_TYPE_RECEIVED, msg));
-                                // messagesOneToOneAdapter.notifyDataSetChanged();
-
-//                            mRecyclerViewOneToOne.setAdapter(messagesOneToOneAdapter);
-//                            mRecyclerViewOneToOne.smoothScrollToPosition(messagesOneToOneAdapter.getItemCount() - 1);
-                            } catch (NullPointerException ignored) {
+                        new Handler().postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                if (!Objects.equals(sharedPreferences.getString(Constant.USER_ID_CHAT, ""), partnerID)) {
+                                    Message message = new Message(Message.MSG_TYPE_RECEIVED, msg);
+                                    message.setName("~ " + name);
+                                    paginateChatRoom.add(message);
+                                    mRecyclerViewOneToOne.smoothScrollToPosition(0);
+                                } else {
+                                    Message message = new Message(Message.MSG_TYPE_SENT, msg);
+                                    message.setName("~ " + name);
+                                    paginateChatRoom.add(message);
+                                    mRecyclerViewOneToOne.smoothScrollToPosition(0);
+                                }
 
                             }
+                        }, 1000);
+//                            new Handler().postDelayed(new Runnable() {
+//                                @SuppressLint("StaticFieldLeak")
+//                                @Override
+//                                public void run() {
+//                                    new AsyncTask<Void, Void, Void>() {
+//                                        @Override
+//                                        protected Void doInBackground(Void... voids) {
+//                                            itemViewModel.invalidateDataSource();
+//                                            return null;
+//                                        }
+//
+//                                        @Override
+//                                        protected void onPostExecute(Void aVoid) {
+//                                            super.onPostExecute(aVoid);
+//
+//                                            itemViewModel.itemPagedList.observe(ChatRoom.lifecycleOwner, new Observer<PagedList<ChatList>>() {
+//                                                @Override
+//                                                public void onChanged(@Nullable PagedList<ChatList> chatLists) {
+//                                                    assert chatLists != null;
+//                                                    mRecyclerViewOneToOne.scrollToPosition(0);
+//                                                }
+//                                            });
+//                                        }
+//                                    }.execute();
+//
+//                                }
+//                            }, 1000);
+
+//                            new Handler().postDelayed(new Runnable() {
+//                                @Override
+//                                public void run() {
+//                                    itemViewModel.invalidateDataSource();
+//                                    itemViewModel.invalidateDataSource();
+//                                }
+//                            }, 500);
+
+//                            new Handler().postDelayed(new Runnable() {
+//                                @Override
+//                                public void run() {
+//                                    mRecyclerViewOneToOne.smoothScrollToPosition(0);
+//                                }
+//                            }, 1000);
 
 
-                        }
-                    });
-                }
+                    } catch (NullPointerException ignored) {
+
+                    }
+
+
+                });
+
             }
         });
 

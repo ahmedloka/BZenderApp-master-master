@@ -9,12 +9,23 @@ public class Message {
     // Message content.
     private String msgContent;
 
+    private String name;
+
     // Message type.
     private String msgType;
 
     public Message(String msgType, String msgContent) {
         this.msgType = msgType;
         this.msgContent = msgContent;
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getMsgContent() {
