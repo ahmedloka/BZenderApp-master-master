@@ -7,8 +7,6 @@ import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
-import org.json.JSONObject;
-
 import java.util.List;
 
 import apps.sharabash.bzender.Models.GetOffers;
@@ -19,7 +17,6 @@ import apps.sharabash.bzender.Network.NetworkUtil;
 import apps.sharabash.bzender.Utills.Constant;
 import apps.sharabash.bzender.Utills.Validation;
 import apps.sharabash.bzender.dialog.DialogLoader;
-import retrofit2.HttpException;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 import rx.subscriptions.CompositeSubscription;
@@ -94,19 +91,8 @@ public class HomePresenter {
         if (dialogLoaderTwo.isAdded()) {
             dialogLoaderTwo.dismiss();
         }
-        //  dialogLoaderTwo.dismiss();
-        String message = "";
-        if (throwable instanceof retrofit2.HttpException) {
-            try {
-                retrofit2.HttpException error = (retrofit2.HttpException) throwable;
-                JSONObject jsonObject = new JSONObject(((HttpException) throwable).response().errorBody().string());
-                message = jsonObject.getString("Message");
-            } catch (Exception e) {
-                message = throwable.getMessage();
-            }
-            Constant.getErrorDependingOnResponse(context, message);
+        Constant.handleError(context, throwable);
 
-        }
     }
 
     private void handleResponse(List<getCategoryResponse> getCategoryResponse) {
@@ -136,7 +122,7 @@ public class HomePresenter {
         }
         homeInterface.getAllImages(getOffers);
 
-        Log.d("ZOFOOOOO", "handleResponseImages: " +getOffers.getOffers().get(0).getImage());
+        Log.d("ZOFOOOOO", "handleResponseImages: " + getOffers.getOffers().get(0).getImage());
     }
 
 }

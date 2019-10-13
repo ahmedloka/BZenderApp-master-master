@@ -87,7 +87,7 @@ public class ImagesActivity extends AppCompatActivity implements View.OnClickLis
         initViews();
 
 
-        id = getIntent().getStringExtra(Constant.BOOKING_ID);
+        id = getIntent().getStringExtra(Constant.CAR_BOOKING_ID);
         Log.d("IDID_BOOKING", "onCreate: " + id);
         type = getIntent().getStringExtra(Constant.TYPE);
         Log.d("TYPE", "onCreate: " + type);
@@ -213,55 +213,74 @@ public class ImagesActivity extends AppCompatActivity implements View.OnClickLis
 
             Uri selectedImage = data.getData();
             if (!selectedImage.toString().isEmpty()) {
-                Log.d("NOT EMPTY", "onActivityResult: " + "NOT EDMPTY");
+
                 if (oneSelected) {
 
                     if (type.equals(Constant.CAR)) {
                         setImageWithGlide(this, imgOne, selectedImage);
                         imagesPresenter.uploadCarImage(id, imageBASE46);
-                    } else {
+                    } else if (type.equals(Constant.ELECTRICAL)) {
                         setImageWithGlide(this, imgOne, selectedImage);
                         imagesPresenter.uploadElectricalImage(id, imageBASE46);
+                    } else {
+                        setImageWithGlide(this, imgOne, selectedImage);
+                        imagesPresenter.uploadRealEstateImage(id, imageBASE46);
                     }
                 } else if (twoSelected) {
                     if (type.equals(Constant.CAR)) {
                         setImageWithGlide(this, imgTwo, selectedImage);
                         imagesPresenter.uploadCarImage(id, imageBASE46);
-                    } else {
+                    } else if (type.equals(Constant.ELECTRICAL)) {
                         setImageWithGlide(this, imgTwo, selectedImage);
                         imagesPresenter.uploadElectricalImage(id, imageBASE46);
+                    } else {
+                        setImageWithGlide(this, imgTwo, selectedImage);
+                        imagesPresenter.uploadRealEstateImage(id, imageBASE46);
                     }
                 } else if (threeSelected) {
                     if (type.equals(Constant.CAR)) {
                         setImageWithGlide(this, imgThree, selectedImage);
                         imagesPresenter.uploadCarImage(id, imageBASE46);
-                    } else {
+                    } else if (type.equals(Constant.ELECTRICAL)) {
                         setImageWithGlide(this, imgThree, selectedImage);
                         imagesPresenter.uploadElectricalImage(id, imageBASE46);
+                    } else {
+                        setImageWithGlide(this, imgThree, selectedImage);
+                        imagesPresenter.uploadRealEstateImage(id, imageBASE46);
                     }
                 } else if (fourSelected) {
                     if (type.equals(Constant.CAR)) {
                         setImageWithGlide(this, imgFour, selectedImage);
                         imagesPresenter.uploadCarImage(id, imageBASE46);
-                    } else {
+                    } else if (type.equals(Constant.ELECTRICAL)) {
                         setImageWithGlide(this, imgFour, selectedImage);
                         imagesPresenter.uploadElectricalImage(id, imageBASE46);
+                    } else {
+                        setImageWithGlide(this, imgFour, selectedImage);
+                        imagesPresenter.uploadRealEstateImage(id, imageBASE46);
+
                     }
                 } else if (fiveSelected) {
                     if (type.equals(Constant.CAR)) {
                         setImageWithGlide(this, imgFive, selectedImage);
                         imagesPresenter.uploadCarImage(id, imageBASE46);
-                    } else {
+                    } else if (type.equals(Constant.ELECTRICAL)) {
                         setImageWithGlide(this, imgFive, selectedImage);
                         imagesPresenter.uploadElectricalImage(id, imageBASE46);
+                    } else {
+                        setImageWithGlide(this, imgFive, selectedImage);
+                        imagesPresenter.uploadRealEstateImage(id, imageBASE46);
                     }
                 } else if (sixSelected) {
                     if (type.equals(Constant.CAR)) {
                         setImageWithGlide(this, imgSix, selectedImage);
                         imagesPresenter.uploadCarImage(id, imageBASE46);
-                    } else {
+                    } else if (type.equals(Constant.ELECTRICAL)) {
                         setImageWithGlide(this, imgSix, selectedImage);
                         imagesPresenter.uploadElectricalImage(id, imageBASE46);
+                    } else {
+                        setImageWithGlide(this, imgSix, selectedImage);
+                        imagesPresenter.uploadRealEstateImage(id, imageBASE46);
                     }
                 }
             } else {
@@ -284,64 +303,89 @@ public class ImagesActivity extends AppCompatActivity implements View.OnClickLis
             }
         }
 
-        if (requestCode == CAPTURE_IMAGE && resultCode == RESULT_OK && data != null && data.getData() != null) {
+        if (requestCode == CAPTURE_IMAGE && resultCode == RESULT_OK) {
 
             // Show the thumbnail on ImageView
             Uri imageUri = Uri.parse(mCurrentPhotoPath);
+           // setImageWithGlide(this, imgOne, imageUri);
+
 
             if (!imageUri.toString().isEmpty()) {
                 //imageBASE46 = Constant.convertToBase64(bitmap);
                 //  Log.d("IMG_BASE56GALLERY", "onClick: " + imageBASE46);
                 if (oneSelected) {
-                    if (type.equals(Constant.CAR)) {
-                        setImageWithGlide(this, imgOne, imageUri);
-                        imagesPresenter.uploadCarImage(id, imageBASE46);
-                    } else {
-                        setImageWithGlide(this, imgOne, imageUri);
-                        imagesPresenter.uploadElectricalImage(id, imageBASE46);
+                    Log.d("NOT EMPTY", "onActivityResult: " + "NOT EDMPTY" + imageUri);
+                    switch (type) {
+                        case Constant.CAR:
+                            setImageWithGlide(this, imgOne, imageUri);
+                            imagesPresenter.uploadCarImage(id, imageBASE46);
+                            break;
+                        case Constant.ELECTRICAL:
+                            setImageWithGlide(this, imgOne, imageUri);
+                            imagesPresenter.uploadElectricalImage(id, imageBASE46);
+                            break;
+                        case Constant.REAL_ESTATE:
+                            setImageWithGlide(this, imgOne, imageUri);
+                            imagesPresenter.uploadRealEstateImage(id, imageBASE46);
+                            break;
                     }
 
                 } else if (twoSelected) {
                     if (type.equals(Constant.CAR)) {
                         setImageWithGlide(this, imgTwo, imageUri);
                         imagesPresenter.uploadCarImage(id, imageBASE46);
-                    } else {
+                    } else if (type.equals(Constant.ELECTRICAL)) {
                         setImageWithGlide(this, imgTwo, imageUri);
                         imagesPresenter.uploadElectricalImage(id, imageBASE46);
+                    } else {
+                        setImageWithGlide(this, imgTwo, imageUri);
+                        imagesPresenter.uploadRealEstateImage(id, imageBASE46);
                     }
 
                 } else if (threeSelected) {
                     if (type.equals(Constant.CAR)) {
                         setImageWithGlide(this, imgThree, imageUri);
                         imagesPresenter.uploadCarImage(id, imageBASE46);
-                    } else {
+                    } else if (type.equals(Constant.ELECTRICAL)) {
                         setImageWithGlide(this, imgThree, imageUri);
                         imagesPresenter.uploadElectricalImage(id, imageBASE46);
+                    } else {
+                        setImageWithGlide(this, imgThree, imageUri);
+                        imagesPresenter.uploadRealEstateImage(id, imageBASE46);
                     }
 
                 } else if (fourSelected) {
                     if (type.equals(Constant.CAR)) {
                         setImageWithGlide(this, imgFour, imageUri);
                         imagesPresenter.uploadCarImage(id, imageBASE46);
-                    } else {
+                    } else if (type.equals(Constant.ELECTRICAL)) {
                         setImageWithGlide(this, imgFour, imageUri);
                         imagesPresenter.uploadElectricalImage(id, imageBASE46);
+                    } else {
+                        setImageWithGlide(this, imgFour, imageUri);
+                        imagesPresenter.uploadRealEstateImage(id, imageBASE46);
                     }
                 } else if (fiveSelected) {
                     if (type.equals(Constant.CAR)) {
                         setImageWithGlide(this, imgFive, imageUri);
                         imagesPresenter.uploadCarImage(id, imageBASE46);
-                    } else {
+                    } else if (type.equals(Constant.ELECTRICAL)) {
                         setImageWithGlide(this, imgFive, imageUri);
                         imagesPresenter.uploadElectricalImage(id, imageBASE46);
+                    } else {
+                        setImageWithGlide(this, imgFive, imageUri);
+                        imagesPresenter.uploadRealEstateImage(id, imageBASE46);
                     }
                 } else if (sixSelected) {
                     if (type.equals(Constant.CAR)) {
                         setImageWithGlide(this, imgSix, imageUri);
                         imagesPresenter.uploadCarImage(id, imageBASE46);
-                    } else {
+                    } else if (type.equals(Constant.ELECTRICAL)) {
                         setImageWithGlide(this, imgSix, imageUri);
                         imagesPresenter.uploadElectricalImage(id, imageBASE46);
+                    } else {
+                        setImageWithGlide(this, imgSix, imageUri);
+                        imagesPresenter.uploadRealEstateImage(id, imageBASE46);
                     }
                 }
 
@@ -361,7 +405,6 @@ public class ImagesActivity extends AppCompatActivity implements View.OnClickLis
                 } else if (sixSelected) {
                     imgSix.setImageResource(R.drawable.img_bg_book);
                 }
-
 
             }
 
@@ -434,6 +477,7 @@ public class ImagesActivity extends AppCompatActivity implements View.OnClickLis
                 photoFile = createImageFile();
             } catch (IOException ex) {
                 // Error occurred while creating the File
+                Log.d("ERROR_CAMERA", "dispatchTakePictureIntent: " + ex.getMessage() + ex.getCause());
                 return;
             }
             // Continue only if the File was successfully created
@@ -512,7 +556,6 @@ public class ImagesActivity extends AppCompatActivity implements View.OnClickLis
                 .apply(new RequestOptions().centerCrop())
                 .placeholder(R.drawable.img_bg_book)
                 .into(new CustomTarget<Bitmap>() {
-
 
 
                     @Override

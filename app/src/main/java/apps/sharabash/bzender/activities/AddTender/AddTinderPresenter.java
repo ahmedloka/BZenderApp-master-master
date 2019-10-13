@@ -7,8 +7,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.Toast;
 
-import org.json.JSONObject;
-
 import java.util.List;
 
 import apps.sharabash.bzender.Models.AddTenders.AddTinderPojo;
@@ -18,7 +16,6 @@ import apps.sharabash.bzender.Network.NetworkUtil;
 import apps.sharabash.bzender.Utills.Constant;
 import apps.sharabash.bzender.Utills.Validation;
 import apps.sharabash.bzender.dialog.DialogLoader;
-import retrofit2.HttpException;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 import rx.subscriptions.CompositeSubscription;
@@ -86,18 +83,8 @@ public class AddTinderPresenter {
     }
 
     private void handleError(Throwable throwable) {
-        String message = "";
-        if (throwable instanceof retrofit2.HttpException) {
-            try {
-                retrofit2.HttpException error = (retrofit2.HttpException) throwable;
-                JSONObject jsonObject = new JSONObject(((HttpException) throwable).response().errorBody().string());
-                message = jsonObject.getString("Message");
-            } catch (Exception e) {
-                message = throwable.getMessage();
-            }
-            Constant.getErrorDependingOnResponse(mContext, message);
+        Constant.handleError(mContext, throwable);
 
-        }
 
         if (dialogLoaderTwo.isAdded())
             dialogLoaderTwo.dismiss();
@@ -109,7 +96,7 @@ public class AddTinderPresenter {
 
         Constant.ADD_TENDER_ID = addTinderResponse.getTenderId();
         addTinderInterface.tenderAddedSuccessfully();
-        Log.d(TAG, "handleResponseADDTENdERSTAGEONE: " + addTinderResponse.toString());
+        Log.d(TAG, "YOU_CLICK_ME: " + Constant.ADD_TENDER_ID + " " + addTinderResponse.toString() + " " + addTinderResponse.getTenderId());
 //        Log.d(TAG, "TENDER ID: " + addTinderResponse.getTenderId());
 //        Log.d(TAG, "handleResponse: + success");
 //        Log.d(TAG, "handleResponse: " + SELECTED_TENDER_TYPE);

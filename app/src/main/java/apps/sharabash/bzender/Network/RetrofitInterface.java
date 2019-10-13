@@ -23,11 +23,15 @@ import apps.sharabash.bzender.Models.bookCar.BookCarBody;
 import apps.sharabash.bzender.Models.bookCar.BookCarResponse;
 import apps.sharabash.bzender.Models.bookElectrical.BookElectricalBody;
 import apps.sharabash.bzender.Models.bookElectrical.BookElectricalResponse;
+import apps.sharabash.bzender.Models.bookTenderRealEsate.BookTenderRealEstateBody;
+import apps.sharabash.bzender.Models.bookTenderRealEsate.BookTenderRealEstateResponse;
 import apps.sharabash.bzender.Models.changePassword.ChangePasswordModel;
 import apps.sharabash.bzender.Models.chatList.AllUserMessage;
 import apps.sharabash.bzender.Models.complaint.ComplaintModel;
 import apps.sharabash.bzender.Models.complaint.ComplaintResponse;
 import apps.sharabash.bzender.Models.editProfile.EditProfileModel;
+import apps.sharabash.bzender.Models.getAllTendersRealEstate.AllTenderRealEstateResponse;
+import apps.sharabash.bzender.Models.getTenderRealEstate.GetTenderRealEstateResponse;
 import apps.sharabash.bzender.Models.home.getCategoryResponse;
 import apps.sharabash.bzender.Models.imgs.UploadCarIamge;
 import apps.sharabash.bzender.Models.imgs.UploadCarRequest;
@@ -42,6 +46,8 @@ import apps.sharabash.bzender.Models.notification.NotificationResponse;
 import apps.sharabash.bzender.Models.profile.ProfileModel;
 import apps.sharabash.bzender.Models.push.PushNotification;
 import apps.sharabash.bzender.Models.push.PushResponse;
+import apps.sharabash.bzender.Models.realState.AddTenderRealStateBody;
+import apps.sharabash.bzender.Models.realState.AddTenderResponse;
 import apps.sharabash.bzender.Models.signUp.CountryCodeResponse;
 import apps.sharabash.bzender.Models.signUp.SignUpRequest;
 import apps.sharabash.bzender.Models.signUp.signUpResponse;
@@ -50,6 +56,8 @@ import apps.sharabash.bzender.Models.verify.bussniess.VerifyBussniess;
 import apps.sharabash.bzender.Models.verify.bussniess.VerifyBussniessResponse;
 import apps.sharabash.bzender.Models.verify.invidual.VerifyInvidual;
 import apps.sharabash.bzender.Models.verify.invidual.VerifyInvidualResponse;
+import apps.sharabash.bzender.activities.uploadRealEState.UploadRealEstateImageBody;
+import apps.sharabash.bzender.activities.uploadRealEState.UploadRealEstateResponse;
 import apps.sharabash.bzender.activities.webPaymnet.EmptyResponse;
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -77,6 +85,9 @@ public interface RetrofitInterface {
 
     @GET("api/GetTender")
     Observable<TenderDetailsElectrical> getTenderElectricalDetails(@Query("id") String id);
+
+    @GET("api/GetTender")
+    Observable<GetTenderRealEstateResponse> getTenderRealEstate(@Query("id") String id);
 
     @POST("api/AddTender")
     Observable<AddTinderResponse> addTinder(@Body AddTinderPojo addTinderPojo);
@@ -112,6 +123,9 @@ public interface RetrofitInterface {
     @GET("api/GetTenderByCategoryId")
     Observable<List<AllTenderElectrical>> getAllTendersElectrical(@Query("categoryId") String catId);
 
+    @GET("api/GetTenderByCategoryId")
+    Observable<List<AllTenderRealEstateResponse>> getAllTendersRealEstate(@Query("categoryId") String catId);
+
     @GET("api/GetMetaData")
     Observable<MetaDataCar> getMetaData();
 
@@ -137,6 +151,8 @@ public interface RetrofitInterface {
     @POST("api/AddTenderElectricalBookingImage")
     Observable<UploadElectricalRequest> uploadElectricalImage(@Body UploadElectricalImage uploadElectricalImage);
 
+    @POST("api/AddTenderRealstateBookingImage")
+    Observable<UploadRealEstateResponse> uploadBookingRealEstate(@Body UploadRealEstateImageBody uploadRealEstateImageBody);
 
     @GET("api/GetBooking")
     Observable<MyBookingBody> getMyBooking();
@@ -175,5 +191,13 @@ public interface RetrofitInterface {
 
     @POST("api/VerefiedPersons")
     Observable<VerifyInvidualResponse> verifyInvidual(@Body VerifyInvidual verifyInvidual);
+
+
+    @POST("api/AddTenderRealstate")
+    Observable<AddTenderResponse> addTenderRealState(@Body AddTenderRealStateBody addTenderBody);
+
+
+    @POST("api/AddTenderRealstateBooking")
+    Observable<BookTenderRealEstateResponse> bookTenderRealEstate(@Body BookTenderRealEstateBody addTenderBody);
 
 }

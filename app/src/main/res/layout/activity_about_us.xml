@@ -67,6 +67,8 @@
         <android.support.v7.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="@dimen/_60sdp"
             android:orientation="vertical">
 
             <Space
@@ -104,8 +106,7 @@
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:padding="@dimen/_10_height"
-                android:text="Company established in late 2017 to serve medical market first but now we launch in all markets in Egypt
-It's the first network of it's kind in the world and first in the Middle East at submit Tenders electronically"
+                android:text="@string/about_uss"
                 android:textColor="@color/blakcolor"
                 android:textSize="@dimen/_12ssp" />
 
@@ -144,9 +145,7 @@ It's the first network of it's kind in the world and first in the Middle East at
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:padding="@dimen/_10_height"
-                android:text="To be the most transformative leadership in B2B E-commercial field
-that monitoring all trading movement and be a compass of economy in some day
-"
+                android:text="@string/visionn"
                 android:textColor="@color/blakcolor"
                 android:textSize="@dimen/_12ssp" />
 
@@ -185,8 +184,7 @@ that monitoring all trading movement and be a compass of economy in some day
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:padding="@dimen/_10_height"
-                android:text="Supporting small businesses, and making healthy competition between each other
-"
+                android:text="@string/missionn"
                 android:textColor="@color/blakcolor"
                 android:textSize="@dimen/_12ssp" />
 
@@ -194,44 +192,10 @@ that monitoring all trading movement and be a compass of economy in some day
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_10_height" />
 
-            <android.support.v7.widget.LinearLayoutCompat
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:weightSum="411">
-
-                <apps.sharabash.bzender.Utills.MyTextViewBold
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="165"
-                    android:background="@color/tab_background"
-                    android:gravity="center"
-                    android:padding="@dimen/_4_height"
-                    android:text="@string/objective"
-                    android:textColor="@color/whitecolor"
-                    android:textSize="@dimen/_14ssp" />
-
-            </android.support.v7.widget.LinearLayoutCompat>
 
             <Space
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_10_height" />
-
-            <apps.sharabash.bzender.Utills.MyTextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:padding="@dimen/_10_height"
-                android:text="The Middle east first Contracting and supplying e-tendering services"
-                android:textColor="@color/blakcolor"
-                android:textSize="@dimen/_12ssp" />
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/_30_height" />
 
         </android.support.v7.widget.LinearLayoutCompat>
     </ScrollView>

@@ -11,16 +11,18 @@ public class ChatModel {
     private String msg;
     private String userChatStatus;
     private int PagesCount;
+    private String catId;
 
     //, String img
 
-    public ChatModel(String senderId, int RoomId, String name, String msg, String TenderName, String statusID, int PagesCount, String userChatStatus) {
+    public ChatModel(String senderId, int RoomId, String name, String msg, String TenderName, String statusID, int PagesCount, String userChatStatus, String catId) {
         this.senderId = senderId;
         this.RoomId = RoomId;
         //this.img = img;
         Name = name;
         this.msg = msg;
         this.PagesCount = PagesCount;
+        this.catId = catId;
         this.statusID = statusID;
         this.TenderName = TenderName;
         this.userChatStatus = userChatStatus;
@@ -32,6 +34,14 @@ public class ChatModel {
 
     public void setSenderId(String senderId) {
         this.senderId = senderId;
+    }
+
+    public String getCatId() {
+        return catId;
+    }
+
+    public void setCatId(String catId) {
+        this.catId = catId;
     }
 
     public int getRoomId() {

@@ -5,19 +5,18 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-
-import org.json.JSONObject;
+import android.view.View;
 
 import java.util.List;
 
 import apps.sharabash.bzender.Models.AddTenders.TendersModelResponse;
 import apps.sharabash.bzender.Models.allTinders.car.AllTender;
 import apps.sharabash.bzender.Models.allTinders.electrical.AllTenderElectrical;
+import apps.sharabash.bzender.Models.getAllTendersRealEstate.AllTenderRealEstateResponse;
 import apps.sharabash.bzender.Network.NetworkUtil;
 import apps.sharabash.bzender.Utills.Constant;
 import apps.sharabash.bzender.Utills.Validation;
 import apps.sharabash.bzender.dialog.DialogLoader;
-import retrofit2.HttpException;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 import rx.subscriptions.CompositeSubscription;
@@ -31,6 +30,7 @@ class TendersPresenter {
     private final DialogLoader dialogLoader;
     private final DialogLoader dialogLoaderTwo;
     private final DialogLoader dialogLoaderThree;
+    private final DialogLoader dialogLoaderFour;
     private final Context context;
     private final SharedPreferences sharedPreferences;
     private final CompositeSubscription mSubscriptions;
@@ -42,10 +42,34 @@ class TendersPresenter {
         dialogLoader = new DialogLoader();
         dialogLoaderTwo = new DialogLoader();
         dialogLoaderThree = new DialogLoader();
+        dialogLoaderFour = new DialogLoader();
         this.tendersInterface1 = tendersInterface1;
         sharedPreferences = context.getSharedPreferences("MySharedPreference", Context.MODE_PRIVATE);
     }
 
+    //getAllTendersRealEstate
+
+
+    void getAllTenderItemsRealEstate(String catId) {
+        if (Validation.isConnected(context)) {
+            dialogLoaderFour.show(((AppCompatActivity) context).getSupportFragmentManager(), "");
+            mSubscriptions.add(NetworkUtil.getRetrofitByToken(sharedPreferences.getString(Constant.UserID, ""))
+                    .getAllTendersRealEstate(catId)
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribeOn(Schedulers.io())
+                    .subscribe(this::handleResponseAllTenderRealEstate, this::handleError));
+        } else {
+            buildDialog((Activity) context).show().setCanceledOnTouchOutside(false);
+        }
+    }
+
+    private void handleResponseAllTenderRealEstate(List<AllTenderRealEstateResponse> allTenderRealEstateResponses) {
+        if (dialogLoaderFour.isAdded()) {
+            dialogLoaderFour.dismiss();
+        }
+        tendersInterface1.getAllTenderRealEstate(allTenderRealEstateResponses);
+
+    }
 
     void getAllTenderItemsElectrical(String catId) {
         if (Validation.isConnected(context)) {
@@ -92,18 +116,9 @@ class TendersPresenter {
     }
 
     private void handleError(Throwable throwable) {
-        String message = "";
-        if (throwable instanceof retrofit2.HttpException) {
-            try {
-                retrofit2.HttpException error = (retrofit2.HttpException) throwable;
-                JSONObject jsonObject = new JSONObject(((HttpException) throwable).response().errorBody().string());
-                message = jsonObject.getString("Message");
-            } catch (Exception e) {
-                message = throwable.getMessage();
-            }
-            Constant.getErrorDependingOnResponse(context, message);
+        Constant.handleError(context, throwable);
 
-        }
+        AllTenderActivity.mTxtEmpty.setVisibility(View.VISIBLE);
         if (dialogLoader.isAdded()) {
             dialogLoader.dismiss();
         }
@@ -112,6 +127,9 @@ class TendersPresenter {
         }
         if (dialogLoaderThree.isAdded()) {
             dialogLoaderThree.dismiss();
+        }
+        if (dialogLoaderFour.isAdded()) {
+            dialogLoaderFour.dismiss();
         }
     }
 

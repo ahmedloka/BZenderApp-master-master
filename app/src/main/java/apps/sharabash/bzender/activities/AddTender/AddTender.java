@@ -54,6 +54,7 @@ import apps.sharabash.bzender.activities.fillDataCar.FillDataCarActivity;
 import apps.sharabash.bzender.activities.fillDataCar.FillDataCarInterface;
 import apps.sharabash.bzender.activities.fillDataCar.FillDataCarPresenter;
 import apps.sharabash.bzender.activities.fillDataElectrical.FillDataElectricalActivity;
+import apps.sharabash.bzender.activities.real_state.AddRealStateActivity;
 import apps.sharabash.bzender.adapters.filterAreaAdapter;
 import apps.sharabash.bzender.adapters.filterAreaModelRecycler;
 import apps.sharabash.bzender.dialog.CustomCallenderDialog;
@@ -244,11 +245,13 @@ public class AddTender extends AppCompatActivity implements homeInterface, com.w
     private void initionilizationOFFilter() {
         DialogList.clear();
         List<AddTenderType> addTenderTypeList = new ArrayList<>();
-        for (int k = 0; k < 2; k++) {
+        for (int k = 0; k < 3; k++) {
 
             if (language.equals("ar")) {
                 addTenderTypeList.add(new AddTenderType(10021, "سيارات"));
                 addTenderTypeList.add(new AddTenderType(10022, "الكترونيات"));
+                addTenderTypeList.add(new AddTenderType(10023, "عقـارات"));
+
 
                 DialogList.add(new filterAreaModelRecycler(
                         addTenderTypeList.get(k).getName()
@@ -258,6 +261,8 @@ public class AddTender extends AppCompatActivity implements homeInterface, com.w
             } else {
                 addTenderTypeList.add(new AddTenderType(10021, "Cars"));
                 addTenderTypeList.add(new AddTenderType(10022, "Electronics"));
+                addTenderTypeList.add(new AddTenderType(10023, "Real Estate"));
+
 
                 DialogList.add(new filterAreaModelRecycler(
                         addTenderTypeList.get(k).getName()
@@ -442,8 +447,20 @@ public class AddTender extends AppCompatActivity implements homeInterface, com.w
                         startActivity(intent);
                         //intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         Animatoo.animateSlideRight(this);
-                    } else {
+                    } else if (SELECTED_TENDER_TYPE == 1) {
                         intent = new Intent(this, FillDataElectricalActivity.class);
+                        intent.putExtra(Constant.TITLE, mTinderTitle.getText().toString());
+                        intent.putExtra(Constant.DESC, mDesc.getText().toString());
+                        intent.putExtra(Constant.StartDate, selectedDateStart);
+                        intent.putExtra(Constant.EndTime, getSelectedDateEnd);
+                        intent.putExtra(Constant.CityId, CityId);
+                        intent.putExtra(Constant.CatId, categoryId);
+                        intent.putExtra(Constant.Address, mLocation.getText().toString());
+                        startActivity(intent);
+                        //intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        Animatoo.animateSlideRight(this);
+                    } else {
+                        intent = new Intent(this, AddRealStateActivity.class);
                         intent.putExtra(Constant.TITLE, mTinderTitle.getText().toString());
                         intent.putExtra(Constant.DESC, mDesc.getText().toString());
                         intent.putExtra(Constant.StartDate, selectedDateStart);
@@ -521,10 +538,10 @@ public class AddTender extends AppCompatActivity implements homeInterface, com.w
             Constant.showErrorDialog(this, getString(R.string.error_date_one));
             return;
         }
-        if (year != y) {
-            Constant.showErrorDialog(this, getString(R.string.error_date_year));
-            return;
-        }
+//        if (year != y) {
+//            Constant.showErrorDialog(this, getString(R.string.error_date_year));
+//            return;
+//        }
         if (month >= m + 4) {
             Constant.showErrorDialog(this, getString(R.string.error_month));
             return;
@@ -629,6 +646,11 @@ public class AddTender extends AppCompatActivity implements homeInterface, com.w
 
         mSharedPreferences = getSharedPreferences("tokenDetail", MODE_PRIVATE);
 
+        Constant.AMENTITIES = metaDataCar.getAmenities();
+        Constant.ACTIVITY_FOR = metaDataCar.getActivityFor();
+        Constant.TYPE_OF_PROPERTIES = metaDataCar.getTypesOfProperties();
+        Constant.TYPE_OF_USES = metaDataCar.getTypesOfUses();
+
 
         for (int i = 0; i < metaDataCar.getElectricalTypes().size(); i++) {
             if (language.equals("ar")) {
@@ -680,5 +702,3 @@ public class AddTender extends AppCompatActivity implements homeInterface, com.w
         // Toast.makeText(this, "CHANGED", Toast.LENGTH_SHORT).show();
     }
 }
-
-//tenant_developer@outlook.com

@@ -93,8 +93,12 @@ public class ChatListActivity extends AppCompatActivity implements AllUsersChatI
                     , allUserMessage.getChatList().get(i).getSenderName()
                     , allUserMessage.getChatList().get(i).getStatusId()
                     , Integer.valueOf(allUserMessage.getChatList().get(i).getPagesCount())
-                    , allUserMessage.getChatList().get(i).getUserChatStatus()));
+                    , allUserMessage.getChatList().get(i).getUserChatStatus(),
+                    allUserMessage.getChatList().get(i).getCategoryId()
+                    )
+            );
 
+            Log.d("CAT_ID_", "getAllUserChatData: " + allUserMessage.getChatList().get(i).getCategoryId());
 
         }
 

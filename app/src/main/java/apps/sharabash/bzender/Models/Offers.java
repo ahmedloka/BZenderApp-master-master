@@ -2,13 +2,15 @@ package apps.sharabash.bzender.Models;
 
 import org.jetbrains.annotations.NotNull;
 
-public class Offers {
-
+public class Offers
+{
     private String Note;
 
     private String Id;
 
     private String Image;
+
+    private String URL;
 
     public String getNote ()
     {
@@ -40,11 +42,19 @@ public class Offers {
         this.Image = Image;
     }
 
-    @NotNull
+    public String getURL ()
+    {
+        return URL;
+    }
+
+    public void setURL (String URL)
+    {
+        this.URL = URL;
+    }
+
     @Override
     public String toString()
     {
-        return "ClassPojo [Note = "+Note+", Id = "+Id+", Image = "+Image+"]";
+        return "ClassPojo [Note = "+Note+", Id = "+Id+", Image = "+Image+", URL = "+URL+"]";
     }
 }
-

@@ -110,7 +110,7 @@
     <string name="intro_four_first_txt">أفضل النتائج للجميع</string>
     <string name="intro_four_second_txt">أفضل أسعار وجودة للصناع وافضل تسويق ومبيعات للمزايدات</string>
 
-    <string name="complete_add_tinder_sec">تمت العلمية بنجاح و سوف يتم خصم 400 نقطة بمجرد موافقة الأدمن .</string>
+    <string name="complete_add_tinder_sec">تمت العلمية بنجاح و سوف يتم الموافقة علي المناقصة بمجرد موافقة الأدمن .</string>
     <string name="individual_person">افراد</string>
     <string name="business">شركات</string>
     <string name="fill_data">أكمل بيانات المناقصة
@@ -142,8 +142,8 @@
 </string>
     <string name="electrical_until">الكهربائية حتى الوضع
 </string>
-    <string name="neww">جديد</string>
-    <string name="used">مستخدم</string>
+    <string name="neww">اوتوماتيك</string>
+    <string name="used">يـدوي</string>
     <string name="guarantee">ضمان</string>
     <string name="yes">نعم</string>
     <string name="no">لا</string>
@@ -229,7 +229,7 @@
 </string>
     <string name="response_ninty_eight">هذا رقم الهاتف مسجل من قبل
 </string>
-    <string name="response_ninty_nine">رصيدك أقل من 400
+    <string name="response_ninty_nine">رصيدك أقل من 800
 </string>
     <string name="response_one_hundred_and_one">الرمز غير صالح</string>
     <string name="password_error">كلمة المرور مطلوبة</string>
@@ -319,10 +319,56 @@
     <string name="chat_nott">لا يمكن ارسال رسائل</string>
     <string name="id_taken">رقم البطاقة مأخوذ بالفعل</string>
     <string name="tax_or_comm_taken">الرقم الضريبي أو رقم السجل التجاري مأخوذ بالفعل</string>
-    <string name="national_id_required">National Id Is Required</string>
-    <string name="tax_num_required">Tax Card Number Is Required</string>
-    <string name="commercial_record_required">Commercial Record Number Is Required</string>
-    <string name="verfied_successfullty">Your Account Was Verified Successfully</string>
+    <string name="national_id_required">رقم البطاقة مطلوب</string>
+    <string name="tax_num_required">رقم البطاقة الضريبية مطلوب</string>
+    <string name="commercial_record_required">رقم السجل التجاري مطلوب</string>
+    <string name="verfied_successfullty">تم التحقق من حسابك بنجاح</string>
+    <string name="type_of_prop">نوع العقار</string>
+    <string name="need_for">نحتاجه ل</string>
+    <string name="activity_for">النشاط </string>
+    <string name="location">الموقع</string>
+    <string name="spesefic_area">المكان بالتحديد</string>
+    <string name="amen">وسائل الراحة المتاحة</string>
+    <string name="bedrooms">عدد غرف النوم</string>
+    <string name="level">الدور أو عدد الأدوار</string>
+    <string name="period_of">مدة الإيجار</string>
+    <string name="licence">الرخصة</string>
+    <string name="yess">نعم</string>
+    <string name="noo">لا</string>
+    <string name="price_range">حدود السعر المسموحة</string>
+    <string name="area_range">المساحة المطلوبة</string>
+    <string name="room">غرفة/غرف</string>
+    <string name="need_to">نحتاجه ل : </string>
+    <string name="type_of">نوع العقار : </string>
+    <string name="activiy_for">النشاط : </string>
+    <string name="locationn">الموقع : </string>
+    <string name="spesefic_areaa">المكان بالتحديد : </string>
+    <string name="amin">وسائل الراحة المتاحة : </string>
+    <string name="bed_rooms">عدد غرف النوم : </string>
+    <string name="levell"> الدور أو عدد الأدوار : </string>
+    <string name="area_rangee">المساحة المطلوبة : </string>
+    <string name="price_rangee">حدود السعر المسموحة : </string>
+    <string name="period_of_renting">مدة الإيجار : </string>
+    <string name="licencee">رخصة : </string>
+    <string name="m_square">²م</string>
+    <string name="cat_real_estate">عقارات</string>
+    <string name="booked_before">تم حجز هذه المناقصة من قبل</string>
+    <string name="your_tender">لا يمكنك حجز مناقصتك</string>
+    <string name="user_not_found">المستخدم ليس موجود</string>
+    <string name="location_not_found">الموقع غير موجود</string>
+    <string name="type_of_no_found">نوع العقار غير موجود
+</string>
+    <string name="invalid_tender_real_estate">الرجاء المحاولة مرة اخري</string>
+    <string name="again">الرجاء المحاولة مرة اخري</string>
+    <string name="faild_to_send">فشل في إرسال شكوى</string>
+    <string name="check_verification_code">الرجاء التحقق من رقم التحقق</string>
+    <string name="month_year">شهر أو سنة</string>
+    <string name="check_id">الرجاء التحقق من رقم البطاقة</string>
+    <string name="pls_check_Tax">الرجاء التحقق من رقم البطاقة الضريبية</string>
+    <string name="show_details">التـفاصيـل</string>
+    <string name="about_uss">تأسست الشركة في أواخر عام 2017 لخدمة المجال الطبي ولكن الآن نعمل في جميع الأسواق في مصر نحن الشبكة الأولى من نوعها في العالم والأولى في الشرق الأوسط في تقديم المناقصات إلكترونيًه</string>
+    <string name="visionn">أن نكون الريادة الأكثر تحولًا في مجال التجارة الإلكترونية بين الأعمال التجارية والتي تراقب كل حركة التداول ونآمل ان تكون بوصلة للاقتصاد في يوم ما</string>
+    <string name="missionn">دعم المشروعات الصغيره و عمل مناخ صحي للتنافس فيما بينهم</string>
 
 
 </resources>

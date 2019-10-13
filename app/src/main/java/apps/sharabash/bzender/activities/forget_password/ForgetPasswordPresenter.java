@@ -74,18 +74,8 @@ class ForgetPasswordPresenter {
             dialogLoader.dismiss();
 
         //  dialogLoaderTwo.dismiss();
-        String message = "";
-        if (throwable instanceof retrofit2.HttpException) {
-            try {
-                retrofit2.HttpException error = (retrofit2.HttpException) throwable;
-                JSONObject jsonObject = new JSONObject(((HttpException) throwable).response().errorBody().string());
-                message = jsonObject.getString("Message");
-            } catch (Exception e) {
-                message = throwable.getMessage();
-            }
-            Constant.getErrorDependingOnResponse(context, message);
+        Constant.handleError(context, throwable);
 
-        }
     }
 
 }

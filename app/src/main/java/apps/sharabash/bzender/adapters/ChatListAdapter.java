@@ -27,6 +27,7 @@ public class ChatListAdapter extends RecyclerView.Adapter<ChatListAdapter.ViewHo
     private final List<ChatModel> itemList;
     private SharedPreferences sharedPreferences;
     private Context context;
+    private String catId;
 
 
     public ChatListAdapter(Context context, List<ChatModel> itemList) {
@@ -56,8 +57,35 @@ public class ChatListAdapter extends RecyclerView.Adapter<ChatListAdapter.ViewHo
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder holder, final int listPosition) {
 
+        try {
 
-        // holder.img.setImageDrawable(context.getResources().getDrawable(R.id));
+            switch (itemList.get(listPosition).getCatId()) {
+                case "10021":
+                    holder.img.setImageDrawable(context.getResources().getDrawable(R.drawable.cars));
+                    catId = "10021";
+                    break;
+                case "10022":
+                    holder.img.setImageDrawable(context.getResources().getDrawable(R.drawable.electrical));
+                    catId = "10022";
+                    break;
+                case "10023":
+                    holder.img.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_real_estate));
+                    catId = "10023";
+                    break;
+
+                default:
+                    holder.img.setImageDrawable(context.getResources().getDrawable(R.drawable.bzender));
+
+                    break;
+            }
+
+        } catch (NullPointerException ignored) {
+            holder.img.setImageDrawable(context.getResources().getDrawable(R.drawable.bzender));
+        }
+
+        Log.d("CAT_ID_", "onBindViewHolder: " + catId);
+
+
         holder.name.setText(itemList.get(listPosition).getName());
         holder.msg.setText(itemList.get(listPosition).getMsg());
 
@@ -66,13 +94,16 @@ public class ChatListAdapter extends RecyclerView.Adapter<ChatListAdapter.ViewHo
             intent.putExtra(Constant.SENDER_ID, itemList.get(listPosition).getSenderId());
             intent.putExtra(Constant.ROOM_ID, itemList.get(listPosition).getRoomId());
             intent.putExtra(Constant.STATUS_ID_CHAT, itemList.get(listPosition).getStatusID());
+            intent.putExtra(Constant.CAT_ID, itemList.get(listPosition).getCatId());
             intent.putExtra(Constant.USER_CHAT_STATUS, itemList.get(listPosition).getUserChatStatus());
             intent.putExtra(Constant.PAGES_COUNT, itemList.get(listPosition).getPagesCount());
             intent.putExtra(Constant.TENDER_NAME, itemList.get(listPosition).getName());
+//            intent.putExtra(Constant.CAT_ID, catId);
 
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.putInt(Constant.PAGES_COUNT, itemList.get(listPosition).getPagesCount());
             editor.putInt(Constant.ROOM_ID, itemList.get(listPosition).getRoomId());
+            editor.putString(Constant.CAT_ID, itemList.get(listPosition).getCatId());
             editor.apply();
 
             int roomId = sharedPreferences.getInt(Constant.ROOM_ID, 1);

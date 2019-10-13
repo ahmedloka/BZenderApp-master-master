@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/_200sdp"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="@dimen/_5sdp">
+
+    <CheckBox
+        android:id="@+id/checkbox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="20"
+        android:buttonTint="@color/app_color" />
+
+    <apps.sharabash.bzender.Utills.MyTextViewBold
+        android:id="@+id/txt_of_check_box"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_15sdp"
+        android:layout_weight="80"
+        android:gravity="start|center"
+        android:padding="@dimen/_5sdp"
+        android:textColor="@color/app_color"
+        android:textSize="@dimen/_14ssp" />
+</android.support.v7.widget.LinearLayoutCompat>

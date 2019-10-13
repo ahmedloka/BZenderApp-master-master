@@ -34,7 +34,7 @@ public class MyFireBaseMessagingService extends FirebaseMessagingService {
         // Check if message contains a data payload.
         if (remoteMessage.getData().size() > 0) {
             Log.d(TAG, "Message data payload: " + remoteMessage.getData());
-            sendNotification(remoteMessage.getData().get("message"));
+            sendNotification(remoteMessage.getData().get("message"), "B-Zender");
             //(String messageBody, String title)
 
         }
@@ -93,7 +93,7 @@ public class MyFireBaseMessagingService extends FirebaseMessagingService {
      *
      * @param messageBody FCM message body received.
      */
-    private void sendNotification(String messageBody) {
+    private void sendNotification(String messageBody, String title) {
         Intent intent = new Intent(this, Notifications.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0 /* Request code */, intent,
@@ -105,6 +105,7 @@ public class MyFireBaseMessagingService extends FirebaseMessagingService {
                 new NotificationCompat.Builder(this, channelId)
                         .setSmallIcon(R.drawable.logo)
                         .setContentTitle("B-Zender")
+                        .setContentTitle(title)
                         .setStyle(new NotificationCompat.BigTextStyle().bigText(messageBody))
                         .setAutoCancel(true)
                         .setLargeIcon(BitmapFactory.decodeResource(getResources(),

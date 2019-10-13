@@ -67,33 +67,33 @@ public class MyBookingAdapter extends RecyclerView.Adapter<MyBookingAdapter.View
     public void onBindViewHolder(@NonNull final ViewHolder holder, final int listPosition) {
 
 
-        Log.d(TAG, "onBindViewHolder: " + itemList.get(listPosition).getStatusId());
-
+        Log.d(TAG, "STAUS_ID: " + itemList.get(listPosition).getStatusId());
+// pending // accepted //rejected
         switch (itemList.get(listPosition).getStatusId()) {
-            case 4: //accepted
+            case 2: //accepted
                 if (lang.equals("ar"))
                     holder.imgTypeBg.setImageResource(R.drawable.accepted_img_ar);
                 else
                     holder.imgTypeBg.setImageResource(R.drawable.accepted_img_en);
                 break;
-            case 6: // pending
+            case 1: // pending
                 if (lang.equals("ar"))
                     holder.imgTypeBg.setImageResource(R.drawable.pending_img_ar);
                 else
                     holder.imgTypeBg.setImageResource(R.drawable.pending_img_en);
                 break;
-            case 5: // rejected
+            case 3: // rejected
                 if (lang.equals("ar"))
                     holder.imgTypeBg.setImageResource(R.drawable.rejected_img_ar);
                 else
                     holder.imgTypeBg.setImageResource(R.drawable.rejected_img_en);
                 break;
-            case 7:
-                if (lang.equals("ar"))
-                    holder.imgTypeBg.setImageResource(R.drawable.finished_ar);
-                else
-                    holder.imgTypeBg.setImageResource(R.drawable.finished_en);
-                break;
+//            case 7:
+//                if (lang.equals("ar"))
+//                    holder.imgTypeBg.setImageResource(R.drawable.finished_ar);
+//                else
+//                    holder.imgTypeBg.setImageResource(R.drawable.finished_en);
+//                break;
             default:
                 holder.imgTypeBg.setVisibility(View.GONE);
                 break;
@@ -103,6 +103,8 @@ public class MyBookingAdapter extends RecyclerView.Adapter<MyBookingAdapter.View
             holder.imgCat.setImageDrawable(context.getResources().getDrawable(R.drawable.cars));
         } else if (itemList.get(listPosition).getCatName().equals(context.getString(R.string.cat_electronincs))) {
             holder.imgCat.setImageDrawable(context.getResources().getDrawable(R.drawable.electrical));
+        } else {
+            holder.imgCat.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_real_estate));
         }
 
         Log.d(TAG, "onBindViewHolder: " + itemList.get(0).toString());

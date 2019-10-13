@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,7 @@ import java.util.List;
 
 import apps.sharabash.bzender.Models.message.Message;
 import apps.sharabash.bzender.R;
+import apps.sharabash.bzender.Utills.Constant;
 import apps.sharabash.bzender.Utills.MyTextView;
 import apps.sharabash.bzender.Utills.MyTextViewBold;
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -25,11 +27,13 @@ public class PaginateChatRoom extends RecyclerView.Adapter<PaginateChatRoom.Item
     private SharedPreferences sharedPreferences;
     // private PagedList<ChatList> pagedList ;
     private List<Message> messageList;
+    private String catId;
 
     public PaginateChatRoom(Context mCtx, List<Message> messageList) {
         this.mCtx = mCtx;
         this.messageList = messageList;
         sharedPreferences = mCtx.getSharedPreferences("MySharedPreference", Context.MODE_PRIVATE);
+        catId = sharedPreferences.getString(Constant.CAT_ID, "");
     }
 
 
@@ -50,10 +54,33 @@ public class PaginateChatRoom extends RecyclerView.Adapter<PaginateChatRoom.Item
     public void onBindViewHolder(@NonNull ItemViewHolder itemViewHolder, int position) {
         ItemViewHolder vh = itemViewHolder;
 
+        Log.d("CAT_ID_", "onBindViewHolder: " + catId);
+
+        switch (catId) {
+            case "10021":
+                vh.mCircleImgLeft.setImageResource(R.drawable.cars);
+                break;
+            case "10022":
+                vh.mCircleImgLeft.setImageResource(R.drawable.electrical);
+                break;
+            case "10023":
+                vh.mCircleImgLeft.setImageResource(R.drawable.ic_real_estate);
+                break;
+            default:
+                vh.mCircleImgLeft.setImageResource(R.drawable.bzender);
+                break;
+        }
         Message messagee = this.messageList.get(position);
         if (Message.MSG_TYPE_RECEIVED.equals(messagee.getMsgType())) {
             // Show received message in left linearlayout.
             vh.mLinearLayoutLeft.setVisibility(LinearLayout.VISIBLE);
+            vh.linearNameLeft.setVisibility(View.VISIBLE);
+            vh.linearNameRight.setVisibility(GONE);
+            vh.mTxtNameLeft.setVisibility(View.VISIBLE);
+            vh.mTxtNameLeft.setText("~ " + messagee.getName().trim());
+            Log.d("NAME_N", "onBindViewHolder: " + messagee.getName());
+            vh.mTxtViewLeftMessage.setText(messagee.getMsgContent());
+            vh.mLinearLayoutRight.setVisibility(GONE);
 //
 //            try {
 //                if (messagee.getName().equals(null) || messagee.getName().equals(" ") || messagee.getName().equals("")) {
@@ -64,22 +91,19 @@ public class PaginateChatRoom extends RecyclerView.Adapter<PaginateChatRoom.Item
 //                vh.linearNameLeft.setVisibility(GONE);
 //
 //            }
-            vh.mTxtNameLeft.setVisibility(View.VISIBLE);
 
-            try {
-                vh.mTxtNameLeft.setText(messagee.getName());
-            } catch (NullPointerException ignored) {
 
-            }
-            vh.mTxtViewLeftMessage.setText(messagee.getMsgContent());
             // Remove left linearlayout.The value should be GONE, can not be INVISIBLE
             // Otherwise each iteview's distance is too big.
-            vh.mLinearLayoutRight.setVisibility(GONE);
         } else if (Message.MSG_TYPE_SENT.equals(messagee.getMsgType())) {
             vh.mLinearLayoutRight.setVisibility(LinearLayout.VISIBLE);
             vh.mTxtViewRightMessage.setText(messagee.getMsgContent());
+            vh.linearNameRight.setVisibility(View.VISIBLE);
             vh.mTxtNameRight.setVisibility(View.VISIBLE);
-
+            vh.linearNameLeft.setVisibility(GONE);
+            vh.mTxtNameRight.setText("~ " + messagee.getName().trim());
+            Log.d("NAME_N", "onBindViewHolder: " + messagee.getName());
+            vh.mLinearLayoutLeft.setVisibility(GONE);
 //            try {
 //                if (messagee.getName().equals(null) || messagee.getName().equals(" ") || messagee.getName().equals("")) {
 //                    vh.linearNameRight.setVisibility(GONE);
@@ -91,16 +115,9 @@ public class PaginateChatRoom extends RecyclerView.Adapter<PaginateChatRoom.Item
 //            }
 
 
-            try {
-                vh.mTxtNameRight.setText(messagee.getName());
-            } catch (NullPointerException ignored) {
-
-            }
-
-
             // Remove left linearlayout.The value should be GONE, can not be INVISIBLE
             // Otherwise each iteview's distance is too big.
-            vh.mLinearLayoutLeft.setVisibility(GONE);
+
         }
 
     }
@@ -118,11 +135,14 @@ public class PaginateChatRoom extends RecyclerView.Adapter<PaginateChatRoom.Item
         private final LinearLayout mLinearLayoutRight;
         private final MyTextView mTxtNameLeft, mTxtNameRight;
         private LinearLayout linearNameLeft, linearNameRight;
-        private CircleImageView mCircleImgLeft, mCircleImgRight;
+        private CircleImageView mCircleImgLeft;
 
 
         ItemViewHolder(@NonNull View itemView) {
             super(itemView);
+
+
+            mCircleImgLeft = itemView.findViewById(R.id.img_left);
 
             linearNameLeft = itemView.findViewById(R.id.linear_name_left);
             linearNameRight = itemView.findViewById(R.id.linear_name_right);

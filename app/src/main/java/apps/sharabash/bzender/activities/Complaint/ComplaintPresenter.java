@@ -95,19 +95,8 @@ public class ComplaintPresenter {
         if (dialogLoader.isAdded()) {
             dialogLoader.dismiss();
         }
-        String message = "";
-        if (throwable instanceof retrofit2.HttpException) {
-            try {
-                retrofit2.HttpException error = (retrofit2.HttpException) throwable;
-                JSONObject jsonObject = new JSONObject(((HttpException) throwable).response().errorBody().string());
-                message = jsonObject.getString("Message");
-            } catch (Exception e) {
-                message = throwable.getMessage();
-            }
-            Constant.getErrorDependingOnResponse(mContext, message);
+        Constant.handleError(mContext, throwable);
 
-        }
-        // hud.dismiss();
     }
 
     private void showDialog() {

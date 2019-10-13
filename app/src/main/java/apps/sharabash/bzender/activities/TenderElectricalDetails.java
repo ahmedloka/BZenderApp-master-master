@@ -16,6 +16,7 @@ import apps.sharabash.bzender.Models.TendersDetails.TenderDetails;
 import apps.sharabash.bzender.Models.TendersDetails.electrical.TenderDetailsElectrical;
 import apps.sharabash.bzender.Models.bookCar.BookCarResponse;
 import apps.sharabash.bzender.Models.bookElectrical.BookElectricalResponse;
+import apps.sharabash.bzender.Models.getTenderRealEstate.GetTenderRealEstateResponse;
 import apps.sharabash.bzender.R;
 import apps.sharabash.bzender.Utills.ButtonBook;
 import apps.sharabash.bzender.Utills.Constant;
@@ -208,7 +209,12 @@ public class TenderElectricalDetails extends AppCompatActivity implements Tender
 
     @Override
     public void getElectricalId(BookElectricalResponse bookElectricalResponse) {
-        Constant.BOOKING_ID = bookElectricalResponse.getTenderElectricalBookingId();
+        Constant.CAR_BOOKING_ID = bookElectricalResponse.getTenderElectricalBookingId();
         Log.d("getElectricalId", "getElectricalId: " + bookElectricalResponse.getTenderElectricalBookingId());
+    }
+
+    @Override
+    public void getRealEstateDataTender(GetTenderRealEstateResponse getTenderRealEstateResponse) {
+
     }
 }

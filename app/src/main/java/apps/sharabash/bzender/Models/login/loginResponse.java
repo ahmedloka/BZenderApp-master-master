@@ -1,13 +1,14 @@
 package apps.sharabash.bzender.Models.login;
 
-public class loginResponse
-{ private String BusinessPerson;
-
-    private String Points;
+public class loginResponse {
+    private String BusinessPerson;
 
     private String VerifiedPerson;
 
+    private String Points;
+
     private String Email;
+
 
     private String IsImgProfileUploaded;
 
@@ -19,100 +20,81 @@ public class loginResponse
 
     private String Token;
 
-    public String getBusinessPerson ()
-    {
+    public String getBusinessPerson() {
         return BusinessPerson;
     }
 
-    public void setBusinessPerson (String BusinessPerson)
-    {
+    public void setBusinessPerson(String BusinessPerson) {
         this.BusinessPerson = BusinessPerson;
     }
 
-    public String getPoints ()
-    {
+    public String getPoints() {
         return Points;
     }
 
-    public void setPoints (String Points)
-    {
+    public void setPoints(String Points) {
         this.Points = Points;
     }
 
-    public String getVerifiedPerson ()
-    {
+    public String getVerifiedPerson() {
         return VerifiedPerson;
     }
 
-    public void setVerifiedPerson (String VerifiedPerson)
-    {
+    public void setVerifiedPerson(String VerifiedPerson) {
         this.VerifiedPerson = VerifiedPerson;
     }
 
-    public String getEmail ()
-    {
+    public String getEmail() {
         return Email;
     }
 
-    public void setEmail (String Email)
-    {
+    public void setEmail(String Email) {
         this.Email = Email;
     }
 
-    public String getIsImgProfileUploaded ()
-    {
+    public String getIsImgProfileUploaded() {
         return IsImgProfileUploaded;
     }
 
-    public void setIsImgProfileUploaded (String IsImgProfileUploaded)
-    {
+    public void setIsImgProfileUploaded(String IsImgProfileUploaded) {
         this.IsImgProfileUploaded = IsImgProfileUploaded;
     }
 
-    public String getUserId ()
-    {
+    public String getUserId() {
         return UserId;
     }
 
-    public void setUserId (String UserId)
-    {
+    public void setUserId(String UserId) {
         this.UserId = UserId;
     }
 
-    public String getFullName ()
-    {
+    public String getFullName() {
         return FullName;
     }
 
-    public void setFullName (String FullName)
-    {
+    public void setFullName(String FullName) {
         this.FullName = FullName;
     }
 
-    public String getImageUrl ()
-    {
+    public String getImageUrl() {
         return ImageUrl;
     }
 
-    public void setImageUrl (String ImageUrl)
-    {
+    public void setImageUrl(String ImageUrl) {
         this.ImageUrl = ImageUrl;
     }
 
-    public String getToken ()
-    {
+    public String getToken() {
         return Token;
     }
 
-    public void setToken (String Token)
-    {
+    public void setToken(String Token) {
         this.Token = Token;
     }
 
     @Override
-    public String toString()
-    {
-        return "ClassPojo [BusinessPerson = "+BusinessPerson+", Points = "+Points+", VerifiedPerson = "+VerifiedPerson+", Email = "+Email+", IsImgProfileUploaded = "+IsImgProfileUploaded+", UserId = "+UserId+", FullName = "+FullName+", ImageUrl = "+ImageUrl+", Token = "+Token+"]";
+    public String toString() {
+        return "ClassPojo [BusinessPerson = " + BusinessPerson + ", Points = " + Points + ", VerifiedPerson = " + VerifiedPerson + ", Email = " + Email + ", IsImgProfileUploaded = " + IsImgProfileUploaded + ", UserId = " + UserId + ", FullName = " + FullName + ", ImageUrl = " + ImageUrl + ", Token = " + Token + "]";
     }
 }
 

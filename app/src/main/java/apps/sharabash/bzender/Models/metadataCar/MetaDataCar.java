@@ -5,17 +5,35 @@ import org.jetbrains.annotations.NotNull;
 import java.util.List;
 
 public class MetaDataCar {
+    private List<TypesOfUses> TypesOfUses;
+
     private List<ElectricalTypes> ElectricalTypes;
+
+    private List<ActivityFor> ActivityFor;
 
     private List<CarTypes> CarTypes;
 
+    private List<TypesOfProperties> TypesOfProperties;
+
     private List<TermsAndCondition> TermsAndCondition;
 
-    private List<ContactUs>ContactUs;
+    private List<ContactUs> ContactUs;
 
     private List<CarModels> CarModels;
 
-    private List<ElectricalModels >ElectricalModels;
+    private List<Amenities> Amenities;
+
+    private List<ElectricalModels> ElectricalModels;
+
+    public List<TypesOfUses> getTypesOfUses ()
+    {
+        return TypesOfUses;
+    }
+
+    public void setTypesOfUses (List<TypesOfUses> TypesOfUses)
+    {
+        this.TypesOfUses = TypesOfUses;
+    }
 
     public List<ElectricalTypes> getElectricalTypes ()
     {
@@ -27,6 +45,16 @@ public class MetaDataCar {
         this.ElectricalTypes = ElectricalTypes;
     }
 
+    public List<ActivityFor> getActivityFor ()
+    {
+        return ActivityFor;
+    }
+
+    public void setActivityFor (List<ActivityFor> ActivityFor)
+    {
+        this.ActivityFor = ActivityFor;
+    }
+
     public List<CarTypes> getCarTypes ()
     {
         return CarTypes;
@@ -35,6 +63,16 @@ public class MetaDataCar {
     public void setCarTypes (List<CarTypes> CarTypes)
     {
         this.CarTypes = CarTypes;
+    }
+
+    public List<TypesOfProperties> getTypesOfProperties ()
+    {
+        return TypesOfProperties;
+    }
+
+    public void setTypesOfProperties (List<TypesOfProperties> TypesOfProperties)
+    {
+        this.TypesOfProperties = TypesOfProperties;
     }
 
     public List<TermsAndCondition> getTermsAndCondition ()
@@ -67,6 +105,16 @@ public class MetaDataCar {
         this.CarModels = CarModels;
     }
 
+    public List<Amenities> getAmenities ()
+    {
+        return Amenities;
+    }
+
+    public void setAmenities (List<Amenities> Amenities)
+    {
+        this.Amenities = Amenities;
+    }
+
     public List<ElectricalModels> getElectricalModels ()
     {
         return ElectricalModels;
@@ -80,7 +128,7 @@ public class MetaDataCar {
     @Override
     public String toString()
     {
-        return "ClassPojo [ElectricalTypes = "+ElectricalTypes+", CarTypes = "+CarTypes+", TermsAndCondition = "+TermsAndCondition+", ContactUs = "+ContactUs+", CarModels = "+CarModels+", ElectricalModels = "+ElectricalModels+"]";
+        return "ClassPojo [TypesOfUses = "+TypesOfUses+", ElectricalTypes = "+ElectricalTypes+", ActivityFor = "+ActivityFor+", CarTypes = "+CarTypes+", TypesOfProperties = "+TypesOfProperties+", TermsAndCondition = "+TermsAndCondition+", ContactUs = "+ContactUs+", CarModels = "+CarModels+", Amenities = "+Amenities+", ElectricalModels = "+ElectricalModels+"]";
     }
 }
 

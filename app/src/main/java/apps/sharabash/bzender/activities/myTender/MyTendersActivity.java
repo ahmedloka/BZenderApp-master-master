@@ -87,6 +87,8 @@ public class MyTendersActivity extends AppCompatActivity implements MyTenderInte
                 cat = getString(R.string.cat_cars);
             } else if (myTendersBody.get(i).getCategoryID().equals("10022")) {
                 cat = getString(R.string.cat_electronincs);
+            }else {
+                cat = getString(R.string.cat_real_estate);
             }
 
             iteMyTender.add(new MyTender(

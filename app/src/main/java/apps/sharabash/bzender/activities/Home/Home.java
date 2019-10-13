@@ -40,6 +40,7 @@ import apps.sharabash.bzender.activities.AboutUs;
 import apps.sharabash.bzender.activities.ChooseHowItWork;
 import apps.sharabash.bzender.activities.ContactUs;
 import apps.sharabash.bzender.activities.Setting;
+import apps.sharabash.bzender.activities.WebViewOfferActivity;
 import apps.sharabash.bzender.activities.before.BeforerActivity;
 import apps.sharabash.bzender.activities.chatAllUsers.ChatListActivity;
 import apps.sharabash.bzender.activities.login.Login;
@@ -53,7 +54,7 @@ import apps.sharabash.bzender.adapters.SlidingImage_Adapter;
 import apps.sharabash.bzender.services.Token;
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class Home extends AppCompatActivity implements homeInterface {
+public class Home extends AppCompatActivity implements homeInterface, SlidingImage_Adapter.OnClickHandler {
 
     @SuppressLint("StaticFieldLeak")
     private static ViewPager mPager;
@@ -61,6 +62,7 @@ public class Home extends AppCompatActivity implements homeInterface {
     private static int NUM_PAGES = 0;
     private final List<String> nameList = new ArrayList<>();
     private final List<String> imagesUrl = new ArrayList<>();
+    private final List<String> detialsUrl = new ArrayList<>();
     private DrawerLayout drawer;
     private AppCompatImageView imageNavigationIcon;
     private Button add_tinder;
@@ -102,9 +104,13 @@ public class Home extends AppCompatActivity implements homeInterface {
         if (language.equals("ar")) {
             nameList.add("سيارات");
             nameList.add("الكترونيات");
+            nameList.add("عقارات");
+
         } else {
             nameList.add("Cars");
             nameList.add("Electronics");
+            nameList.add("Real Estate");
+
         }
 
 
@@ -323,6 +329,7 @@ public class Home extends AppCompatActivity implements homeInterface {
         for (int i = 0; i < getOffers.getOffers().size(); i++) {
             imagesUrl.add("http://pixelserver-001-site29.ctempurl.com/Content/OfferImages/" + getOffers.getOffers().get(i).getImage().trim());
             //http://pixelserver-001-site29.ctempurl.com//Content//OfferImages/B8401f-1268-43fe-8c38-1ee2e31c094e.jpg
+            detialsUrl.add(getOffers.getOffers().get(i).getURL());
         }
 
         for (int i = 0; i < imagesUrl.size(); i++) {
@@ -330,7 +337,7 @@ public class Home extends AppCompatActivity implements homeInterface {
 
         }
 
-        mPager.setAdapter(new SlidingImage_Adapter(this, imagesUrl));
+        mPager.setAdapter(new SlidingImage_Adapter(this, imagesUrl, detialsUrl, this));
 
         CirclePageIndicator indicator = findViewById(R.id.indicator);
 
@@ -384,4 +391,11 @@ public class Home extends AppCompatActivity implements homeInterface {
     }
 
 
+    @Override
+    public void onItemSliderClicked(String url) {
+        Log.d("URL_IS", "onItemSliderClicked: "+url);
+        Intent openDetails = new Intent(this, WebViewOfferActivity.class);
+        openDetails.putExtra(Constant.URL_DETAILS_KEY, url);
+        startActivity(openDetails);
+    }
 }

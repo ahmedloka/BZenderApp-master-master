@@ -104,7 +104,7 @@
     <string name="intro_three_second_txt">One - Way Situation</string>
     <string name="intro_four_first_txt">Best Result for All</string>
     <string name="intro_four_second_txt">Best Price and Quality for Makers and Best Selling and Marketing for Bidders</string>
-    <string name="complete_add_tinder_sec">your process done successfully , your points will decreased by 400 point when the admin accept your tender .</string>
+    <string name="complete_add_tinder_sec">your process done successfully , please wait until accepting your tender .</string>
     <string name="individual_person">Individual \nPerson</string>
     <string name="business">Business</string>
     <string name="fill_data">Fill Data</string>
@@ -128,8 +128,8 @@
     <string name="num_of_cars">Number of cars</string>
     <string name="origin_in_man">Origin of manufacture</string>
     <string name="electrical_until">Electrical unit status</string>
-    <string name="neww">New</string>
-    <string name="used">Used</string>
+    <string name="neww">Manual</string>
+    <string name="used">Automatic</string>
     <string name="guarantee">Guarantee</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
@@ -183,7 +183,7 @@
     <string name="response_twenty_sex">Try Again Later</string>
     <string name="response_ninty_sex">You Can Not Upload More Than 6 Images</string>
     <string name="response_ninty_eight">This Phone Number Registered Before</string>
-    <string name="response_ninty_nine">Your Balance Is Less Than 400</string>
+    <string name="response_ninty_nine">Your Balance Is Less Than 800</string>
     <string name="response_one_hundred_and_one">Token Is Inavlid</string>
 
 
@@ -273,6 +273,51 @@
     <string name="tax_num_required">Tax Card Number Is Required</string>
     <string name="commercial_record_required">Commercial Record Number Is Required</string>
     <string name="verfied_successfullty">Your Account Was Verified Successfully</string>
+    <string name="type_of_prop">Type Of Propertise</string>
+    <string name="need_for">Need To</string>
+    <string name="activity_for">Activity For</string>
+    <string name="location">Location</string>
+    <string name="spesefic_area">Specific Area</string>
+    <string name="amen">Amenities</string>
+    <string name="bedrooms">Bedrooms</string>
+    <string name="level">Level or no. of levels</string>
+    <string name="period_of">Period Of Renting</string>
+    <string name="licence">Licence</string>
+    <string name="yess">Yes</string>
+    <string name="noo">No</string>
+    <string name="price_range">Price Range</string>
+    <string name="area_range">Area Range</string>
+    <string name="room">Room/s</string>
+    <string name="need_to">Need To :</string>
+    <string name="type_of">Type Of Propertise :</string>
+    <string name="activiy_for">Activity For :</string>
+    <string name="locationn">Location :</string>
+    <string name="spesefic_areaa">Specific Area :</string>
+    <string name="amin">Amenities :</string>
+    <string name="bed_rooms">Bedrooms :</string>
+    <string name="levell">Level or no. of levels :</string>
+    <string name="area_rangee">Area range :</string>
+    <string name="price_rangee">Price Range :</string>
+    <string name="period_of_renting">Period Of Renting :</string>
+    <string name="licencee">Licence :</string>
+    <string name="m_square">m²</string>
+    <string name="cat_real_estate">Real Estate</string>
+    <string name="booked_before">you book this tender before</string>
+    <string name="your_tender">You can\'t book your tender</string>
+    <string name="user_not_found">User not found</string>
+    <string name="location_not_found">Location not found</string>
+    <string name="type_of_no_found">Type Of Property Not Found</string>
+    <string name="invalid_tender_real_estate">Try to add tender again</string>
+    <string name="again">Try to add tender again</string>
+    <string name="faild_to_send">Failed to send complaint</string>
+    <string name="check_verification_code">Please check your verfication code again</string>
+    <string name="month_year">Month or Year</string>
+    <string name="check_id">Please Check Your Id Number Again</string>
+    <string name="pls_check_Tax">Please Check Tax Card Number And Try Again</string>
+    <string name="show_details"><u>Show details</u></string>
+    <string name="about_uss">Company established in late 2017 to serve medical market first but now we launch in all markets in Egypt It\'s the first network of it\'s kind in the world and first in the Middle East at submit Tenders electronically</string>
+    <string name="visionn">To be the most transformative leadership in B2B E-commercial field that monitoring all trading movement and be a compass of economy in some day</string>
+    <string name="missionn">Supporting small businesses, and making healthy competition between each other</string>
 
 
 </resources>

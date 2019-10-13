@@ -2,20 +2,32 @@ package apps.sharabash.bzender.Models.singleChat;
 
 public class ChatList {
 
-    public ChatList(String messageDate, String id, String senderId, String body) {
+    public ChatList(String messageDate, String id, String senderId, String body , String nickName) {
         MessageDate = messageDate;
         Id = id;
         SenderId = senderId;
         Body = body;
+        Nickname = nickName ;
+
     }
 
     private String MessageDate;
 
     private String Id;
 
+    private String Nickname ;
+
     private String SenderId;
 
     private String Body;
+
+    public String getNickname() {
+        return Nickname;
+    }
+
+    public void setNickname(String nickname) {
+        Nickname = nickname;
+    }
 
     public String getMessageDate() {
         return MessageDate;

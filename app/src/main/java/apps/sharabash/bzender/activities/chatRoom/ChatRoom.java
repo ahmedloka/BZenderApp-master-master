@@ -73,6 +73,7 @@ public class ChatRoom extends AppCompatActivity implements RecyclerMessagesOneTo
     HubConnection connection;
     HubProxy hub;
     Boolean isScrolling = false;
+    private String catId;
     private int roomId;
     private int mCurrentPage = 0;
     private int TOTAL_PAGES_SIZE;
@@ -120,6 +121,7 @@ public class ChatRoom extends AppCompatActivity implements RecyclerMessagesOneTo
         super.onCreate(savedInstanceState);
         Constant.changeLang(this, Constant.getLng(this));
         setContentView(R.layout.activity_chat_room);
+
 
         progressBar = findViewById(R.id.progressBar);
         lifecycleOwner = ChatRoom.this;
@@ -200,7 +202,7 @@ public class ChatRoom extends AppCompatActivity implements RecyclerMessagesOneTo
         //layoutManager.setStackFromEnd(true);
         layoutManager.setReverseLayout(true);
         mRecyclerViewOneToOne.setLayoutManager(layoutManager);
-       // mRecyclerViewOneToOne.addOnLayoutChangeListener((v, left, top, right, bottom, oldLeft, oldTop, oldRight, oldBottom) -> mRecyclerViewOneToOne.scrollToPosition(0));
+        // mRecyclerViewOneToOne.addOnLayoutChangeListener((v, left, top, right, bottom, oldLeft, oldTop, oldRight, oldBottom) -> mRecyclerViewOneToOne.scrollToPosition(0));
         handler = new Handler();
         setupPagination();
 
@@ -307,10 +309,11 @@ public class ChatRoom extends AppCompatActivity implements RecyclerMessagesOneTo
         mRecyclerViewOneToOne.setItemAnimator(new SlideInUpAnimator());
         mRecyclerViewOneToOne.setAdapter(paginateChatRoom);
 
+
         loadData();
 
         paginate = Paginate.with(mRecyclerViewOneToOne, this)
-                .setLoadingTriggerThreshold(10)
+                .setLoadingTriggerThreshold(30)
                 .addLoadingListItem(true)
                 .setLoadingListItemCreator(null)
                 .setLoadingListItemSpanSizeLookup(new LoadingListItemSpanLookup() {
@@ -642,11 +645,13 @@ public class ChatRoom extends AppCompatActivity implements RecyclerMessagesOneTo
                             List<ChatList> chatListList = response.body().getChatList();
 
                             Collections.reverse(chatListList);
+                            messageList.clear();
                             for (int i = 0; i < chatListList.size(); i++) {
                                 if (chatListList.get(i).getSenderId().equals(sharedPreferences.getString(Constant.USER_ID_CHAT, ""))) {
-                                    messageList.add(new Message(Message.MSG_TYPE_SENT, chatListList.get(i).getBody()));
+                                    Log.d("NAMEE_NAME", "onResponse: " + chatListList.get(i).getNickname());
+                                    messageList.add(new Message(Message.MSG_TYPE_SENT, chatListList.get(i).getBody(), chatListList.get(i).getNickname()));
                                 } else {
-                                    messageList.add(new Message(Message.MSG_TYPE_RECEIVED, chatListList.get(i).getBody()));
+                                    messageList.add(new Message(Message.MSG_TYPE_RECEIVED, chatListList.get(i).getBody(), chatListList.get(i).getNickname()));
                                 }
                             }
                             paginateChatRoom.notifyDataSetChanged();
@@ -657,6 +662,8 @@ public class ChatRoom extends AppCompatActivity implements RecyclerMessagesOneTo
 
                     @Override
                     public void onFailure(Call<SingleChatResponse> call, Throwable t) {
+                        Constant.handleError(ChatRoom.this, t);
+
                         try {
                             ChatRoom.progressBar.setVisibility(View.GONE);
                         } catch (Exception ignored) {
@@ -673,7 +680,7 @@ public class ChatRoom extends AppCompatActivity implements RecyclerMessagesOneTo
     public void onLoadMore() {
         mLoading = true;
 
-        ++mCurrentPage;
+        mCurrentPage++;
         Log.d("mCurrentPage_", "onLoadMore: " + String.valueOf(mCurrentPage));
         loadData();
     }

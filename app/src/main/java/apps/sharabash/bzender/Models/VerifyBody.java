@@ -8,6 +8,10 @@ public class VerifyBody {
 
     private String Email;
 
+    private String BusinessPerson;
+
+    private String VerifiedPerson;
+
     private String IsImgProfileUploaded;
 
     private String FullName;
@@ -15,6 +19,22 @@ public class VerifyBody {
     private String ImageUrl;
 
     private String Token;
+
+    public String getBusinessPerson() {
+        return BusinessPerson;
+    }
+
+    public void setBusinessPerson(String businessPerson) {
+        BusinessPerson = businessPerson;
+    }
+
+    public String getVerifiedPerson() {
+        return VerifiedPerson;
+    }
+
+    public void setVerifiedPerson(String verifiedPerson) {
+        VerifiedPerson = verifiedPerson;
+    }
 
     public String getPoints ()
     {

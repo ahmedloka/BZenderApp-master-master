@@ -19,7 +19,6 @@ import apps.sharabash.bzender.Models.my_tenders.MyBookingBody;
 import apps.sharabash.bzender.Models.my_tenders.MyTendersBody;
 import apps.sharabash.bzender.R;
 import apps.sharabash.bzender.Utills.Constant;
-import apps.sharabash.bzender.Utills.MyTextViewBold;
 import apps.sharabash.bzender.adapters.ItemBookingModel;
 import apps.sharabash.bzender.adapters.MyBookingAdapter;
 
@@ -85,6 +84,8 @@ public class MyBooking extends AppCompatActivity implements MyTenderInterface {
                 cat = getString(R.string.cat_cars);
             } else if (myTenderModelsList.getBookingList().get(i).getCategoryId().equals("10022")) {
                 cat = getString(R.string.cat_electronincs);
+            } else {
+                cat = getString(R.string.cat_real_estate);
             }
 
             itemModels.add(new ItemBookingModel(myTenderModelsList.getBookingList().get(i).getId()
@@ -93,6 +94,7 @@ public class MyBooking extends AppCompatActivity implements MyTenderInterface {
                     myTenderModelsList.getBookingList().get(i).getEndDateTender()
                     , cat,
                     myTenderModelsList.getBookingList().get(i).getStatusId()));
+            Log.d("STAUS_ID:", "getMyooking: " + myTenderModelsList.getBookingList().get(i).getStatusId());
 
             Log.d("CHECK", "getMyooking: " + myTenderModelsList.getBookingList().get(i).toString());
 

@@ -1,8 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.AppCompatImageView
-    android:id="@+id/img_view"
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:scaleType="fitXY"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-</android.support.v7.widget.AppCompatImageView>
+    <android.support.v7.widget.AppCompatImageView
+        android:id="@+id/img_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitXY"
+        android:src="@color/colorAccent">
+
+    </android.support.v7.widget.AppCompatImageView>
+
+    <apps.sharabash.bzender.Utills.MyTextViewBold
+        android:id="@+id/txt_details"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:background="@color/colorPrimary"
+        android:gravity="bottom|end"
+        android:padding="@dimen/_5sdp"
+        android:text="@string/show_details"
+        android:textColor="@color/whitecolor"
+        android:textSize="@dimen/_10ssp" />
+</RelativeLayout>

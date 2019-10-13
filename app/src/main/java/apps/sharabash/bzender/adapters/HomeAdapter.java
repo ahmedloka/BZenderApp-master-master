@@ -63,6 +63,9 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
             case 1:
                 holder.img.setImageDrawable(context.getResources().getDrawable(R.drawable.electrical));
                 break;
+            case 2:
+                holder.img.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_real_estate));
+                break;
         }
 
         holder.name.setText(nameList.get(listPosition));
@@ -70,8 +73,11 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
         holder.itemView.setOnClickListener(v -> {
             if (listPosition == 0) {
                 Constant.categoryId = "10021";
-            } else {
+            } else if (listPosition == 1) {
                 Constant.categoryId = "10022";
+            } else {
+                Constant.categoryId = "10023";
+
             }
 
             SharedPreferences.Editor editor = sharedPreferences.edit();

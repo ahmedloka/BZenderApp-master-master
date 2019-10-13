@@ -20,6 +20,7 @@ import apps.sharabash.bzender.Models.AddTenders.TendersModelResponse;
 import apps.sharabash.bzender.Models.allTinders.AllTenderRecyclerItem;
 import apps.sharabash.bzender.Models.allTinders.car.AllTender;
 import apps.sharabash.bzender.Models.allTinders.electrical.AllTenderElectrical;
+import apps.sharabash.bzender.Models.getAllTendersRealEstate.AllTenderRealEstateResponse;
 import apps.sharabash.bzender.R;
 import apps.sharabash.bzender.Utills.Constant;
 import apps.sharabash.bzender.Utills.MyTextViewBold;
@@ -31,10 +32,11 @@ public class AllTenderActivity extends AppCompatActivity implements TendersInter
 
     private final List<String> tenderElectricalId = new ArrayList<>();
     private final List<String> tenderCarId = new ArrayList<>();
+    private final List<String> tenderRealEstateId = new ArrayList<>();
     private final List<AllTenderRecyclerItem> allTenderRecyclerItem = new ArrayList<>();
     private String dateTime;
     private RecyclerView mRecyclerViewAllTender;
-    private LinearLayoutCompat mTxtEmpty;
+    public static LinearLayoutCompat mTxtEmpty;
 
     @Override
     public void onBackPressed() {
@@ -89,6 +91,9 @@ public class AllTenderActivity extends AppCompatActivity implements TendersInter
             tendersPresenter.getAllTenderItems(String.valueOf(10021));
         } else if (Constant.categoryId.equals(String.valueOf(10022)))
             tendersPresenter.getAllTenderItemsElectrical(String.valueOf(10022));
+        else
+            tendersPresenter.getAllTenderItemsRealEstate(String.valueOf(10023));
+
 
         MyTextViewBold mTxtTitle = findViewById(R.id.title_appbar);
         mTxtTitle.setText(getString(R.string.item_details));
@@ -106,12 +111,17 @@ public class AllTenderActivity extends AppCompatActivity implements TendersInter
 
         Log.d("RESPONSE", "START___ : " + allTenders.get(0).getStartDateTender() + " END__" + allTenders.get(0).getEndDateTender());
 
+        try {
+            allTenders.get(0);
+        } catch (NullPointerException ignored) {
+            mTxtEmpty.setVisibility(View.VISIBLE);
+            return;
+        }
         if (allTenders.isEmpty()) {
             //Toast.makeText(this, "null", Toast.LENGTH_SHORT).show();
             //Log.d("TESTTESTTEST", "getMyTender: " + "nullllll");
 
             mTxtEmpty.setVisibility(View.VISIBLE);
-
             return;
         }
 
@@ -141,12 +151,10 @@ public class AllTenderActivity extends AppCompatActivity implements TendersInter
 
 
         Log.d("TESTTESTTEST", "getAllTenderElectrical: " + allTenderElectricals.toString());
-        if (allTenderElectricals.isEmpty()) {
-            //   Toast.makeText(this, "null", Toast.LENGTH_SHORT).show();
-            //  Log.d("TESTTESTTEST", "getMyTender: " + "nullllll");
-
+        try {
+            allTenderElectricals.get(0);
+        } catch (NullPointerException e) {
             mTxtEmpty.setVisibility(View.VISIBLE);
-
             return;
         }
 
@@ -175,6 +183,42 @@ public class AllTenderActivity extends AppCompatActivity implements TendersInter
 
     }
 
+    @Override
+    public void getAllTenderRealEstate(List<AllTenderRealEstateResponse> allTenderRealEstateResponses) {
+        Log.d("TESTTESTTEST", "getAllTenderElectrical: " + allTenderRealEstateResponses.toString());
+        if (allTenderRealEstateResponses.isEmpty()) {
+            //   Toast.makeText(this, "null", Toast.LENGTH_SHORT).show();
+            //  Log.d("TESTTESTTEST", "getMyTender: " + "nullllll");
+
+            mTxtEmpty.setVisibility(View.VISIBLE);
+
+            return;
+        }
+
+
+        mTxtEmpty.setVisibility(View.GONE);
+        Log.d("RESPONSE", "START___ : " + allTenderRealEstateResponses.get(0).getStartDateTender() + " END__" + allTenderRealEstateResponses.get(0).getEndDateTender());
+
+
+        for (int i = 0; i < allTenderRealEstateResponses.size(); i++) {
+            allTenderRecyclerItem.add(new AllTenderRecyclerItem(allTenderRealEstateResponses.get(i).getStartDateTender()
+                    , allTenderRealEstateResponses.get(i).getEndDateTender()
+                    , allTenderRealEstateResponses.get(i).getCategoryID()
+                    , allTenderRealEstateResponses.get(i).getTenderName()
+                    , allTenderRealEstateResponses.get(i).getBookingCount()));
+
+            tenderRealEstateId.add(allTenderRealEstateResponses.get(i).getId());
+        }
+
+
+        mRecyclerViewAllTender.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
+        mRecyclerViewAllTender.setHasFixedSize(true);
+        AllTenderRecyclerAdapter recyclerAdapter = new AllTenderRecyclerAdapter(this, allTenderRecyclerItem, this);
+        mRecyclerViewAllTender.setAdapter(recyclerAdapter);
+        Constant.runLayoutAnimation(mRecyclerViewAllTender);
+
+    }
+
 
     @Override
     public void onClick(int position) {
@@ -190,6 +234,10 @@ public class AllTenderActivity extends AppCompatActivity implements TendersInter
             Log.d("TESST", "onClick: " + tenderElectricalId.size());
             Log.d("TESST", "onClick: " + tenderElectricalId.get(position));
             intent.putExtra(Constant.TENDER_ID, tenderElectricalId.get(position));
+        }
+
+        if (!tenderRealEstateId.isEmpty()) {
+            intent.putExtra(Constant.TENDER_ID, tenderRealEstateId.get(position));
         }
 
         startActivity(intent);

@@ -1,0 +1,718 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.real_state.AddRealStateActivity">
+
+    <android.support.v7.widget.AppCompatImageView
+        android:id="@+id/img_bg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="true"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:scaleType="fitXY"
+        android:src="@drawable/app_bg" />
+
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:background="@color/colorPrimary"
+        app:contentInsetLeft="0dp"
+        app:contentInsetStart="0dp"
+        app:layout_collapseMode="pin"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        tools:ignore="UnusedAttribute">
+
+        <LinearLayout
+            android:id="@+id/title_appbar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:visibility="visible"
+            android:weightSum="411">
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="20" />
+
+            <android.support.v7.widget.AppCompatImageView
+                android:id="@+id/imageNavigationIcon"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="25"
+                android:scaleType="centerInside"
+                android:src="@drawable/reply" />
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="22" />
+
+            <apps.sharabash.bzender.Utills.MyTextViewBold
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="start|center"
+                android:layout_weight="344"
+                android:gravity="start|center"
+                android:text="@string/fill_data"
+                android:textColor="@color/whitecolor"
+                android:textSize="@dimen/_14ssp"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </android.support.v7.widget.Toolbar>
+
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="?actionBarSize">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <android.support.v7.widget.LinearLayoutCompat
+                android:id="@+id/linear_wheel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_30sdp"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:layout_marginEnd="@dimen/_30sdp"
+                android:layout_marginBottom="@dimen/_20sdp"
+                android:orientation="vertical">
+
+
+                <android.support.v7.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:background="@color/app_color_dark"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/_10sdp">
+
+
+                    <apps.sharabash.bzender.Utills.MyTextViewBold
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="start|center"
+                        android:layout_marginEnd="@dimen/_10sdp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="@string/type_of_prop"
+                        android:textColor="@android:color/white"
+                        android:textSize="@dimen/_10ssp"
+                        android:textStyle="bold" />
+
+                    <View
+                        android:layout_width="@dimen/_1sdp"
+                        android:layout_height="match_parent"
+                        android:background="@android:color/white" />
+
+                    <apps.sharabash.bzender.Utills.MyTextViewBold
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="start|center"
+                        android:layout_marginEnd="@dimen/_10sdp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="@string/need_for"
+                        android:textColor="@android:color/white"
+                        android:textSize="@dimen/_10ssp"
+                        android:textStyle="bold" />
+
+
+                </android.support.v7.widget.LinearLayoutCompat>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:orientation="horizontal">
+
+
+                    <com.wx.wheelview.widget.WheelView
+                        android:id="@+id/wheel_type"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:layout_weight="1" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:src="@drawable/shape_wheel_white" />
+
+                    <com.wx.wheelview.widget.WheelView
+                        android:id="@+id/wheel_need_to"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:layout_weight="1" />
+
+
+                </LinearLayout>
+
+            </android.support.v7.widget.LinearLayoutCompat>
+
+
+            <android.support.v7.widget.LinearLayoutCompat
+                android:id="@+id/linear_activity_for"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/linear_wheel"
+                android:layout_marginEnd="@dimen/_30sdp"
+                android:layout_marginBottom="@dimen/_20sdp"
+                android:orientation="horizontal">
+
+
+                <apps.sharabash.bzender.Utills.MyTextViewBold
+                    android:layout_width="@dimen/_80sdp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center|start"
+                    android:layout_marginStart="@dimen/_20sdp"
+                    android:gravity="center|start"
+                    android:text="@string/activity_for"
+                    android:textColor="@color/whitecolor"
+                    android:textSize="@dimen/_12ssp" />
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_25sdp"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:background="@drawable/shape_white"
+                    android:gravity="center|start"
+                    android:paddingStart="@dimen/_5sdp"
+                    android:paddingEnd="@dimen/_5sdp">
+
+                    <apps.sharabash.bzender.Utills.MyTextView
+                        android:id="@+id/txt_activity_for"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/shape_white"
+                        android:gravity="center|start"
+                        android:textColor="@color/app_color" />
+                    <!--android:popupBackground="@color/pdlg_color_red"-->
+
+                </FrameLayout>
+
+
+            </android.support.v7.widget.LinearLayoutCompat>
+
+            <android.support.v7.widget.LinearLayoutCompat
+                android:id="@+id/linear_location"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/linear_activity_for"
+                android:layout_marginEnd="@dimen/_30sdp"
+                android:layout_marginBottom="@dimen/_20sdp"
+                android:orientation="horizontal">
+
+
+                <apps.sharabash.bzender.Utills.MyTextViewBold
+                    android:layout_width="@dimen/_80sdp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center|start"
+                    android:layout_marginStart="@dimen/_20sdp"
+                    android:gravity="center|start"
+                    android:text="@string/location"
+                    android:textColor="@color/whitecolor"
+                    android:textSize="@dimen/_12ssp" />
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_25sdp"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:background="@drawable/shape_white"
+                    android:gravity="center|start"
+                    android:paddingStart="@dimen/_5sdp"
+                    android:paddingEnd="@dimen/_5sdp">
+
+                    <apps.sharabash.bzender.Utills.MyTextView
+                        android:id="@+id/txt_location"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/shape_white"
+                        android:gravity="center|start"
+                        android:lines="1"
+                        android:textColor="@color/app_color" />
+                    <!--android:popupBackground="@color/pdlg_color_red"-->
+
+                </FrameLayout>
+
+
+            </android.support.v7.widget.LinearLayoutCompat>
+
+
+            <android.support.v7.widget.LinearLayoutCompat
+                android:id="@+id/linear_amentions"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/linear_location"
+                android:layout_marginEnd="@dimen/_30sdp"
+                android:layout_marginBottom="@dimen/_20sdp"
+                android:orientation="horizontal">
+
+
+                <apps.sharabash.bzender.Utills.MyTextViewBold
+                    android:layout_width="@dimen/_80sdp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center|start"
+                    android:layout_marginStart="@dimen/_20sdp"
+                    android:gravity="center|start"
+                    android:text="@string/amen"
+                    android:textColor="@color/whitecolor"
+                    android:textSize="@dimen/_12ssp" />
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_25sdp"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:background="@drawable/shape_white"
+                    android:gravity="center|start"
+                    android:paddingStart="@dimen/_5sdp"
+                    android:paddingEnd="@dimen/_5sdp">
+
+                    <apps.sharabash.bzender.Utills.MyTextView
+                        android:id="@+id/txt_amenities"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/shape_white"
+                        android:gravity="center|start"
+                        android:lines="1"
+                        android:textColor="@color/app_color" />
+                    <!--android:popupBackground="@color/pdlg_color_red"-->
+
+                </FrameLayout>
+
+
+            </android.support.v7.widget.LinearLayoutCompat>
+
+            <android.support.v7.widget.LinearLayoutCompat
+                android:id="@+id/linear_bedrooms"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/linear_amentions"
+                android:layout_marginEnd="@dimen/_30sdp"
+                android:layout_marginBottom="@dimen/_20sdp"
+                android:orientation="horizontal">
+
+
+                <apps.sharabash.bzender.Utills.MyTextViewBold
+                    android:layout_width="@dimen/_80sdp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center|start"
+                    android:layout_marginStart="@dimen/_20sdp"
+                    android:gravity="center|start"
+                    android:text="@string/bedrooms"
+                    android:textColor="@color/whitecolor"
+                    android:textSize="@dimen/_12ssp" />
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_25sdp"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:background="@drawable/shape_white"
+                    android:gravity="center|start"
+                    android:paddingStart="@dimen/_5sdp"
+                    android:paddingEnd="@dimen/_5sdp">
+
+                    <apps.sharabash.bzender.Utills.MyTextView
+                        android:id="@+id/txt_bedrooms"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/shape_white"
+                        android:gravity="center|start"
+                        android:textColor="@color/app_color" />
+                    <!--android:popupBackground="@color/pdlg_color_red"-->
+
+                </FrameLayout>
+
+
+            </android.support.v7.widget.LinearLayoutCompat>
+
+            <android.support.v7.widget.LinearLayoutCompat
+                android:id="@+id/linear_level"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/linear_bedrooms"
+                android:layout_marginEnd="@dimen/_30sdp"
+                android:layout_marginBottom="@dimen/_20sdp"
+                android:orientation="horizontal">
+
+
+                <apps.sharabash.bzender.Utills.MyTextViewBold
+                    android:layout_width="@dimen/_80sdp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_20sdp"
+                    android:text="@string/level"
+                    android:textColor="@color/whitecolor"
+                    android:textSize="@dimen/_12ssp" />
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_25sdp"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:background="@drawable/shape_white"
+                    android:gravity="center|start"
+                    android:paddingStart="@dimen/_5sdp"
+                    android:paddingEnd="@dimen/_5sdp">
+
+                    <apps.sharabash.bzender.Utills.MyTextView
+                        android:id="@+id/txt_level"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/shape_white"
+                        android:gravity="center|start"
+                        android:textColor="@color/app_color" />
+                    <!--android:popupBackground="@color/pdlg_color_red"-->
+
+                </FrameLayout>
+
+
+            </android.support.v7.widget.LinearLayoutCompat>
+
+
+            <android.support.v7.widget.LinearLayoutCompat
+                android:id="@+id/linear_area"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/linear_level"
+                android:layout_marginEnd="@dimen/_30sdp"
+                android:layout_marginBottom="@dimen/_20sdp"
+                android:orientation="horizontal">
+
+
+                <apps.sharabash.bzender.Utills.MyTextViewBold
+                    android:layout_width="@dimen/_80sdp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center|start"
+                    android:layout_marginStart="@dimen/_20sdp"
+                    android:gravity="center|start"
+                    android:text="@string/spesefic_area"
+                    android:textColor="@color/whitecolor"
+                    android:textSize="@dimen/_12ssp" />
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_25sdp"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:background="@drawable/shape_white"
+                    android:gravity="center|start"
+                    android:paddingStart="@dimen/_5sdp"
+                    android:paddingEnd="@dimen/_5sdp">
+
+                    <apps.sharabash.bzender.Utills.MyEditText
+                        android:id="@+id/txt_specefic_area"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/shape_white"
+                        android:gravity="center|start"
+                        android:textColor="@color/app_color" />
+                    <!--android:popupBackground="@color/pdlg_color_red"-->
+
+                </FrameLayout>
+
+
+            </android.support.v7.widget.LinearLayoutCompat>
+
+
+            <android.support.v7.widget.LinearLayoutCompat
+                android:id="@+id/linear_period"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/linear_area"
+                android:layout_marginStart="@dimen/_20sdp"
+                android:layout_marginEnd="@dimen/_20sdp"
+                android:orientation="horizontal">
+
+
+                <apps.sharabash.bzender.Utills.MyTextViewBold
+                    android:layout_width="@dimen/_80sdp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center|start"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:gravity="center|start"
+                    android:text="@string/period_of"
+                    android:textColor="@color/whitecolor"
+                    android:textSize="@dimen/_12ssp" />
+
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_25sdp"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:background="@drawable/shape_white"
+                    android:gravity="center|start"
+                    android:paddingStart="@dimen/_5sdp"
+                    android:paddingEnd="@dimen/_5sdp">
+
+                    <apps.sharabash.bzender.Utills.MyEditText
+                        android:id="@+id/txt_period"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/shape_white"
+                        android:gravity="center|start"
+                        android:hint="@string/month_year"
+                        android:textColor="@color/app_color" />
+                    <!--android:popupBackground="@color/pdlg_color_red"-->
+
+                </FrameLayout>
+
+
+            </android.support.v7.widget.LinearLayoutCompat>
+
+            <android.support.v7.widget.LinearLayoutCompat
+                android:id="@+id/linear_area_range"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/linear_period"
+                android:layout_marginStart="@dimen/_20sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_20sdp"
+                android:orientation="horizontal">
+
+
+                <apps.sharabash.bzender.Utills.MyTextViewBold
+                    android:layout_width="@dimen/_80sdp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center|start"
+                    android:gravity="center|start"
+                    android:text="@string/area_range"
+                    android:textColor="@color/whitecolor"
+                    android:textSize="@dimen/_12ssp" />
+
+
+                <android.support.v7.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/_10sdp"
+                    android:gravity="center|start"
+                    android:orientation="horizontal"
+                    android:paddingStart="@dimen/_10sdp"
+                    android:paddingTop="@dimen/_4sdp"
+                    android:paddingEnd="@dimen/_10sdp"
+                    android:paddingBottom="@dimen/_4sdp">
+
+
+                    <apps.sharabash.bzender.Utills.MyEditText
+                        android:id="@+id/et_range_one"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/_5sdp"
+                        android:layout_weight="1"
+                        android:background="@drawable/shape_white"
+                        android:gravity="start|center"
+                        android:hint="@string/m_square"
+                        android:inputType="number"
+                        android:padding="@dimen/_5sdp"
+                        android:textColor="@color/app_color" />
+
+                    <apps.sharabash.bzender.Utills.MyEditText
+                        android:id="@+id/et_range_two"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_5sdp"
+                        android:layout_weight="1"
+                        android:background="@drawable/shape_white"
+                        android:gravity="start|center"
+                        android:hint="@string/m_square"
+                        android:inputType="number"
+                        android:padding="@dimen/_5sdp"
+                        android:textColor="@color/app_color" />
+
+                    <!--android:popupBackground="@color/pdlg_color_red"-->
+
+                </android.support.v7.widget.LinearLayoutCompat>
+
+
+            </android.support.v7.widget.LinearLayoutCompat>
+
+
+            <android.support.v7.widget.LinearLayoutCompat
+                android:id="@+id/linear_price_range"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/linear_area_range"
+                android:layout_marginStart="@dimen/_20sdp"
+                android:layout_marginEnd="@dimen/_20sdp"
+                android:orientation="horizontal">
+
+
+                <apps.sharabash.bzender.Utills.MyTextViewBold
+                    android:layout_width="@dimen/_80sdp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center|start"
+                    android:gravity="center|start"
+                    android:text="@string/price_range"
+                    android:textColor="@color/whitecolor"
+                    android:textSize="@dimen/_12ssp" />
+
+
+                <android.support.v7.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/_10sdp"
+                    android:gravity="center|start"
+                    android:orientation="horizontal"
+                    android:paddingStart="@dimen/_10sdp"
+                    android:paddingTop="@dimen/_4sdp"
+                    android:paddingEnd="@dimen/_10sdp"
+                    android:paddingBottom="@dimen/_4sdp">
+
+
+                    <apps.sharabash.bzender.Utills.MyEditText
+                        android:id="@+id/area_price_one"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/_5sdp"
+                        android:layout_weight="1"
+                        android:background="@drawable/shape_white"
+                        android:gravity="start|center"
+                        android:hint="@string/le"
+                        android:inputType="number"
+                        android:padding="@dimen/_5sdp"
+                        android:textColor="@color/app_color" />
+
+                    <apps.sharabash.bzender.Utills.MyEditText
+                        android:id="@+id/area_price_two"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_5sdp"
+                        android:layout_weight="1"
+                        android:background="@drawable/shape_white"
+                        android:gravity="start|center"
+                        android:hint="@string/le"
+                        android:inputType="number"
+                        android:padding="@dimen/_5sdp"
+                        android:textColor="@color/app_color" />
+
+                    <!--android:popupBackground="@color/pdlg_color_red"-->
+
+                </android.support.v7.widget.LinearLayoutCompat>
+
+
+            </android.support.v7.widget.LinearLayoutCompat>
+
+
+            <android.support.v7.widget.LinearLayoutCompat
+                android:id="@+id/linear_radio_btns"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/linear_price_range"
+                android:layout_marginBottom="@dimen/_20sdp"
+                android:orientation="horizontal">
+
+
+                <apps.sharabash.bzender.Utills.MyTextViewBold
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/_20sdp"
+                    android:layout_marginTop="@dimen/_3sdp"
+                    android:text="@string/licence"
+                    android:textColor="@color/whitecolor"
+                    android:textSize="@dimen/_12ssp" />
+
+
+                <RadioGroup
+                    android:id="@+id/radio_group_manu_auto"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginEnd="@dimen/_20sdp"
+                    android:layout_marginBottom="@dimen/_10sdp"
+                    android:gravity="center|start"
+                    android:hint="@string/to"
+                    android:orientation="horizontal"
+                    android:paddingStart="@dimen/_4sdp"
+                    android:paddingTop="@dimen/_4sdp"
+                    android:paddingEnd="@dimen/_4sdp"
+                    android:paddingBottom="@dimen/_4sdp">
+
+
+                    <android.support.v7.widget.AppCompatRadioButton
+                        android:id="@+id/radio_btn_yes"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:checked="true"
+                        android:text="@string/yess"
+                        android:textColor="@color/whitecolor"
+                        android:textSize="@dimen/_10ssp"
+                        android:theme="@style/RadioButtonStyle" />
+
+                    <android.support.v7.widget.AppCompatRadioButton
+                        android:id="@+id/radio_btn_no"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:checked="false"
+                        android:text="@string/noo"
+                        android:textColor="@color/whitecolor"
+                        android:textSize="@dimen/_10ssp"
+                        android:theme="@style/RadioButtonStyle" />
+
+                </RadioGroup>
+
+            </android.support.v7.widget.LinearLayoutCompat>
+
+            <apps.sharabash.bzender.Utills.MyEditText
+                android:id="@+id/et_desciption"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/linear_radio_btns"
+                android:layout_marginStart="@dimen/_20sdp"
+                android:layout_marginEnd="@dimen/_20sdp"
+                android:background="@drawable/shape_white"
+                android:gravity="start|top"
+                android:hint="@string/desc"
+                android:inputType="textImeMultiLine|textMultiLine"
+                android:paddingStart="@dimen/_4sdp"
+                android:paddingTop="@dimen/_4sdp"
+                android:paddingEnd="@dimen/_4sdp"
+                android:paddingBottom="@dimen/_50sdp"
+                android:textColor="@color/app_color"
+                android:textSize="@dimen/_12ssp" />
+
+
+            <apps.sharabash.bzender.Utills.ButtonBook
+                android:id="@+id/btn_next"
+                android:layout_width="@dimen/_80sdp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/et_desciption"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:padding="@dimen/_12sdp"
+                android:background="@color/colorAccent"
+                android:gravity="center"
+                android:text="@string/send"
+                android:textColor="@color/whitecolor"
+                android:textSize="@dimen/_13ssp"
+                android:textStyle="bold" />
+
+        </RelativeLayout>
+
+
+    </android.support.v4.widget.NestedScrollView>
+
+</RelativeLayout>

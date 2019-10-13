@@ -6,17 +6,16 @@ import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
-import org.json.JSONObject;
-
-import apps.sharabash.bzender.Network.NetworkUtil;
 import apps.sharabash.bzender.Models.imgs.UploadCarIamge;
 import apps.sharabash.bzender.Models.imgs.UploadCarRequest;
 import apps.sharabash.bzender.Models.imgs.UploadElectricalImage;
 import apps.sharabash.bzender.Models.imgs.UploadElectricalRequest;
+import apps.sharabash.bzender.Network.NetworkUtil;
 import apps.sharabash.bzender.Utills.Constant;
 import apps.sharabash.bzender.Utills.Validation;
+import apps.sharabash.bzender.activities.uploadRealEState.UploadRealEstateImageBody;
+import apps.sharabash.bzender.activities.uploadRealEState.UploadRealEstateResponse;
 import apps.sharabash.bzender.dialog.DialogLoader;
-import retrofit2.HttpException;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 import rx.subscriptions.CompositeSubscription;
@@ -26,27 +25,62 @@ import static apps.sharabash.bzender.Utills.Constant.buildDialog;
 class ImagesPresenter {
     private final DialogLoader dialogLoader;
     private final DialogLoader dialogLoaderTwo;
+    private final DialogLoader dialogLoaderThree;
+
     private final Context context;
     private final SharedPreferences sharedPreferences;
     private final CompositeSubscription mSubscriptions;
 
 
-     ImagesPresenter(Context context) {
+    ImagesPresenter(Context context) {
         this.context = context;
         mSubscriptions = new CompositeSubscription();
         dialogLoader = new DialogLoader();
         dialogLoaderTwo = new DialogLoader();
+        dialogLoaderThree = new DialogLoader();
         sharedPreferences = context.getSharedPreferences("MySharedPreference", Context.MODE_PRIVATE);
     }
 
+
+    //REAL_ESTATE
+    void uploadRealEstateImage(String id, String base46) {
+        UploadRealEstateImageBody uploadRealEstateImageBody = new UploadRealEstateImageBody();
+        uploadRealEstateImageBody.setImage(base46);
+        uploadRealEstateImageBody.setTenderRealstateBooking_Id(id);
+
+        if (Validation.isConnected(context)) {
+            if (!dialogLoaderThree.isAdded()) {
+                dialogLoaderThree.show(((AppCompatActivity) context).getSupportFragmentManager(), "4");
+            }
+            dialogLoader.show(((AppCompatActivity) context).getSupportFragmentManager(), "");
+            mSubscriptions.add(NetworkUtil.getRetrofitByToken(sharedPreferences.getString(Constant.UserID, ""))
+                    .uploadBookingRealEstate(uploadRealEstateImageBody)
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribeOn(Schedulers.io())
+                    .subscribe(this::handleResponseRealEstate, this::handleError));
+        } else {
+            buildDialog((Activity) context).show().setCanceledOnTouchOutside(false);
+        }
+
+
+    }
+
+    private void handleResponseRealEstate(UploadRealEstateResponse uploadRealEstateResponse) {
+
+        if (dialogLoaderThree.isAdded())
+            dialogLoaderThree.dismiss();
+
+
+    }
+
     //CAR_________________
-     void uploadCarImage(String id, String base46) {
+    void uploadCarImage(String id, String base46) {
         UploadCarIamge uploadCarIamge = new UploadCarIamge();
         uploadCarIamge.setImage(base46);
         uploadCarIamge.setTenderCarBookingId(id);
 
         if (Validation.isConnected(context)) {
-            dialogLoader.show(((AppCompatActivity) context).getSupportFragmentManager(), "");
+            dialogLoader.show(((AppCompatActivity) context).getSupportFragmentManager(), "2");
             mSubscriptions.add(NetworkUtil.getRetrofitByToken(sharedPreferences.getString(Constant.UserID, ""))
                     .uploadCarImage(uploadCarIamge)
                     .observeOn(AndroidSchedulers.mainThread())
@@ -69,7 +103,7 @@ class ImagesPresenter {
 
     //______________________
     // ELECTRICAL ____________________
-     void uploadElectricalImage(String id, String base46) {
+    void uploadElectricalImage(String id, String base46) {
         UploadElectricalImage uploadElectricalImage = new UploadElectricalImage();
         uploadElectricalImage.setImage(base46);
         uploadElectricalImage.setTenderElectricalBookingId(id);
@@ -104,18 +138,11 @@ class ImagesPresenter {
         if (dialogLoaderTwo.isAdded()) {
             dialogLoaderTwo.dismiss();
         }
-        String message = "";
-        if (throwable instanceof retrofit2.HttpException) {
-            try {
-                retrofit2.HttpException error = (retrofit2.HttpException) throwable;
-                JSONObject jsonObject = new JSONObject(((HttpException) throwable).response().errorBody().string());
-                message = jsonObject.getString("Message");
-            } catch (Exception e) {
-                message = throwable.getMessage();
-            }
-            Constant.getErrorDependingOnResponse(context, message);
 
-        }
+        if (dialogLoaderThree.isAdded())
+            dialogLoaderThree.dismiss();
+        Constant.handleError(context, throwable);
+
     }
 
 

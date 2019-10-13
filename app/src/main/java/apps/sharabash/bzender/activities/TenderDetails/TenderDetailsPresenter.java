@@ -5,8 +5,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-
-import org.json.JSONObject;
+import android.widget.Toast;
 
 import apps.sharabash.bzender.Models.TendersDetails.TenderDetails;
 import apps.sharabash.bzender.Models.TendersDetails.electrical.TenderDetailsElectrical;
@@ -14,12 +13,12 @@ import apps.sharabash.bzender.Models.bookCar.BookCarBody;
 import apps.sharabash.bzender.Models.bookCar.BookCarResponse;
 import apps.sharabash.bzender.Models.bookElectrical.BookElectricalBody;
 import apps.sharabash.bzender.Models.bookElectrical.BookElectricalResponse;
+import apps.sharabash.bzender.Models.getTenderRealEstate.GetTenderRealEstateResponse;
 import apps.sharabash.bzender.Network.NetworkUtil;
 import apps.sharabash.bzender.R;
 import apps.sharabash.bzender.Utills.Constant;
 import apps.sharabash.bzender.Utills.Validation;
 import apps.sharabash.bzender.dialog.DialogLoader;
-import retrofit2.HttpException;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 import rx.subscriptions.CompositeSubscription;
@@ -32,6 +31,7 @@ public class TenderDetailsPresenter {
     private final DialogLoader dialogLoaderTwo;
     private final DialogLoader dialogLoaderThree;
     private final DialogLoader dialogLoaderFour;
+    private final DialogLoader dialogLoaderFive;
     private final Context context;
     private final SharedPreferences sharedPreferences;
     private final CompositeSubscription mSubscriptions;
@@ -44,21 +44,9 @@ public class TenderDetailsPresenter {
         dialogLoaderTwo = new DialogLoader();
         dialogLoaderThree = new DialogLoader();
         dialogLoaderFour = new DialogLoader();
+        dialogLoaderFive = new DialogLoader();
         this.tendersInterface1 = tendersInterface1;
         sharedPreferences = context.getSharedPreferences("MySharedPreference", Context.MODE_PRIVATE);
-    }
-
-    public void getTenderElectricalDetails(String tenderId) {
-        if (Validation.isConnected(context)) {
-            dialogLoaderThree.show(((AppCompatActivity) context).getSupportFragmentManager(), "");
-            mSubscriptions.add(NetworkUtil.getRetrofitByToken(sharedPreferences.getString(Constant.UserID, ""))
-                    .getTenderElectricalDetails(tenderId)
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .subscribeOn(Schedulers.io())
-                    .subscribe(this::handleResponseDetailsElectrical, this::handleError));
-        } else {
-            buildDialog((Activity) context).show().setCanceledOnTouchOutside(false);
-        }
     }
 
     private void handleResponseDetailsElectrical(TenderDetailsElectrical tenderDetailsElectrical) {
@@ -67,6 +55,35 @@ public class TenderDetailsPresenter {
         }
 
         tendersInterface1.getDetailsElectrical(tenderDetailsElectrical);
+
+
+    }
+
+    //getTenderRealEstate
+
+    public void getTenderDetailsRealEstate(String tenderId) {
+        if (Validation.isConnected(context)) {
+            if (!dialogLoaderFive.isAdded())
+                dialogLoaderFive.show(((AppCompatActivity) context).getSupportFragmentManager(), "");
+            mSubscriptions.add(NetworkUtil.getRetrofitByToken(sharedPreferences.getString(Constant.UserID, ""))
+                    .getTenderRealEstate(tenderId)
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribeOn(Schedulers.io())
+                    .subscribe(this::handleResponseRealEstate, this::handleError));
+        } else {
+            buildDialog((Activity) context).show().setCanceledOnTouchOutside(false);
+        }
+    }
+
+    private void handleResponseRealEstate(GetTenderRealEstateResponse getTenderRealEstateResponse) {
+        if (dialogLoaderFive.isAdded()) {
+            dialogLoaderFive.dismiss();
+        }
+        Toast.makeText(context, "SUCCESS", Toast.LENGTH_SHORT).show();
+        Log.d("DATAAAAA_", "handleResponseRealEstate: " + getTenderRealEstateResponse.toString());
+        Log.d("DATAAAAA_", "handleResponseRealEstate: " + getTenderRealEstateResponse.getTenderRealstate().toString());
+
+        tendersInterface1.getRealEstateDataTender(getTenderRealEstateResponse);
 
 
     }
@@ -206,18 +223,13 @@ public class TenderDetailsPresenter {
         if (dialogLoaderFour.isAdded()) {
             dialogLoaderFour.dismiss();
         }
-        String message = "";
-        if (throwable instanceof retrofit2.HttpException) {
-            try {
-                retrofit2.HttpException error = (retrofit2.HttpException) throwable;
-                JSONObject jsonObject = new JSONObject(((HttpException) throwable).response().errorBody().string());
-                message = jsonObject.getString("Message");
-            } catch (Exception e) {
-                message = throwable.getMessage();
-            }
-            Constant.getErrorDependingOnResponse(context, message);
 
+        if (dialogLoaderFive.isAdded()) {
+            dialogLoaderFive.dismiss();
         }
+
+        Constant.handleError(context, throwable);
+
     }
 
     private void handleResponse(TenderDetails tenderDetails) {

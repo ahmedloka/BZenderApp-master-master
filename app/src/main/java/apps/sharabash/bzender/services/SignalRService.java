@@ -237,13 +237,13 @@ public class SignalRService extends Service implements RecyclerMessagesOneToOneA
                             @Override
                             public void run() {
                                 if (!Objects.equals(sharedPreferences.getString(Constant.USER_ID_CHAT, ""), partnerID)) {
-                                    Message message = new Message(Message.MSG_TYPE_RECEIVED, msg);
-                                    message.setName("~ " + name);
+                                    Message message = new Message(Message.MSG_TYPE_RECEIVED, msg, name);
+                                    message.setName(name);
                                     paginateChatRoom.add(message);
                                     mRecyclerViewOneToOne.smoothScrollToPosition(0);
                                 } else {
-                                    Message message = new Message(Message.MSG_TYPE_SENT, msg);
-                                    message.setName("~ " + name);
+                                    Message message = new Message(Message.MSG_TYPE_SENT, msg, name);
+                                    message.setName(name);
                                     paginateChatRoom.add(message);
                                     mRecyclerViewOneToOne.smoothScrollToPosition(0);
                                 }

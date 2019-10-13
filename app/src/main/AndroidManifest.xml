@@ -6,7 +6,11 @@
 
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
 
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
     <uses-feature
         android:name="android.hardware.camera.flash"
         android:required="false" />
@@ -20,10 +24,6 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <dist:module dist:instant="true" />
-
-    <uses-feature
-        android:name="android.hardware.camera"
-        android:required="true" />
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
@@ -47,9 +47,17 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+        <activity android:name=".activities.WebViewOfferActivity"
+            android:parentActivityName=".activities.Home.Home"></activity>
+        <activity
+            android:name=".activities.tenderRealEstateDetails.TenderRealEstateDetails"
+            android:parentActivityName=".activities.TenderCarDetails" />
+        <activity
+            android:name=".activities.real_state.AddRealStateActivity"
+            android:parentActivityName=".activities.Home.Home" />
         <activity
             android:name=".activities.before.BeforerActivity"
-            android:parentActivityName=".activities.Home.Home"></activity>
+            android:parentActivityName=".activities.Home.Home" />
         <activity
             android:name=".activities.webPaymnet.WebPaymentActivity"
             android:parentActivityName=".activities.packages.PackagesActivity" />
@@ -123,8 +131,8 @@
         <activity android:name=".activities.WelcomeActivity" />
         <activity
             android:name=".activities.chatRoom.ChatRoom"
-            android:windowSoftInputMode="adjustResize"
-            android:parentActivityName=".activities.chatRoom.ChatRoom" />
+            android:parentActivityName=".activities.chatRoom.ChatRoom"
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".activities.notification.Notifications"
             android:parentActivityName=".activities.Home.Home" />

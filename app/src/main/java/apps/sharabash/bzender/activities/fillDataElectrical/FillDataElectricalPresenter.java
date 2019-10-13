@@ -156,7 +156,7 @@ class FillDataElectricalPresenter {
         if (dialogLoader.isAdded()) {
             dialogLoader.dismiss();
         }
-        Constant.showErrorDialog(mContext, throwable.getCause().toString());
+        Constant.handleError(mContext, throwable);
 //        String message = "";
 //        if (throwable instanceof retrofit2.HttpException) {
 //            try {

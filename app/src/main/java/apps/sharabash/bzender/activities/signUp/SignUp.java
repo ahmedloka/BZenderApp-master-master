@@ -17,6 +17,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.content.FileProvider;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.AppCompatCheckBox;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.OrientationHelper;
@@ -27,7 +28,6 @@ import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.blogspot.atifsoftwares.animatoolib.Animatoo;
@@ -40,10 +40,7 @@ import com.wang.avi.AVLoadingIndicatorView;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -57,8 +54,10 @@ import apps.sharabash.bzender.Models.signUp.CountryCodeResponse;
 import apps.sharabash.bzender.R;
 import apps.sharabash.bzender.Utills.Constant;
 import apps.sharabash.bzender.Utills.MyTextView;
+import apps.sharabash.bzender.Utills.MyTextViewBold;
 import apps.sharabash.bzender.activities.AddTender.AddTinderInterface;
 import apps.sharabash.bzender.activities.AddTender.AddTinderPresenter;
+import apps.sharabash.bzender.activities.TermsAndConditionActivity;
 import apps.sharabash.bzender.activities.editProfile.EditProfileInterface;
 import apps.sharabash.bzender.adapters.filterAreaAdapter;
 import apps.sharabash.bzender.adapters.filterAreaModelRecycler;
@@ -100,6 +99,9 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener, E
     private String base64;
 
 
+    private AppCompatCheckBox mCheckBox;
+    private MyTextViewBold mTxtTerms;
+
     private DialogLoader dialogLoader;
 
 
@@ -122,12 +124,13 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener, E
 
     private void initViews() {
 
-        final ScrollView mImgBg;
-        mImgBg = findViewById(R.id.img_bg);
-        mImgBg.setOnTouchListener((v, event) -> {
-            Constant.hideKeyboardFrom(SignUp.this, v);
-            return true;
+        mTxtTerms = findViewById(R.id.txt_terms);
+        mTxtTerms.setOnClickListener(v -> {
+            startActivity(new Intent(this, TermsAndConditionActivity.class));
+            Animatoo.animateSlideRight(this);
         });
+
+        mCheckBox = findViewById(R.id.checkbox);
 
         AVLoadingIndicatorView mAviSignUp = findViewById(R.id.avi);
 
@@ -349,47 +352,40 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener, E
 
             // Show the thumbnail on ImageView
             Uri imageUri = Uri.parse(mCurrentPhotoPath);
-            File file = new File(imageUri.getPath());
-            try {
-                InputStream ims = new FileInputStream(file);
+
+            Glide.with(this)
+                    .asBitmap()
+                    .apply(new RequestOptions().override(600, 200))
+                    .load(mCurrentPhotoPath)
+                    .into(new CustomTarget<Bitmap>() {
+                        @Override
+                        public void onResourceReady(@NonNull Bitmap resource, @Nullable Transition<? super Bitmap> transition) {
+                            imgProfile.setImageBitmap(resource);
+                            convertToBase64(resource);
+                            base64 = convertToBase64(resource);
+                            galleryAddPic();
 
 
-                Glide.with(this)
-                        .asBitmap()
-                        .apply(new RequestOptions().override(600, 200))
-                        .load(mCurrentPhotoPath)
-                        .into(new CustomTarget<Bitmap>() {
-                            @Override
-                            public void onResourceReady(@NonNull Bitmap resource, @Nullable Transition<? super Bitmap> transition) {
-                                imgProfile.setImageBitmap(resource);
-                                convertToBase64(resource);
-                                base64 = convertToBase64(resource);
-                                galleryAddPic();
-
-
-                                if (dialogLoader.isAdded()) {
-                                    dialogLoader.dismiss();
-                                }
+                            if (dialogLoader.isAdded()) {
+                                dialogLoader.dismiss();
                             }
+                        }
 
-                            @Override
-                            public void onLoadCleared(@Nullable Drawable placeholder) {
-                                imgProfile.setImageResource(R.drawable.edit_img);
+                        @Override
+                        public void onLoadCleared(@Nullable Drawable placeholder) {
+                            imgProfile.setImageResource(R.drawable.edit_img);
+                        }
+
+                        @Override
+                        public void onStart() {
+                            super.onStart();
+
+                            if (!dialogLoader.isAdded()) {
+                                dialogLoader.show(getSupportFragmentManager(), "10");
                             }
+                        }
+                    });
 
-                            @Override
-                            public void onStart() {
-                                super.onStart();
-
-                                if (!dialogLoader.isAdded()) {
-                                    dialogLoader.show(getSupportFragmentManager(), "10");
-                                }
-                            }
-                        });
-
-            } catch (FileNotFoundException e) {
-                return;
-            }
 
             // ScanFile so it will be appeared on Gallery
             MediaScannerConnection.scanFile(SignUp.this,
@@ -453,6 +449,12 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener, E
                 Log.d(TAG, "country: " + countryCode);
 
                 try {
+
+                    if (!mCheckBox.isChecked()) {
+                        Constant.showErrorDialog(this, getString(R.string.have_to_mark));
+                        return;
+                    }
+
                     if (base64.length() != 0) {
                         Constant.OLD_BASE64 = base64;
                     }

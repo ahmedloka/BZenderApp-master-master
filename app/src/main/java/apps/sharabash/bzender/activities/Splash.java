@@ -41,7 +41,7 @@ public class Splash extends AppCompatActivity implements homeInterface {
     private static ImageView splashBG;
     private BroadcastReceiver mNetworkReceiver;
 
-    private String language ;
+    private String language;
 
 
     public static void showLoader(boolean value) {

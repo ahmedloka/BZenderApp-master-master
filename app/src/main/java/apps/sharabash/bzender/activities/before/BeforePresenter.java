@@ -4,11 +4,9 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 
 import com.blogspot.atifsoftwares.animatoolib.Animatoo;
-
-import org.json.JSONObject;
 
 import apps.sharabash.bzender.Models.verify.bussniess.VerifyBussniess;
 import apps.sharabash.bzender.Models.verify.bussniess.VerifyBussniessResponse;
@@ -20,21 +18,18 @@ import apps.sharabash.bzender.Utills.Constant;
 import apps.sharabash.bzender.Utills.Validation;
 import apps.sharabash.bzender.activities.AddTender.AddTender;
 import apps.sharabash.bzender.activities.Tenders.AllTenderActivity;
-import apps.sharabash.bzender.dialog.DialogLoader;
-import retrofit2.HttpException;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 import rx.subscriptions.CompositeSubscription;
 
 import static apps.sharabash.bzender.Utills.Constant.ErrorDialog;
+import static apps.sharabash.bzender.activities.before.BeforerActivity.mProgressBar;
 
 public class BeforePresenter {
 
     private static final String TAG = "addTinder";
     private final Context mContext;
     private final CompositeSubscription mSubscriptions;
-    private final DialogLoader dialogLoader;
-    private final DialogLoader dialogLoaderTwo;
     private final SharedPreferences sharedPreferences;
     private BeforeInterface beforeInterface;
 
@@ -45,9 +40,6 @@ public class BeforePresenter {
         mSubscriptions = new CompositeSubscription();
         sharedPreferences = mContext.getSharedPreferences("MySharedPreference", Context.MODE_PRIVATE);
         this.beforeInterface = beforeInterface;
-        dialogLoader = new DialogLoader();
-        dialogLoaderTwo = new DialogLoader();
-
         fromWhere = sharedPreferences.getString(Constant.FROM, "");
     }
 
@@ -79,12 +71,9 @@ public class BeforePresenter {
     }
 
     private void verifyInvidualPerson(VerifyInvidual verifyInvidual) {
-        if (!dialogLoader.isAdded()) {
-            dialogLoader.show(((AppCompatActivity) mContext).getSupportFragmentManager(), "");
-        }
 
+        mProgressBar.setVisibility(View.VISIBLE);
         if (Validation.isConnected(mContext)) {
-            dialogLoaderTwo.show(((AppCompatActivity) mContext).getSupportFragmentManager(), "");
             mSubscriptions.add(NetworkUtil.getRetrofitByToken(sharedPreferences.getString(Constant.UserID, ""))
                     .verifyInvidual(verifyInvidual)
                     .observeOn(AndroidSchedulers.mainThread())
@@ -97,11 +86,8 @@ public class BeforePresenter {
     }
 
     private void handleResponseInvidual(VerifyInvidualResponse verifyInvidualResponse) {
-        if (dialogLoader.isAdded()) {
-            dialogLoader.dismiss();
-        }
 
-
+        mProgressBar.setVisibility(View.GONE);
         beforeInterface.verfiedInvidualSuccessful(verifyInvidualResponse);
 
         SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -150,12 +136,9 @@ public class BeforePresenter {
     }
 
     private void verifyBussniessPerson(VerifyBussniess verifyBussniess) {
-        if (!dialogLoaderTwo.isAdded()) {
-            dialogLoaderTwo.show(((AppCompatActivity) mContext).getSupportFragmentManager(), "");
-        }
 
+        mProgressBar.setVisibility(View.VISIBLE);
         if (Validation.isConnected(mContext)) {
-            dialogLoaderTwo.show(((AppCompatActivity) mContext).getSupportFragmentManager(), "");
             mSubscriptions.add(NetworkUtil.getRetrofitByToken(sharedPreferences.getString(Constant.UserID, ""))
                     .verifyBussniess(verifyBussniess)
                     .observeOn(AndroidSchedulers.mainThread())
@@ -168,9 +151,7 @@ public class BeforePresenter {
     }
 
     private void handleResponseBussniess(VerifyBussniessResponse verifyBussniessResponse) {
-        if (dialogLoaderTwo.isAdded()) {
-            dialogLoaderTwo.dismiss();
-        }
+        mProgressBar.setVisibility(View.GONE);
         beforeInterface.verfiedBussniessSuccessful(verifyBussniessResponse);
 
         SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -187,24 +168,9 @@ public class BeforePresenter {
     }
 
     private void handleError(Throwable throwable) {
-        String message = "";
-        if (throwable instanceof retrofit2.HttpException) {
-            try {
-                retrofit2.HttpException error = (retrofit2.HttpException) throwable;
-                JSONObject jsonObject = new JSONObject(((HttpException) throwable).response().errorBody().string());
-                message = jsonObject.getString("Message");
-            } catch (Exception e) {
-                message = throwable.getMessage();
-            }
-            Constant.getErrorDependingOnResponse(mContext, message);
+        mProgressBar.setVisibility(View.GONE);
+        Constant.handleError(mContext, throwable);
 
-        }
-
-        if (dialogLoaderTwo.isAdded())
-            dialogLoaderTwo.dismiss();
-
-        if (dialogLoader.isAdded())
-            dialogLoader.dismiss();
 
     }
 }

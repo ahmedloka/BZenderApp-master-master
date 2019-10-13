@@ -19,10 +19,12 @@ import apps.sharabash.bzender.Models.TendersDetails.TenderDetails;
 import apps.sharabash.bzender.Models.TendersDetails.electrical.TenderDetailsElectrical;
 import apps.sharabash.bzender.Models.bookCar.BookCarResponse;
 import apps.sharabash.bzender.Models.bookElectrical.BookElectricalResponse;
+import apps.sharabash.bzender.Models.getTenderRealEstate.GetTenderRealEstateResponse;
 import apps.sharabash.bzender.R;
 import apps.sharabash.bzender.Utills.Constant;
 import apps.sharabash.bzender.activities.TenderCarDetails;
 import apps.sharabash.bzender.activities.TenderElectricalDetails;
+import apps.sharabash.bzender.activities.tenderRealEstateDetails.TenderRealEstateDetails;
 
 public class TinderDetails extends AppCompatActivity implements TenderDetailsInterface, View.OnClickListener {
 
@@ -101,11 +103,17 @@ public class TinderDetails extends AppCompatActivity implements TenderDetailsInt
             } else {
                 mCatId.setText("Cars");
             }
-        } else {
+        } else if (Constant.categoryId.equals(String.valueOf(10022))){
             if (language.equals("ar")) {
                 mCatId.setText("الكترونيات");
             } else {
                 mCatId.setText("Electronics");
+            }
+        }else {
+            if (language.equals("ar")) {
+                mCatId.setText("عقارات");
+            } else {
+                mCatId.setText("Real Estate");
             }
         }
 
@@ -127,6 +135,11 @@ public class TinderDetails extends AppCompatActivity implements TenderDetailsInt
     }
 
     @Override
+    public void getRealEstateDataTender(GetTenderRealEstateResponse getTenderRealEstateResponse) {
+
+    }
+
+    @Override
     public void onClick(View v) {
         if (v.getId() == R.id.download_file) {
             Intent intent;
@@ -136,8 +149,13 @@ public class TinderDetails extends AppCompatActivity implements TenderDetailsInt
                 intent.putExtra(Constant.TENDER_ID, tenderId);
                 startActivity(intent);
                 Animatoo.animateSlideRight(this);
-            } else {
+            } else if (Constant.categoryId.equals(String.valueOf(10022))){
                 intent = new Intent(this, TenderElectricalDetails.class);
+                intent.putExtra(Constant.TENDER_ID, tenderId);
+                startActivity(intent);
+                Animatoo.animateSlideRight(this);
+            } else {
+                intent = new Intent(this, TenderRealEstateDetails.class);
                 intent.putExtra(Constant.TENDER_ID, tenderId);
                 startActivity(intent);
                 Animatoo.animateSlideRight(this);

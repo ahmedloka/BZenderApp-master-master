@@ -42,7 +42,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="@dimen/_70sdp"
+            android:layout_marginTop="@dimen/_90sdp"
             android:gravity="center"
             android:text="@string/slogan"
             android:textColor="@color/app_coloor"

@@ -100,23 +100,8 @@ public class MyTenderPresenter {
             dialogLoaderTwo.dismiss();
         }
 
+        Constant.handleError(mContext, throwable);
 
-        String message = "";
-        if (throwable instanceof retrofit2.HttpException) {
-            try {
-                retrofit2.HttpException error = (retrofit2.HttpException) throwable;
-                JSONObject jsonObject = new JSONObject(((HttpException) throwable).response().errorBody().string());
-                message = jsonObject.getString("Message");
-                Log.d(TAG, "handleResponseMyTender: " + message);
-
-            } catch (Exception e) {
-                message = throwable.getMessage();
-                Log.d(TAG, "handleResponseMyTender: " + message);
-
-            }
-            Constant.getErrorDependingOnResponse(mContext, message);
-
-        }
         //hud.dismiss();
 
     }

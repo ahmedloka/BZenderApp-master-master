@@ -32,6 +32,7 @@ import com.blogspot.atifsoftwares.animatoolib.Animatoo;
 import com.google.gson.Gson;
 import com.wang.avi.AVLoadingIndicatorView;
 
+import org.json.JSONObject;
 import org.w3c.dom.Document;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
@@ -47,18 +48,22 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
+import apps.sharabash.bzender.Models.metadataCar.ActivityFor;
+import apps.sharabash.bzender.Models.metadataCar.Amenities;
 import apps.sharabash.bzender.Models.metadataCar.CarModels;
 import apps.sharabash.bzender.Models.metadataCar.CarTypes;
 import apps.sharabash.bzender.Models.metadataCar.ElectricalModels;
 import apps.sharabash.bzender.Models.metadataCar.ElectricalTypes;
+import apps.sharabash.bzender.Models.metadataCar.TypesOfProperties;
+import apps.sharabash.bzender.Models.metadataCar.TypesOfUses;
 import apps.sharabash.bzender.R;
 import apps.sharabash.bzender.activities.ChooseHowItWork;
 import apps.sharabash.bzender.activities.Home.Home;
 import apps.sharabash.bzender.activities.imagesBook.ImagesActivity;
-import apps.sharabash.bzender.activities.profile.Profile;
 import apps.sharabash.bzender.activities.verfication.VerificationActivity;
 import de.hdodenhof.circleimageview.CircleImageView;
 import libs.mjn.prettydialog.PrettyDialog;
+import retrofit2.HttpException;
 
 import static android.content.Context.MODE_PRIVATE;
 
@@ -123,6 +128,11 @@ public class Constant {
     public static final String INVIDUAL_PERSON = "VERFIED_PERSON";
     public static final String USER_CHAT_STATUS = "USER_CHAT_STATUS";
     public static final String FROM = "FROM";
+    public static final String KEY_BED_ROOM = "BED_ROOM";
+    public static final String KEY_ACTIVITY_FOR = "KEY_ACTIVITY_FOR";
+    public static final String REAL_ESTATE = "REAL_ESATEE";
+    public static final String URL_DETAILS_KEY = "URK_DETAIL_KEY";
+    public static final String CAT_ID = "CAT_ID";
     public static String ROOM_ID_FOR_SIGNAL_R = "ROOM_ID_FOR_SIGNALR";
     public static boolean ENTERED_HERE = false;
     public static String INSTGRAM_URL;
@@ -134,9 +144,9 @@ public class Constant {
     public static String TIMER;
     public static String logoutNotificationTitle = "logoutNotificationTitle";
     public static String logoutNotificationBody = "logoutNotificationBody";
-    public static String categoryId = "";
+    public static String categoryId = "cat_id";
     public static String tenderId = "";
-    public static String BOOKING_ID;
+    public static String BOOKING_ID = "BOOKING_ID";
     public static String CAR_BOOKING_ID;
     public static String TYPE;
     public static String NAME = "NAME";
@@ -150,6 +160,10 @@ public class Constant {
     public static String Address = "ADDRESS";
     public static List<ElectricalTypes> wheelDataElectricalType = new ArrayList<>();
     public static List<ElectricalModels> wheelDataElectricalModel = new ArrayList<>();
+    public static List<TypesOfUses> TYPE_OF_USES = new ArrayList<>();
+    public static List<TypesOfProperties> TYPE_OF_PROPERTIES = new ArrayList<>();
+    public static List<Amenities> AMENTITIES = new ArrayList<>();
+    public static List<ActivityFor> ACTIVITY_FOR = new ArrayList<>();
 
 
     public static String parseXML(String response) {
@@ -335,7 +349,7 @@ public class Constant {
                 .setTitle(message)
                 .addButton(context.getString(R.string.done), android.R.color.white, R.color.color_green, () -> {
                     Intent intent = new Intent(context, ImagesActivity.class);
-                    intent.putExtra(Constant.BOOKING_ID, id);
+                    intent.putExtra(Constant.CAR_BOOKING_ID, id);
                     intent.putExtra(Constant.TYPE, type);
                     context.startActivity(intent);
                     Animatoo.animateZoom(context);
@@ -408,11 +422,11 @@ public class Constant {
                     if (prettyDialog.isShowing())
                         prettyDialog.dismiss();
 
-                    Intent intent = new Intent(context, Profile.class);
-                    ((Activity) context).overridePendingTransition(R.anim.pull_in_left, R.anim.pull_in_right);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                    context.startActivity(intent);
-                    ((Activity) context).finish();
+//                    Intent intent = new Intent(context, Profile.class);
+//                    ((Activity) context).overridePendingTransition(R.anim.pull_in_left, R.anim.pull_in_right);
+//                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+//                    context.startActivity(intent);
+//                    ((Activity) context).finish();
                 })
                 .show();
     }
@@ -451,7 +465,7 @@ public class Constant {
     public static void runLayoutAnimation(final RecyclerView recyclerView) {
         final Context context = recyclerView.getContext();
         final LayoutAnimationController controller =
-                AnimationUtils.loadLayoutAnimation(context, R.anim.layout_animation);
+                AnimationUtils.loadLayoutAnimation(context, R.anim.layout_animation_from_right);
 
         recyclerView.setLayoutAnimation(controller);
         recyclerView.getAdapter().notifyDataSetChanged();
@@ -485,8 +499,23 @@ public class Constant {
         }
     }
 
+    public static void handleError(Context context, Throwable throwable) {
+        String message = "";
+        if (throwable instanceof retrofit2.HttpException) {
+            try {
+                retrofit2.HttpException error = (retrofit2.HttpException) throwable;
+                JSONObject jsonObject = new JSONObject(((HttpException) throwable).response().errorBody().string());
+                message = jsonObject.getString("msg");
+            } catch (Exception e) {
+                message = throwable.getMessage();
+            }
+            Constant.getErrorDependingOnResponse(context, message);
+
+        }
+    }
+
     public static void getErrorDependingOnResponse(Context context, String response) {
-        String message = null;
+        String message;
         switch (response) {
             case "1":
                 message = context.getString(R.string.response_one);
@@ -577,6 +606,36 @@ public class Constant {
                 break;
             case "202":
                 message = context.getString(R.string.tax_or_comm_taken);
+                break;
+            case "80":
+                message = context.getString(R.string.booked_before);
+                break;
+            case "79": // my tender
+                message = context.getString(R.string.your_tender);
+                break;
+            case "45":
+                message = context.getString(R.string.user_not_found);
+                break;
+            case "150":
+                message = context.getString(R.string.location_not_found);
+                break;
+            case "151":
+                message = context.getString(R.string.type_of_no_found);
+                break;
+            case "165":
+                message = context.getString(R.string.invalid_tender_real_estate);
+                break;
+            case "166":
+                message = context.getString(R.string.again);
+                break;
+            case "400":
+                message = context.getString(R.string.again);
+                break;
+            case "23":
+                message = context.getString(R.string.faild_to_send);
+                break;
+            case "97":
+                message = context.getString(R.string.check_verification_code);
                 break;
             default:
                 message = context.getString(R.string.default_error);

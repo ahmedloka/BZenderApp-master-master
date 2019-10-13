@@ -6,8 +6,11 @@ import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatImageView;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
+import android.widget.ProgressBar;
 
 import com.blogspot.atifsoftwares.animatoolib.Animatoo;
 
@@ -24,18 +27,24 @@ import io.ghyeok.stickyswitch.widget.StickySwitch;
 
 public class BeforerActivity extends AppCompatActivity implements BeforeInterface {
 
+
+    public static ProgressBar mProgressBar;
+    private MyEditText etOne;
+    private MyEditText etTwo;
+    private MyEditText etThree;
+
+    private String numOne, numTwo, numThree;
+
     private MyTextView mTxtIndividual, mTxtBussiness;
     private MyTextView txtRecord;
     private MyEditText etRecord;
     private MyTextView txtCard;
-    private MyEditText etCard;
     private MyTextView txtId;
     private MyEditText etId;
     private StickySwitch stickySwitch;
     private MyTextView txtBussiness;
     private MyTextView txtIndividual;
     private AppCompatImageView mBack;
-
     private SharedPreferences sharedPreferences;
 
     private String invidual, bussines;
@@ -61,6 +70,7 @@ public class BeforerActivity extends AppCompatActivity implements BeforeInterfac
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_before);
+        mProgressBar = findViewById(R.id.progress_bar);
         sharedPreferences = getSharedPreferences("MySharedPreference", MODE_PRIVATE);
         invidual = sharedPreferences.getString(Constant.INVIDUAL_PERSON, "");
         bussines = sharedPreferences.getString(Constant.BUSSINESS_PERSON, "");
@@ -92,15 +102,88 @@ public class BeforerActivity extends AppCompatActivity implements BeforeInterfac
         mBack.setOnClickListener(v -> {
             onBackPressed();
         });
-        txtRecord = (MyTextView) findViewById(R.id.txt_record);
-        etRecord = (MyEditText) findViewById(R.id.et_record);
-        txtCard = (MyTextView) findViewById(R.id.txt_card);
-        etCard = (MyEditText) findViewById(R.id.et_card);
-        txtId = (MyTextView) findViewById(R.id.txt_id);
-        etId = (MyEditText) findViewById(R.id.et_id);
-        stickySwitch = (StickySwitch) findViewById(R.id.sticky_switch);
-        txtBussiness = (MyTextView) findViewById(R.id.txt_bussiness);
-        txtIndividual = (MyTextView) findViewById(R.id.txt_individual);
+
+        etOne = findViewById(R.id.et_card_one);
+        etTwo = findViewById(R.id.et_two);
+        etThree = findViewById(R.id.et_three);
+
+        etOne.addTextChangedListener(new TextWatcher() {
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (etOne.length() == 3) {
+
+                    etOne.clearFocus();
+                    etTwo.requestFocus();
+                    etTwo.setCursorVisible(true);
+
+                    numOne = s.toString();
+
+                }
+            }
+
+            public void beforeTextChanged(CharSequence s, int start, int count,
+                                          int after) {
+
+
+            }
+
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+        etTwo.addTextChangedListener(new TextWatcher() {
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (etTwo.length() == 3) {
+
+                    etTwo.clearFocus();
+                    etThree.requestFocus();
+                    etThree.setCursorVisible(true);
+
+                    numTwo = s.toString();
+
+                }
+            }
+
+            public void beforeTextChanged(CharSequence s, int start, int count,
+                                          int after) {
+
+
+            }
+
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+        etThree.addTextChangedListener(new TextWatcher() {
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (etThree.length() == 3) {
+
+                    etThree.clearFocus();
+
+                    numThree = s.toString();
+
+                }
+            }
+
+            public void beforeTextChanged(CharSequence s, int start, int count,
+                                          int after) {
+
+
+            }
+
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
+
+        txtRecord = findViewById(R.id.txt_record);
+        etRecord = findViewById(R.id.et_record);
+        txtCard = findViewById(R.id.txt_card);
+        txtId = findViewById(R.id.txt_id);
+        etId = findViewById(R.id.et_id);
+        stickySwitch = findViewById(R.id.sticky_switch);
+        txtBussiness = findViewById(R.id.txt_bussiness);
+        txtIndividual = findViewById(R.id.txt_individual);
 
         mBtnNext = findViewById(R.id.next);
         StickySwitch mSwitch = findViewById(R.id.sticky_switch);
@@ -142,7 +225,9 @@ public class BeforerActivity extends AppCompatActivity implements BeforeInterfac
                 handleRightSwitch();
 
                 txtCard.setVisibility(View.GONE);
-                etCard.setVisibility(View.GONE);
+                etOne.setVisibility(View.GONE);
+                etTwo.setVisibility(View.GONE);
+                etThree.setVisibility(View.GONE);
                 txtRecord.setVisibility(View.GONE);
                 etRecord.setVisibility(View.GONE);
 
@@ -160,9 +245,17 @@ public class BeforerActivity extends AppCompatActivity implements BeforeInterfac
 
 
             if (bussiness == 1) {
-                beforePresenter.validateBussiness(etCard.getText().toString(), etRecord.getText().toString());
+                if (numOne.length() != 3 && numTwo.length() != 3 && numThree.length() != 3 && etId.getVisibility() == View.VISIBLE) {
+                    Constant.showErrorDialog(this, getString(R.string.pls_check_Tax));
+                } else {
+                    beforePresenter.validateBussiness(numOne + " - " + numTwo + " - " + numThree, etRecord.getText().toString());
+                }
             } else {
-                beforePresenter.validateInvidual(etId.getText().toString());
+                if (etId.getText().toString().length() != 14 && etId.getVisibility() == View.VISIBLE) {
+                    Constant.showErrorDialog(this, getString(R.string.check_id));
+                } else {
+                    beforePresenter.validateInvidual(etId.getText().toString());
+                }
             }
 
         });
@@ -182,12 +275,16 @@ public class BeforerActivity extends AppCompatActivity implements BeforeInterfac
     private void handleLeftSwitch() {
         if (bussines.equals("false")) {
             txtCard.setVisibility(View.VISIBLE);
-            etCard.setVisibility(View.VISIBLE);
+            etOne.setVisibility(View.VISIBLE);
+            etTwo.setVisibility(View.VISIBLE);
+            etThree.setVisibility(View.VISIBLE);
             txtRecord.setVisibility(View.VISIBLE);
             etRecord.setVisibility(View.VISIBLE);
         } else {
             txtCard.setVisibility(View.GONE);
-            etCard.setVisibility(View.GONE);
+            etOne.setVisibility(View.GONE);
+            etTwo.setVisibility(View.GONE);
+            etThree.setVisibility(View.GONE);
             txtRecord.setVisibility(View.GONE);
             etRecord.setVisibility(View.GONE);
         }

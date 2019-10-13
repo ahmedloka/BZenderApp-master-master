@@ -89,7 +89,7 @@ public class MyTenderAdapter extends RecyclerView.Adapter<MyTenderAdapter.ViewHo
                 else
                     holder.imgTypeBg.setImageResource(R.drawable.rejected_img_en);
                 break;
-            case 7 :// finished
+            case 7:// finished
                 if (lang.equals("ar"))
                     holder.imgTypeBg.setImageResource(R.drawable.finished_ar);
                 else
@@ -104,6 +104,8 @@ public class MyTenderAdapter extends RecyclerView.Adapter<MyTenderAdapter.ViewHo
             holder.imgCat.setImageDrawable(context.getResources().getDrawable(R.drawable.cars));
         } else if (itemList.get(listPosition).getCatName().equals(context.getString(R.string.cat_electronincs))) {
             holder.imgCat.setImageDrawable(context.getResources().getDrawable(R.drawable.electrical));
+        } else {
+            holder.imgCat.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_real_estate));
         }
 
         holder.endDate.setText(itemList.get(listPosition).getEndTime().replace("T00:00:00".trim(), ""));

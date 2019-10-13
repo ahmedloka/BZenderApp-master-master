@@ -174,7 +174,7 @@ public class FillDataCarActivity extends AppCompatActivity implements CompoundBu
         wheelViewCarTypes.setOnWheelItemSelectedListener((position, s) -> {
 
             carType = String.valueOf(Constant.wheelDataCarType.get(position).getId());
-            Log.d(TAG, "carType_: "+carType );
+            Log.d(TAG, "carType_: " + carType);
         });
 
         //2
@@ -202,7 +202,7 @@ public class FillDataCarActivity extends AppCompatActivity implements CompoundBu
         wheelviewCarModels.setOnWheelItemSelectedListener((position, s) -> {
             carModel = Constant.wheelDataCarModel.get(position).getId();
 
-            Log.d(TAG, "carModel_: "+carModel );
+            Log.d(TAG, "carModel_: " + carModel);
 
         });
 
@@ -299,6 +299,7 @@ public class FillDataCarActivity extends AppCompatActivity implements CompoundBu
         spinnerData.add("170000 to 179999");
         spinnerData.add("180000 to 189999");
         spinnerData.add("190000 to 199999");
+        spinnerData.add("+200000");
 
         fromToKm = spinnerData.get(0);
 
@@ -359,7 +360,7 @@ public class FillDataCarActivity extends AppCompatActivity implements CompoundBu
                 if (isChecked) {
                     licence = "true";
                 } else {
-                    licence = "true";
+                    licence = "false";
                 }
 
                 break;

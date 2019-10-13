@@ -11,11 +11,21 @@ public class ChatList {
 
     private String PagesCount;
 
+    private String CategoryId ;
+
     private int RoomId;
 
     private String SenderId;
 
     private String UserChatStatus;
+
+    public String getCategoryId() {
+        return CategoryId;
+    }
+
+    public void setCategoryId(String categoryId) {
+        CategoryId = categoryId;
+    }
 
     public String getTenderName() {
         return TenderName;

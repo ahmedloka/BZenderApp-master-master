@@ -18,6 +18,7 @@ import apps.sharabash.bzender.Models.TendersDetails.TenderDetails;
 import apps.sharabash.bzender.Models.TendersDetails.electrical.TenderDetailsElectrical;
 import apps.sharabash.bzender.Models.bookCar.BookCarResponse;
 import apps.sharabash.bzender.Models.bookElectrical.BookElectricalResponse;
+import apps.sharabash.bzender.Models.getTenderRealEstate.GetTenderRealEstateResponse;
 import apps.sharabash.bzender.R;
 import apps.sharabash.bzender.Utills.ButtonBook;
 import apps.sharabash.bzender.Utills.Constant;
@@ -301,7 +302,7 @@ public class TenderCarDetails extends AppCompatActivity implements View.OnClickL
 
         txtYear.append("  " + tenderDetails.getTenderCar().getYearOfCar());
         txtNumber.append("  " + tenderDetails.getTenderCar().getNumberOfCar());
-        txtKilometers.append("  " + tenderDetails.getTenderCar().getFromKMToKM());
+        txtKilometers.append("          " + tenderDetails.getTenderCar().getFromKMToKM());
         if (tenderDetails.getTenderCar().getTransmissionType().equals("false")) {
             txtTransmission.append("  " + getString(R.string.used));
         } else {
@@ -319,8 +320,13 @@ public class TenderCarDetails extends AppCompatActivity implements View.OnClickL
         } else {
             txtFees.append("  " + getString(R.string.paid));
         }
-        txtScan.append("  " + tenderDetails.getTenderCar().getPossibilityOfExamination());
-        txtEngine.append("  " + tenderDetails.getTenderCar().getEngineCapacity());
+        //tenderDetails.getTenderCar().getViolationDocument().equals("false".trim())
+        if (tenderDetails.getTenderCar().getPossibilityOfExamination().equals("false".trim())) {
+            txtScan.append("  " + getString(R.string.no));
+        } else {
+            txtScan.append("  " + getString(R.string.yes));
+        }
+        txtEngine.append("          " + tenderDetails.getTenderCar().getEngineCapacity());
         txtExtra.append("  " + tenderDetails.getTenderCar().getNote());
 
 
@@ -347,6 +353,11 @@ public class TenderCarDetails extends AppCompatActivity implements View.OnClickL
 
     @Override
     public void getElectricalId(BookElectricalResponse bookElectricalResponse) {
+
+    }
+
+    @Override
+    public void getRealEstateDataTender(GetTenderRealEstateResponse getTenderRealEstateResponse) {
 
     }
 

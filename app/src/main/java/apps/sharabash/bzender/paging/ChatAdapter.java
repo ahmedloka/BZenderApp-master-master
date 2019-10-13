@@ -98,23 +98,23 @@ public class ChatAdapter extends PagedListAdapter<ChatList, ChatAdapter.ItemView
         ChatList item = getItem(position);
         Message message;
         assert item != null;
-        if (!item.getSenderId().equals(sharedPreferences.getString(Constant.USER_ID_CHAT, ""))) {
-            message = new Message(Message.MSG_TYPE_RECEIVED, item.getBody());
-            holder.mLinearLayoutLeft.setVisibility(LinearLayout.GONE);
-            holder.mTxtViewLeftMessage.setText(message.getMsgContent());
-            // Remove left linearlayout.The value should be GONE, can not be INVISIBLE
-            // Otherwise each iteview's distance is too big.
-            holder.mLinearLayoutRight.setVisibility(LinearLayout.GONE);
-            holder.mLinearLayoutLeft.setVisibility(LinearLayout.GONE);
-        } else {
-            message = new Message(Message.MSG_TYPE_SENT, item.getBody());
-            holder.mLinearLayoutRight.setVisibility(LinearLayout.GONE);
-            holder.mTxtViewRightMessage.setText(message.getMsgContent());
-            // Remove left linearlayout.The value should be GONE, can not be INVISIBLE
-            // Otherwise each iteview's distance is too big.
-            holder.mLinearLayoutLeft.setVisibility(LinearLayout.GONE);
-            holder.mLinearLayoutRight.setVisibility(LinearLayout.GONE);
-        }
+//        if (!item.getSenderId().equals(sharedPreferences.getString(Constant.USER_ID_CHAT, ""))) {
+//            message = new Message(Message.MSG_TYPE_RECEIVED, item.getBody());
+//            holder.mLinearLayoutLeft.setVisibility(LinearLayout.GONE);
+//            holder.mTxtViewLeftMessage.setText(message.getMsgContent());
+//            // Remove left linearlayout.The value should be GONE, can not be INVISIBLE
+//            // Otherwise each iteview's distance is too big.
+//            holder.mLinearLayoutRight.setVisibility(LinearLayout.GONE);
+//            holder.mLinearLayoutLeft.setVisibility(LinearLayout.GONE);
+//        } else {
+//            message = new Message(Message.MSG_TYPE_SENT, item.getBody());
+//            holder.mLinearLayoutRight.setVisibility(LinearLayout.GONE);
+//            holder.mTxtViewRightMessage.setText(message.getMsgContent());
+//            // Remove left linearlayout.The value should be GONE, can not be INVISIBLE
+//            // Otherwise each iteview's distance is too big.
+//            holder.mLinearLayoutLeft.setVisibility(LinearLayout.GONE);
+//            holder.mLinearLayoutRight.setVisibility(LinearLayout.GONE);
+//        }
 //
 //        try {
 //            Message messagee = this.messageList.get(position);

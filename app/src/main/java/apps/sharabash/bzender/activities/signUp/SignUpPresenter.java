@@ -20,8 +20,6 @@ import android.widget.TextView;
 
 import com.blogspot.atifsoftwares.animatoolib.Animatoo;
 
-import org.json.JSONObject;
-
 import java.util.List;
 
 import apps.sharabash.bzender.Models.signUp.CountryCodeResponse;
@@ -36,7 +34,6 @@ import apps.sharabash.bzender.Utills.MyTextViewBold;
 import apps.sharabash.bzender.Utills.Validation;
 import apps.sharabash.bzender.activities.verfication.VerificationActivity;
 import apps.sharabash.bzender.dialog.DialogLoader;
-import retrofit2.HttpException;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 import rx.subscriptions.CompositeSubscription;
@@ -123,18 +120,8 @@ public class SignUpPresenter {
     }
 
     private void handleError(Throwable throwable) {
-        String message = "";
-        if (throwable instanceof retrofit2.HttpException) {
-            try {
-                retrofit2.HttpException error = (retrofit2.HttpException) throwable;
-                JSONObject jsonObject = new JSONObject(((HttpException) throwable).response().errorBody().string());
-                message = jsonObject.getString("Message");
-            } catch (Exception e) {
-                message = throwable.getMessage();
-            }
-            Constant.getErrorDependingOnResponse(context, message);
+        Constant.handleError(context, throwable);
 
-        }
         if (dialogLoader.isAdded())
             dialogLoader.dismiss();
         if (dialogLoaderTwo.isAdded())

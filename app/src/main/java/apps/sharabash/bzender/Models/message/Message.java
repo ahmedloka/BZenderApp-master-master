@@ -14,10 +14,20 @@ public class Message {
     // Message type.
     private String msgType;
 
-    public Message(String msgType, String msgContent) {
+    private String catId;
+
+    public Message(String msgType, String msgContent, String name) {
         this.msgType = msgType;
         this.msgContent = msgContent;
         this.name = name;
+    }
+
+    public String getCatId() {
+        return catId;
+    }
+
+    public void setCatId(String catId) {
+        this.catId = catId;
     }
 
     public String getName() {

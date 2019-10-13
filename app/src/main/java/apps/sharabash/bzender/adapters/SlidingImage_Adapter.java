@@ -15,6 +15,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.List;
 
 import apps.sharabash.bzender.R;
+import apps.sharabash.bzender.Utills.MyTextViewBold;
 
 
 public class SlidingImage_Adapter extends PagerAdapter {
@@ -23,12 +24,16 @@ public class SlidingImage_Adapter extends PagerAdapter {
     private final List<String> urls;
     private final LayoutInflater inflater;
     private final Context context;
+    private final OnClickHandler onClickHandler;
+    private List<String> detailsUrl;
 
 
-    public SlidingImage_Adapter(Context context, List<String> urls) {
+    public SlidingImage_Adapter(Context context, List<String> urls, List<String> detailsUrl, OnClickHandler onClickHandler) {
         this.context = context;
         this.urls = urls;
+        this.detailsUrl = detailsUrl;
         inflater = LayoutInflater.from(context);
+        this.onClickHandler = onClickHandler;
     }
 
     @Override
@@ -41,7 +46,6 @@ public class SlidingImage_Adapter extends PagerAdapter {
         return urls.size();
     }
 
-
     @NotNull
     @Override
     public Object instantiateItem(@NotNull ViewGroup view, int position) {
@@ -50,6 +54,11 @@ public class SlidingImage_Adapter extends PagerAdapter {
         assert imageLayout != null;
         final ImageView imageView = imageLayout
                 .findViewById(R.id.img_view);
+
+        MyTextViewBold txtDetails = imageLayout.findViewById(R.id.txt_details);
+        txtDetails.setOnClickListener(v -> {
+            onClickHandler.onItemSliderClicked(detailsUrl.get(position));
+        });
 
 
         Glide.with(context)
@@ -74,6 +83,10 @@ public class SlidingImage_Adapter extends PagerAdapter {
     @Override
     public Parcelable saveState() {
         return null;
+    }
+
+    public interface OnClickHandler {
+        void onItemSliderClicked(String url);
     }
 
 
