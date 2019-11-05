@@ -27,6 +27,7 @@ import apps.sharabash.bzender.Utills.MyTextView;
 import apps.sharabash.bzender.activities.TenderDetails.TenderDetailsInterface;
 import apps.sharabash.bzender.activities.TenderDetails.TenderDetailsPresenter;
 import apps.sharabash.bzender.activities.fillDataCar.FillDataCarPresenter;
+import apps.sharabash.bzender.dialog.DialogBefore;
 
 public class TenderCarDetails extends AppCompatActivity implements View.OnClickListener, TenderDetailsInterface {
 
@@ -69,6 +70,7 @@ public class TenderCarDetails extends AppCompatActivity implements View.OnClickL
 
     private FillDataCarPresenter fillDataCarPresenter;
 
+    public static DialogBefore dialogBeforeDetails;
 
     @Override
     public void onBackPressed() {
@@ -81,6 +83,14 @@ public class TenderCarDetails extends AppCompatActivity implements View.OnClickL
         super.onCreate(savedInstanceState);
         Constant.changeLang(this, Constant.getLng(this));
         setContentView(R.layout.activity_tender_car_details);
+
+        dialogBeforeDetails = new DialogBefore();
+        if (dialogBeforeDetails.isAdded()) {
+            return;
+        } else {
+            dialogBeforeDetails.show(getSupportFragmentManager(), "BEFORE");
+        }
+
         //
 //        final AppCompatImageView mImg;
 //        mImg = findViewById(R.id.img);

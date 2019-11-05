@@ -37,7 +37,11 @@ class NotificationPresenter {
     public void getAllNotifications(int page) {
         if (Validation.isConnected(context)) {
 
-            dialogLoader.show(((AppCompatActivity) context).getSupportFragmentManager(), "1");
+            if (dialogLoader.isAdded()) {
+                return;
+            } else {
+                dialogLoader.show(((AppCompatActivity) context).getSupportFragmentManager(), "1");
+            }
 
             mSubscriptions.add(NetworkUtil.getRetrofitByToken(sharedPreferences.getString(Constant.UserID, ""))
                     .getNotifications(page)

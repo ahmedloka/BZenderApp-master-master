@@ -39,40 +39,30 @@ import static apps.sharabash.bzender.Utills.Constant.StartDate;
 public class FillDataCarActivity extends AppCompatActivity implements CompoundButton.OnCheckedChangeListener, View.OnClickListener, FillDataCarInterface, AddTinderInterface {
 
     private static final String TAG = "FILL_DATA_AC";
-
-
+    public static ButtonBook btnNextCar;
     private final List<String> wheelDataModel = new ArrayList<>();
     private final List<String> wheelDataType = new ArrayList<>();
-
     private String wheelModelId;
     private String wheelTypeId;
-
     private AppCompatImageView imageNavigationIcon;
     private AppCompatRadioButton radioBtnManual;
     private AppCompatRadioButton radioBtnAuto;
     private MyEditText etEngineCapacity;
     private MyEditText etExtraFeat;
-
-
     private FillDataCarPresenter fillDataCarPresenter;
-
     private String violation = "false";
     private String licence = "false";
     private String fees = "false";
     private String thePossibleOf = "false";
-
     private String transmissionType = "true";
-
     private String carType;
     private String carModel;
     private String yearOfCar;
     private String numberOfCar;
-
     private String engineCapacity = "0 to 800";
     private String fromToKm = "0 to 999";
     private String language;
     private AddTinderPresenter addTinderPresenter;
-
 
     @Override
     public void onBackPressed() {
@@ -139,8 +129,8 @@ public class FillDataCarActivity extends AppCompatActivity implements CompoundBu
 
         etExtraFeat = findViewById(R.id.et_extra_feat);
 
-        ButtonBook btnNext = findViewById(R.id.btn_next);
-        btnNext.setOnClickListener(this);
+        btnNextCar = findViewById(R.id.btn_next);
+        btnNextCar.setOnClickListener(this);
 
         WheelView<String> wheelViewCarTypes = findViewById(R.id.wheelview);
         WheelView<String> wheelviewCarModels = findViewById(R.id.wheelviewTwo);

@@ -43,7 +43,12 @@ class ForgetPasswordPresenter {
         } else {
             if (Validation.isConnected(context)) {
 
-                dialogLoader.show(((AppCompatActivity) context).getSupportFragmentManager(), "");
+                if (dialogLoader.isAdded()){
+                    return;
+                }else {
+                    dialogLoader.show(((AppCompatActivity) context).getSupportFragmentManager(), "");
+                }
+
 
 
                 ForgetPasswordBody forgetPasswordBody = new ForgetPasswordBody();

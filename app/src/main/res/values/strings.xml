@@ -318,6 +318,12 @@
     <string name="about_uss">Company established in late 2017 to serve medical market first but now we launch in all markets in Egypt It\'s the first network of it\'s kind in the world and first in the Middle East at submit Tenders electronically</string>
     <string name="visionn">To be the most transformative leadership in B2B E-commercial field that monitoring all trading movement and be a compass of economy in some day</string>
     <string name="missionn">Supporting small businesses, and making healthy competition between each other</string>
+    <string name="developed_by">Developed By :</string>
+    <string name="developed_byy">Developed By : <font color='#00476B'>Pixel</font></string>
+    <string name="pixel_website"><font color='#00476B'>www.pixel-adv.com</font></string>
+    <string name="newww">New</string>
+    <string name="usedd">Used</string>
+    <string name="get_points">Get Points</string>
 
 
 </resources>

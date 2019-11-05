@@ -68,7 +68,12 @@ public class ComplaintPresenter {
 
     private void sendCompalint(ComplaintModel complaintModel) {
         if (Validation.isConnected(mContext)) {
-            dialogLoader.show(((AppCompatActivity) mContext).getSupportFragmentManager(), "");
+            if (dialogLoader.isAdded()){
+                return;
+            }else {
+                dialogLoader.show(((AppCompatActivity) mContext).getSupportFragmentManager(), "");
+            }
+
 
             mSubscriptions.add(NetworkUtil.getRetrofitByToken(sharedPreferences.getString(Constant.UserID, ""))
                     .sendComplaint(complaintModel)

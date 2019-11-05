@@ -52,7 +52,11 @@ class TendersPresenter {
 
     void getAllTenderItemsRealEstate(String catId) {
         if (Validation.isConnected(context)) {
-            dialogLoaderFour.show(((AppCompatActivity) context).getSupportFragmentManager(), "");
+            if (dialogLoaderFour.isAdded()) {
+                return;
+            } else
+                dialogLoaderFour.show(((AppCompatActivity) context).getSupportFragmentManager(), "");
+
             mSubscriptions.add(NetworkUtil.getRetrofitByToken(sharedPreferences.getString(Constant.UserID, ""))
                     .getAllTendersRealEstate(catId)
                     .observeOn(AndroidSchedulers.mainThread())
@@ -73,7 +77,11 @@ class TendersPresenter {
 
     void getAllTenderItemsElectrical(String catId) {
         if (Validation.isConnected(context)) {
-            dialogLoaderThree.show(((AppCompatActivity) context).getSupportFragmentManager(), "");
+            if (dialogLoaderThree.isAdded()) {
+                return;
+            } else
+                dialogLoaderThree.show(((AppCompatActivity) context).getSupportFragmentManager(), "");
+
             mSubscriptions.add(NetworkUtil.getRetrofitByToken(sharedPreferences.getString(Constant.UserID, ""))
                     .getAllTendersElectrical(catId)
                     .observeOn(AndroidSchedulers.mainThread())

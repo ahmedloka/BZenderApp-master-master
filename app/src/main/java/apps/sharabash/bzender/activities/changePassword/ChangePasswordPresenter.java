@@ -62,7 +62,11 @@ class ChangePasswordPresenter {
 
     private void changePassword(ChangePasswordModel changePasswordModel) {
         if (Validation.isConnected(mContext)) {
-            dialogLoader.show(((AppCompatActivity) mContext).getSupportFragmentManager(), "");
+            if (dialogLoader.isAdded()) {
+                return;
+            } else {
+                dialogLoader.show(((AppCompatActivity) mContext).getSupportFragmentManager(), "");
+            }
 
             mSubscriptions.add(NetworkUtil.getRetrofitByToken(sharedPreferences.getString(Constant.UserID, ""))
                     .changePassword(changePasswordModel)
@@ -75,15 +79,18 @@ class ChangePasswordPresenter {
     }
 
     private void handleResponse(ChangePasswordModel changePasswordModel) {
-        dialogLoader.dismiss();
+        if (dialogLoader.isAdded()) {
+            dialogLoader.dismiss();
+        }
         Log.d(TAG, "PASSWORD: " + changePasswordModel.toString());
 
         Constant.showSuccessDialogAndSetClassForEdit(mContext, mContext.getString(R.string.password_changed));
     }
 
     private void handleError(Throwable throwable) {
-        if (dialogLoader.isAdded())
+        if (dialogLoader.isAdded()) {
             dialogLoader.dismiss();
+        }
         String message = "";
         Constant.handleError(mContext, throwable);
 

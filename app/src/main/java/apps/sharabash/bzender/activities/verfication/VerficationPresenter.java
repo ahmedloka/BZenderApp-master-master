@@ -39,7 +39,11 @@ class VerficationPresenter {
             Constant.showErrorDialog(context, context.getString(R.string.code_error));
         } else {
             if (Validation.isConnected(context)) {
-                dialogLoader.show(((AppCompatActivity) context).getSupportFragmentManager(), "");
+                if (dialogLoader.isAdded()) {
+                    return;
+                } else
+                    dialogLoader.show(((AppCompatActivity) context).getSupportFragmentManager(), "");
+
                 mSubscriptions.add(NetworkUtil.getRetrofitNoHeader()
                         .verifyAcc(code, sharedPreferences.getString(Constant.Useremail, "")
                                 , sharedPreferences.getString(Constant.PASSWORD, ""))

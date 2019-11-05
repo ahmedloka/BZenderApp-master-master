@@ -101,8 +101,11 @@ public class RealEstatePresenter {
     private void addRealStateTender(AddTenderRealStateBody addTenderRealStateBody) {
         if (Validation.isConnected(mContext)) {
 
-            if (!dialogLoader.isAdded())
+            if (dialogLoader.isAdded()) {
+                return;
+            } else {
                 dialogLoader.show(((AppCompatActivity) mContext).getSupportFragmentManager(), "");
+            }
 
             mSubscriptions.add(NetworkUtil.getRetrofitByToken(sharedPreferences.getString("UserID", ""))
                     .addTenderRealState(addTenderRealStateBody)

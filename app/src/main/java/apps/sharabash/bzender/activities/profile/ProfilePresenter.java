@@ -42,7 +42,11 @@ public class ProfilePresenter {
 
     public void getProfileData() {
         if (Validation.isConnected(mContext)) {
-            dialogLoader.show(((AppCompatActivity) mContext).getSupportFragmentManager(), "");
+            if (dialogLoader.isAdded()) {
+                return;
+            } else {
+                dialogLoader.show(((AppCompatActivity) mContext).getSupportFragmentManager(), "");
+            }
             mSubscriptions.add(NetworkUtil.getRetrofitByToken(sharedPreferences.getString(Constant.UserID, ""))
                     .getProfileData()
                     .observeOn(AndroidSchedulers.mainThread())
@@ -60,7 +64,8 @@ public class ProfilePresenter {
     }
 
     private void handleResponse(ProfileModel profileModel) {
-        dialogLoader.dismiss();
+        if (dialogLoader.isAdded())
+            dialogLoader.dismiss();
         Log.d(TAG, "handleResponseProfileData: " + profileModel.toString());
         profileInterface.getProfile(profileModel);
 

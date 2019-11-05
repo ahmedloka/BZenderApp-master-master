@@ -37,7 +37,11 @@ class AllUsersChatPresenter {
 
     public void getAllUsersMessage() {
         if (Validation.isConnected(mContext)) {
-            dialogLoader.show(((AppCompatActivity) mContext).getSupportFragmentManager(), "");
+            if (dialogLoader.isAdded()){
+                return;
+            }else {
+                dialogLoader.show(((AppCompatActivity) mContext).getSupportFragmentManager(), "");
+            }
             mSubscriptions.add(NetworkUtil.getRetrofitByToken(sharedPreferences.getString(Constant.UserID, ""))
                     .getAllUserChat()
                     .observeOn(AndroidSchedulers.mainThread())

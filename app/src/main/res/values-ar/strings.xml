@@ -369,6 +369,12 @@
     <string name="about_uss">تأسست الشركة في أواخر عام 2017 لخدمة المجال الطبي ولكن الآن نعمل في جميع الأسواق في مصر نحن الشبكة الأولى من نوعها في العالم والأولى في الشرق الأوسط في تقديم المناقصات إلكترونيًه</string>
     <string name="visionn">أن نكون الريادة الأكثر تحولًا في مجال التجارة الإلكترونية بين الأعمال التجارية والتي تراقب كل حركة التداول ونآمل ان تكون بوصلة للاقتصاد في يوم ما</string>
     <string name="missionn">دعم المشروعات الصغيره و عمل مناخ صحي للتنافس فيما بينهم</string>
+    <string name="developed_by">Developed By :</string>
+    <string name="developed_byy">تم التطوير بواسطة : <u> <font color='#00476B'>Pixel</font></u></string>
+    <string name="pixel_website"><u> <font color='#00476B'>www.pixel-adv.com</font></u></string>
+    <string name="newww">New</string>
+    <string name="usedd">Used</string>
+    <string name="get_points">Get Points</string>
 
 
 </resources>

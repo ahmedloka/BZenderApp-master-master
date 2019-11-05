@@ -137,7 +137,11 @@ class FillDataElectricalPresenter {
 
     private void fillDataElectrical(FillDataElectrical fillDataElectrical) {
         if (Validation.isConnected(mContext)) {
-            dialogLoader.show(((AppCompatActivity) mContext).getSupportFragmentManager(), "");
+            if (dialogLoader.isAdded()) {
+                return;
+            } else {
+                dialogLoader.show(((AppCompatActivity) mContext).getSupportFragmentManager(), "");
+            }
 
             mSubscriptions.add(NetworkUtil.getRetrofitByToken(sharedPreferences.getString("UserID", ""))
                     .fillDataElectrical(fillDataElectrical)

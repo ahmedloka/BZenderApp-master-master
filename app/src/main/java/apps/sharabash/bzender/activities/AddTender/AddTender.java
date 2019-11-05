@@ -72,6 +72,7 @@ public class AddTender extends AppCompatActivity implements homeInterface, com.w
     CustomerAddress customerAddress;
     List<CarModels> carModelsList = new ArrayList<>();
     List<CarTypes> carTypesList = new ArrayList<>();
+    int days, dayCurrent;
     //private CustomCallenderDialog customCallenderDialog, customCallenderDialogTwo;
     private Date dateStartt, dateEnddd;
     private SharedPreferences mSharedPreferences;
@@ -94,7 +95,6 @@ public class AddTender extends AppCompatActivity implements homeInterface, com.w
     // FOR FILL DATA
     private MyEditText mDesc;
     private DialogFragment dialogFragment, dialogFragmentTwo;
-
 
     @Override
     public void onBackPressed() {
@@ -316,10 +316,17 @@ public class AddTender extends AppCompatActivity implements homeInterface, com.w
         // customCallenderDialog.setDisabledDays();
         Calendar minDate = Calendar.getInstance();
         //minDate.set(Calendar.MONTH, 10);
-        int day = Calendar.getInstance().get(Calendar.DAY_OF_MONTH) + 2;
+        int day = Calendar.getInstance().get(Calendar.DAY_OF_MONTH) + 2;////TODO .... MADE CHANGE HERE
+
+        days = Calendar.getInstance().getActualMaximum(Calendar.DAY_OF_MONTH);
+        dayCurrent = Calendar.getInstance().get(Calendar.DAY_OF_MONTH);
+
+        Log.d("TOTAL_DAYS", "initView: " + days + "__" + dayCurrent);
+
         Log.d(TAG, "initView: " + day);
         //int month = Calendar.getInstance().get(Calendar.YEAR) ;
         minDate.set(Calendar.DAY_OF_MONTH, day);
+
         // minDate.set(Calendar.MONTH, monthh);
         customCallenderDialog.setMinDate(minDate);
 
@@ -563,12 +570,23 @@ public class AddTender extends AppCompatActivity implements homeInterface, com.w
                     int dayMax = day + 10;
                     maxEnd.set(Calendar.DAY_OF_MONTH, dayMax);
 
+                    if (days == dayCurrent) {
+                        int monthh = Calendar.getInstance().get(Calendar.MONTH) + 1;
+                        maxEnd.set(Calendar.MONTH, monthh);
+                    }
+
                     customCallenderDialogTwo.setMaxDate(maxEnd);
 
 
                     Calendar minEnd = Calendar.getInstance();
                     int daymin = day + 5;
                     minEnd.set(Calendar.DAY_OF_MONTH, daymin);
+
+
+                    if (days == dayCurrent) {
+                        int monthh = Calendar.getInstance().get(Calendar.MONTH) + 1;
+                        minEnd.set(Calendar.MONTH, monthh);
+                    }
 
                     customCallenderDialogTwo.setMinDate(minEnd);
 

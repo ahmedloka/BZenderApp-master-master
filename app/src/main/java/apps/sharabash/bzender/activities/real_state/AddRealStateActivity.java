@@ -18,6 +18,7 @@ import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
 import android.widget.CompoundButton;
+import android.widget.ProgressBar;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
@@ -52,6 +53,9 @@ public class AddRealStateActivity extends AppCompatActivity implements View.OnCl
     public static MyTextView txtLevel;
     public static MyTextView txtAmenities;
     public static MyTextView txtActivityFor;
+    public static ButtonBook btnNextRealState;
+    public static ProgressBar mProgressBar;
+    public static ProgressBar mProgressBarAddTender;
     private final List<String> wheelDataNeedTo = new ArrayList<>();
     private final List<String> wheelDataType = new ArrayList<>();
     private final ArrayList<filterAreaModelRecycler> dialogList = new ArrayList<>();
@@ -87,17 +91,12 @@ public class AddRealStateActivity extends AppCompatActivity implements View.OnCl
     private AppCompatRadioButton radioBtnYes;
     private AppCompatRadioButton radioBtnNo;
     private MyEditText etDesciption;
-    private ButtonBook btnNext;
-
     private String language;
-
     private String typeOfProperties = String.valueOf(Constant.TYPE_OF_PROPERTIES.get(0).getId());
     private String needTo = "1";
     private String needToForRequest;
     private String typeOfForRequest;
-
     private String licience;
-
     private RealEstatePresenter realEstatePresenter;
 
     @Override
@@ -117,6 +116,10 @@ public class AddRealStateActivity extends AppCompatActivity implements View.OnCl
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.real_state_layout);
+
+        mProgressBarAddTender = findViewById(R.id.progressBar);
+
+        mProgressBar = findViewById(R.id.progressBar);
 
         realEstatePresenter = new RealEstatePresenter(this);
 
@@ -490,8 +493,8 @@ public class AddRealStateActivity extends AppCompatActivity implements View.OnCl
 
         etDesciption = findViewById(R.id.et_desciption);
 
-        btnNext = findViewById(R.id.btn_next);
-        btnNext.setOnClickListener(this);
+        btnNextRealState = findViewById(R.id.btn_next);
+        btnNextRealState.setOnClickListener(this);
     }
 
     private void show_dialigForCities() {

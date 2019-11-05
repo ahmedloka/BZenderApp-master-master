@@ -14,8 +14,6 @@ import android.view.Window;
 
 import com.blogspot.atifsoftwares.animatoolib.Animatoo;
 
-import org.json.JSONObject;
-
 import apps.sharabash.bzender.Models.FillDataCar;
 import apps.sharabash.bzender.Models.bookCar.BookCarBody;
 import apps.sharabash.bzender.Models.bookCar.BookCarResponse;
@@ -29,7 +27,6 @@ import apps.sharabash.bzender.Utills.MyTextViewBold;
 import apps.sharabash.bzender.Utills.Validation;
 import apps.sharabash.bzender.activities.Home.Home;
 import apps.sharabash.bzender.dialog.DialogLoader;
-import retrofit2.HttpException;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 import rx.subscriptions.CompositeSubscription;
@@ -87,7 +84,11 @@ public class FillDataCarPresenter {
             bookCarBody.setTenderId(TenderId);
 
             if (Validation.isConnected(mContext)) {
-                dialogLoaderThree.show(((AppCompatActivity) mContext).getSupportFragmentManager(), "");
+                if (dialogLoaderThree.isAdded()) {
+                    return;
+                } else {
+                    dialogLoaderThree.show(((AppCompatActivity) mContext).getSupportFragmentManager(), "");
+                }
                 mSubscriptions.add(NetworkUtil.getRetrofitNoHeader()
                         .bookCar(bookCarBody)
                         .observeOn(AndroidSchedulers.mainThread())
@@ -110,7 +111,12 @@ public class FillDataCarPresenter {
 
     public void getMetaData() {
         if (Validation.isConnected(mContext)) {
-            dialogLoader.show(((AppCompatActivity) mContext).getSupportFragmentManager(), "");
+            if (dialogLoader.isAdded()) {
+                return;
+            } else {
+                dialogLoader.show(((AppCompatActivity) mContext).getSupportFragmentManager(), "");
+            }
+
             mSubscriptions.add(NetworkUtil.getRetrofitNoHeader()
                     .getMetaData()
                     .observeOn(AndroidSchedulers.mainThread())
@@ -124,14 +130,18 @@ public class FillDataCarPresenter {
 
     private void handleResponseMetaCar(MetaDataCar metaDataCar) {
         Log.d(TAG, "handleResponseMetaCar: " + metaDataCar.toString());
-        dialogLoader.dismiss();
+        if (dialogLoader.isAdded()) {
+            dialogLoader.dismiss();
+        }
         fillDataCarInterface.getMetaCar(metaDataCar);
     }
 
     public void validationAddTinder(String yearOfCar, String NumberOfCar, String FromToKM
             , String CarTypeId, String CarModelId,
-                                    String TenderId, String EngineCapacity, String TransmissionType, String ViolationDocument,
-                                    String LicenseStatus, String RegistrationFees, String PossibilityOfExamination, String note) {
+                                    String TenderId, String EngineCapacity, String TransmissionType, String
+                                            ViolationDocument,
+                                    String LicenseStatus, String RegistrationFees, String
+                                            PossibilityOfExamination, String note) {
         if (Validation.validateFields(yearOfCar)) {
             Constant.showErrorDialog(mContext, mContext.getString(R.string.year_of_car_error));
 
@@ -175,7 +185,11 @@ public class FillDataCarPresenter {
 
     private void fillDataCar(FillDataCar fillDataCar) {
         if (Validation.isConnected(mContext)) {
-            dialogLoaderTwo.show(((AppCompatActivity) mContext).getSupportFragmentManager(), "");
+            if (dialogLoaderTwo.isAdded()) {
+                return;
+            } else {
+                dialogLoaderTwo.show(((AppCompatActivity) mContext).getSupportFragmentManager(), "");
+            }
 
             mSubscriptions.add(NetworkUtil.getRetrofitByToken(sharedPreferences.getString("UserID", ""))
                     .fillDataCar(fillDataCar)

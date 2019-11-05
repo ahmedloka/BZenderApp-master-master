@@ -17,7 +17,7 @@ import java.util.List;
 
 import apps.sharabash.bzender.R;
 import apps.sharabash.bzender.Utills.Constant;
-import apps.sharabash.bzender.activities.before.BeforerActivity;
+import apps.sharabash.bzender.activities.Tenders.AllTenderActivity;
 
 
 public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
@@ -81,7 +81,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
             }
 
             SharedPreferences.Editor editor = sharedPreferences.edit();
-            Intent intent = new Intent(context, BeforerActivity.class);
+            Intent intent = new Intent(context, AllTenderActivity.class);
             editor.putString(Constant.FROM, "book");
             editor.apply();
             context.startActivity(intent);

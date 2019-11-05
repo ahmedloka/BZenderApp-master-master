@@ -9,6 +9,7 @@ import android.support.v7.widget.AppCompatImageView;
 import android.support.v7.widget.AppCompatRadioButton;
 import android.util.Log;
 import android.view.View;
+import android.widget.ProgressBar;
 
 import com.blogspot.atifsoftwares.animatoolib.Animatoo;
 import com.wx.wheelview.adapter.ArrayWheelAdapter;
@@ -54,6 +55,10 @@ public class FillDataElectricalActivity extends AppCompatActivity implements Vie
     private CountryPicker picker;
     private AddTinderPresenter addTinderPresenter;
 
+    public static ButtonBook btnSend;
+
+    private ProgressBar mProgressBarAddTender;
+
     @Override
     public void onBackPressed() {
         super.onBackPressed();
@@ -66,6 +71,7 @@ public class FillDataElectricalActivity extends AppCompatActivity implements Vie
         Constant.changeLang(this, Constant.getLng(this));
         setContentView(R.layout.activity_fill_data_electrical);
 
+        mProgressBarAddTender = findViewById(R.id.progressBar);
 
         addTinderPresenter = new AddTinderPresenter(this, this);
 
@@ -121,7 +127,7 @@ public class FillDataElectricalActivity extends AppCompatActivity implements Vie
 
         etNote = findViewById(R.id.et_note);
 
-        ButtonBook btnSend = findViewById(R.id.btn_send);
+        btnSend = findViewById(R.id.btn_send);
         btnSend.setOnClickListener(this);
 
 

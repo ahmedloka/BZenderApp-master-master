@@ -46,7 +46,11 @@ public class HomePresenter {
 
     public void getCategory() {
         if (Validation.isConnected(context)) {
-            dialogLoaderOne.show(fragmentManager, "");
+            if (dialogLoaderOne.isAdded()) {
+                return;
+            } else {
+                dialogLoaderOne.show(fragmentManager, "");
+            }
             mSubscriptions.add(NetworkUtil.getRetrofitByToken(sharedPreferences.getString(Constant.UserID, ""))
                     .getCategory()
                     .observeOn(AndroidSchedulers.mainThread())
@@ -105,7 +109,11 @@ public class HomePresenter {
 
     void getAllImages() {
         if (Validation.isConnected(context)) {
-            dialogLoaderTwo.show(fragmentManager, "");
+            if (dialogLoaderTwo.isAdded()) {
+                return;
+            } else {
+                dialogLoaderTwo.show(fragmentManager, "");
+            }
             mSubscriptions.add(NetworkUtil.getRetrofitByToken(sharedPreferences.getString(Constant.UserID, ""))
                     .getAllImages()
                     .observeOn(AndroidSchedulers.mainThread())

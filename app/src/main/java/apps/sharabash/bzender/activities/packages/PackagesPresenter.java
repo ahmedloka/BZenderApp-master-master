@@ -5,8 +5,6 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 
-import org.json.JSONObject;
-
 import java.util.List;
 
 import apps.sharabash.bzender.Models.ResponsePackages;
@@ -14,7 +12,6 @@ import apps.sharabash.bzender.Network.NetworkUtil;
 import apps.sharabash.bzender.Utills.Constant;
 import apps.sharabash.bzender.Utills.Validation;
 import apps.sharabash.bzender.dialog.DialogLoader;
-import retrofit2.HttpException;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 import rx.subscriptions.CompositeSubscription;
@@ -41,7 +38,11 @@ public class PackagesPresenter {
     public void getAllPackages() {
         if (Validation.isConnected(context)) {
 
-            dialogLoader.show(((AppCompatActivity) context).getSupportFragmentManager(), "1");
+            if (dialogLoader.isAdded()) {
+                return;
+            } else {
+                dialogLoader.show(((AppCompatActivity) context).getSupportFragmentManager(), "1");
+            }
 
             mSubscriptions.add(NetworkUtil.getRetrofitByToken(sharedPreferences.getString(Constant.UserID, ""))
                     .getPackages()

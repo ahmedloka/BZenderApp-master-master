@@ -1,18 +1,29 @@
-package apps.sharabash.bzender.activities.before;
+package apps.sharabash.bzender.dialog;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.support.v4.app.NavUtils;
+import android.support.v4.app.DialogFragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatImageView;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.KeyEvent;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.ProgressBar;
 
 import com.blogspot.atifsoftwares.animatoolib.Animatoo;
+
+import org.jetbrains.annotations.NotNull;
 
 import apps.sharabash.bzender.Models.verify.bussniess.VerifyBussniessResponse;
 import apps.sharabash.bzender.Models.verify.invidual.VerifyInvidualResponse;
@@ -22,10 +33,14 @@ import apps.sharabash.bzender.Utills.Constant;
 import apps.sharabash.bzender.Utills.MyEditText;
 import apps.sharabash.bzender.Utills.MyTextView;
 import apps.sharabash.bzender.activities.AddTender.AddTender;
+import apps.sharabash.bzender.activities.Tenders.AllTenderActivity;
+import apps.sharabash.bzender.activities.before.BeforeInterface;
+import apps.sharabash.bzender.activities.before.BeforePresenter;
 import io.ghyeok.stickyswitch.widget.StickySwitch;
 
-public class BeforerActivity extends AppCompatActivity implements BeforeInterface {
+import static android.content.Context.MODE_PRIVATE;
 
+public class DialogBefore extends DialogFragment implements BeforeInterface {
 
     public static ProgressBar mProgressBar;
     private MyEditText etOne;
@@ -56,27 +71,47 @@ public class BeforerActivity extends AppCompatActivity implements BeforeInterfac
 
     private String fromWhere;
 
-
     @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-
-        NavUtils.navigateUpFromSameTask(this);
-        Animatoo.animateSlideDown(this);
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        // This removes black background below corners.
+        setStyle(DialogFragment.STYLE_NO_TITLE, 0);
     }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_before);
-        mProgressBar = findViewById(R.id.progress_bar);
-        sharedPreferences = getSharedPreferences("MySharedPreference", MODE_PRIVATE);
+    public View onCreateView(@NotNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
+        View view = inflater.inflate(R.layout.dialog_before, container, true);
+        if (getDialog() != null && getDialog().getWindow() != null) {
+
+            getDialog().setCanceledOnTouchOutside(true);
+            getDialog().setCancelable(false);
+            getDialog().setCanceledOnTouchOutside(false);
+            getDialog().getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+            getDialog().getWindow().requestFeature(Window.FEATURE_NO_TITLE);
+
+            getDialog().setOnKeyListener((dialog, keyCode, event) -> {
+                // Prevent dialog close on back press button
+                return keyCode == KeyEvent.KEYCODE_BACK;
+            });
+        }
+
+
+        initViews(view);
+
+
+        return view;
+    }
+
+    private void initViews(View view) {
+
+        mProgressBar = view.findViewById(R.id.progress_bar);
+        sharedPreferences = getContext().getSharedPreferences("MySharedPreference", MODE_PRIVATE);
         invidual = sharedPreferences.getString(Constant.INVIDUAL_PERSON, "");
         bussines = sharedPreferences.getString(Constant.BUSSINESS_PERSON, "");
         fromWhere = sharedPreferences.getString(Constant.FROM, "");
 
-
-        beforePresenter = new BeforePresenter(this, this);
+        beforePresenter = new BeforePresenter(getContext(), this);
 
         Log.d("TYPE  ", "onCreate: " + "invidual" + invidual);
         Log.d("TYPE  ", "onCreate: " + "bussines" + bussines);
@@ -84,29 +119,18 @@ public class BeforerActivity extends AppCompatActivity implements BeforeInterfac
         if (invidual.equals("true".trim()) && bussines.equals("true".trim())) {
             Intent intent;
             if (fromWhere.equals("add".trim())) {
-                intent = new Intent(this, AddTender.class);
-                startActivity(intent);
+                intent = new Intent(getContext(), AddTender.class);
+            } else {
+                intent = new Intent(getContext(), AllTenderActivity.class);
             }
-
-//            } else {
-            // intent = new Intent(this, AllTenderActivity.class);
-            //   }
-            Animatoo.animateSlideRight(this);
-            finish();
+            startActivity(intent);
+            Animatoo.animateSlideRight(getContext());
+            ((AppCompatActivity) getContext()).finish();
         }
-//                intent = new Intent(this, AllTenderActivity.class);
-        initViews();
-    }
 
-    private void initViews() {
-        mBack = findViewById(R.id.imageNavigationIcon);
-        mBack.setOnClickListener(v -> {
-            onBackPressed();
-        });
-
-        etOne = findViewById(R.id.et_card_one);
-        etTwo = findViewById(R.id.et_two);
-        etThree = findViewById(R.id.et_three);
+        etOne = view.findViewById(R.id.et_card_one);
+        etTwo = view.findViewById(R.id.et_two);
+        etThree = view.findViewById(R.id.et_three);
 
         etOne.addTextChangedListener(new TextWatcher() {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
@@ -177,20 +201,20 @@ public class BeforerActivity extends AppCompatActivity implements BeforeInterfac
         });
 
 
-        txtRecord = findViewById(R.id.txt_record);
-        etRecord = findViewById(R.id.et_record);
-        txtCard = findViewById(R.id.txt_card);
-        txtId = findViewById(R.id.txt_id);
-        etId = findViewById(R.id.et_id);
-        stickySwitch = findViewById(R.id.sticky_switch);
-        txtBussiness = findViewById(R.id.txt_bussiness);
-        txtIndividual = findViewById(R.id.txt_individual);
+        txtRecord = view.findViewById(R.id.txt_record);
+        etRecord = view.findViewById(R.id.et_record);
+        txtCard = view.findViewById(R.id.txt_card);
+        txtId = view.findViewById(R.id.txt_id);
+        etId = view.findViewById(R.id.et_id);
+        stickySwitch = view.findViewById(R.id.sticky_switch);
+        txtBussiness = view.findViewById(R.id.txt_bussiness);
+        txtIndividual = view.findViewById(R.id.txt_individual);
 
-        mBtnNext = findViewById(R.id.next);
-        StickySwitch mSwitch = findViewById(R.id.sticky_switch);
+        mBtnNext = view.findViewById(R.id.next);
+        StickySwitch mSwitch = view.findViewById(R.id.sticky_switch);
 
-        mTxtBussiness = findViewById(R.id.txt_bussiness);
-        mTxtIndividual = findViewById(R.id.txt_individual);
+        mTxtBussiness = view.findViewById(R.id.txt_bussiness);
+        mTxtIndividual = view.findViewById(R.id.txt_individual);
 
 
         mTxtBussiness.setTextColor(getResources().getColor(android.R.color.white));
@@ -244,20 +268,21 @@ public class BeforerActivity extends AppCompatActivity implements BeforeInterfac
 
         mBtnNext.setOnClickListener(v -> {
 
+
             try {
 
                 if (bussiness == 1) {
                     if (etId.getVisibility() == View.VISIBLE) {
                         if (numOne.length() != 3 && numTwo.length() != 3 && numThree.length() != 3) {
-                            Constant.showErrorDialog(this, getString(R.string.pls_check_Tax));
+                            Constant.showErrorDialog(getContext(), getString(R.string.pls_check_Tax));
                         }
-                    }else {
+                    } else {
                         beforePresenter.validateBussiness(numOne + " - " + numTwo + " - " + numThree, etRecord.getText().toString());
                     }
                 } else {
                     if (etId.getVisibility() == View.VISIBLE) {
                         if (etId.getText().toString().length() != 14) {
-                            Constant.showErrorDialog(this, getString(R.string.check_id));
+                            Constant.showErrorDialog(getContext(), getString(R.string.check_id));
                         }
                     } else {
                         beforePresenter.validateInvidual(etId.getText().toString());
@@ -268,6 +293,18 @@ public class BeforerActivity extends AppCompatActivity implements BeforeInterfac
             }
         });
 
+    }
+
+
+    @Override
+    public void show(FragmentManager manager, String tag) {
+        try {
+            FragmentTransaction ft = manager.beginTransaction();
+            ft.add(this, tag);
+            ft.commit();
+        } catch (IllegalStateException e) {
+            Log.d("ABSDIALOGFRAG", "Exception", e);
+        }
     }
 
     private void handleRightSwitch() {
@@ -298,7 +335,6 @@ public class BeforerActivity extends AppCompatActivity implements BeforeInterfac
         }
     }
 
-
     @Override
     public void verfiedInvidualSuccessful(VerifyInvidualResponse verifyInvidualResponse) {
         Log.d("RESPONSE_", "verfiedInvidualSuccessful: " + verifyInvidualResponse.getMessage());
@@ -308,4 +344,5 @@ public class BeforerActivity extends AppCompatActivity implements BeforeInterfac
     public void verfiedBussniessSuccessful(VerifyBussniessResponse verifyBussniessResponse) {
         Log.d("RESPONSE_", "verfiedInvidualSuccessful: " + verifyBussniessResponse.getMessage());
     }
+
 }

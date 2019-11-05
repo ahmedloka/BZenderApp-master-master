@@ -24,6 +24,7 @@ import apps.sharabash.bzender.Utills.MyEditText;
 import apps.sharabash.bzender.Utills.MyTextView;
 import apps.sharabash.bzender.activities.TenderDetails.TenderDetailsInterface;
 import apps.sharabash.bzender.activities.TenderDetails.TenderDetailsPresenter;
+import apps.sharabash.bzender.dialog.DialogBefore;
 
 public class TenderElectricalDetails extends AppCompatActivity implements TenderDetailsInterface {
 
@@ -46,6 +47,8 @@ public class TenderElectricalDetails extends AppCompatActivity implements Tender
     private String Note = "false";
     private String OwnerUserId = "false";
 
+    public static DialogBefore dialogBeforeElectrical;
+
     @Override
     public void onBackPressed() {
         super.onBackPressed();
@@ -58,6 +61,12 @@ public class TenderElectricalDetails extends AppCompatActivity implements Tender
         Constant.changeLang(this, Constant.getLng(this));
         setContentView(R.layout.activity_tender_electrical_details);
 
+         dialogBeforeElectrical = new DialogBefore();
+        if (dialogBeforeElectrical.isAdded()) {
+            return;
+        } else {
+            dialogBeforeElectrical.show(getSupportFragmentManager(), "BEFORE");
+        }
 
 //
 //        final NestedScrollView mImgBg;

@@ -24,12 +24,13 @@ import apps.sharabash.bzender.Utills.MyEditText;
 import apps.sharabash.bzender.Utills.MyTextView;
 import apps.sharabash.bzender.activities.TenderDetails.TenderDetailsInterface;
 import apps.sharabash.bzender.activities.TenderDetails.TenderDetailsPresenter;
+import apps.sharabash.bzender.dialog.DialogBefore;
 
 public class TenderRealEstateDetails extends AppCompatActivity implements View.OnClickListener, TenderDetailsInterface {
 
 
+    public static DialogBefore dialogBeforeRealEstate;
     private String language;
-
     private String bedroomsCount;
     private String needTo;
     private String specificArea;
@@ -68,14 +69,11 @@ public class TenderRealEstateDetails extends AppCompatActivity implements View.O
     private AppCompatCheckBox checkboxPriceRange;
     private AppCompatCheckBox checkboxPeriodOfRenting;
     private AppCompatCheckBox checkboxLicence;
-
     private MyEditText etPrice;
     private MyEditText etDesc;
     private ButtonBook btnBook;
     private AppCompatImageView imageNavigationIcon;
-
     private TenderDetailsPresenter tenderDetailsPresenter;
-
     private SharedPreferences sharedPreferences;
 
     @Override
@@ -88,6 +86,14 @@ public class TenderRealEstateDetails extends AppCompatActivity implements View.O
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+         dialogBeforeRealEstate=new DialogBefore();
+        if (dialogBeforeRealEstate.isAdded()) {
+            return;
+        } else {
+            dialogBeforeRealEstate.show(getSupportFragmentManager(), "BEFORE");
+        }
+
         setContentView(R.layout.activity_tender_real_estate_details);
 
         sharedPreferences = getSharedPreferences("MySharedPreference", MODE_PRIVATE);

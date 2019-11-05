@@ -34,7 +34,7 @@ public class DialogLoader extends DialogFragment {
         if (getDialog() != null && getDialog().getWindow() != null) {
 
             getDialog().setCanceledOnTouchOutside(true);
-            getDialog().setCancelable(true);
+            getDialog().setCancelable(false);
             getDialog().setCanceledOnTouchOutside(false);
             getDialog().getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
             getDialog().getWindow().requestFeature(Window.FEATURE_NO_TITLE);

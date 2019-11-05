@@ -188,4 +188,32 @@
             android:layout_height="@dimen/_30_height" />
     </android.support.v7.widget.LinearLayoutCompat>
 
+    <android.support.v7.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="bottom"
+        android:gravity="bottom|center"
+        android:layout_marginBottom="@dimen/_40sdp"
+        android:orientation="vertical">
+
+
+        <apps.sharabash.bzender.Utills.MyTextViewBold
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/developed_byy"
+            android:textColor="@color/blakcolor" />
+
+        <apps.sharabash.bzender.Utills.MyTextViewBold
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:gravity="center"
+            android:text="@string/pixel_website"
+            android:textColor="@color/blakcolor" />
+
+
+    </android.support.v7.widget.LinearLayoutCompat>
+
+
 </android.support.v7.widget.LinearLayoutCompat>

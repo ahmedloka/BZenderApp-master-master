@@ -289,7 +289,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:checked="true"
-                        android:text="@string/neww"
+                        android:text="@string/newww"
                         android:textColor="@color/whitecolor"
                         android:textSize="@dimen/_10ssp"
                         android:theme="@style/RadioButtonStyle" />
@@ -299,7 +299,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:checked="false"
-                        android:text="@string/used"
+                        android:text="@string/usedd"
                         android:textColor="@color/whitecolor"
                         android:textSize="@dimen/_10ssp"
                         android:theme="@style/RadioButtonStyle" />
@@ -385,6 +385,11 @@
 
 
     </android.support.v4.widget.NestedScrollView>
-
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:layout_centerInParent="true"/>
 
 </RelativeLayout>

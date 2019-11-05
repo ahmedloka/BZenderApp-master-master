@@ -67,7 +67,11 @@ class LoginPresenter {
 
     private void login(loginRequestModel loginRequestModel) {
         if (Validation.isConnected(context)) {
-            dialogLoader.show(((AppCompatActivity) context).getSupportFragmentManager(), "");
+            if (dialogLoader.isAdded()) {
+                return;
+            } else {
+                dialogLoader.show(((AppCompatActivity) context).getSupportFragmentManager(), "");
+            }
             mSubscriptions.add(NetworkUtil.getRetrofitNoHeader()
                     .login(loginRequestModel)
                     .observeOn(AndroidSchedulers.mainThread())
@@ -105,12 +109,14 @@ class LoginPresenter {
             }
 
         }
-        dialogLoader.dismiss();
+        if (dialogLoader.isAdded())
+            dialogLoader.dismiss();
     }
 
     private void handleResponse(loginResponse loginResponse) {
+        if (dialogLoader.isAdded())
+            dialogLoader.dismiss();
 
-        dialogLoader.dismiss();
         SharedPreferences.Editor edit = sharedPreferences.edit();
         edit.putString(Constant.UserID, loginResponse.getToken());
         edit.putString(Constant.Username, loginResponse.getFullName());

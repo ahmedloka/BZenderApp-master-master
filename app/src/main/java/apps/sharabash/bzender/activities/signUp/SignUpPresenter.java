@@ -107,7 +107,11 @@ public class SignUpPresenter {
 
     private void signUp(SignUpRequest signUpRequest) {
         if (Validation.isConnected(context)) {
-            dialogLoader.show(((AppCompatActivity) context).getSupportFragmentManager(), "");
+            if (dialogLoader.isAdded()){
+                return;
+            }else {
+                dialogLoader.show(((AppCompatActivity) context).getSupportFragmentManager(), "");
+            }
 
             mSubscriptions.add(NetworkUtil.getRetrofitNoHeader()
                     .signUp(signUpRequest)
@@ -162,8 +166,11 @@ public class SignUpPresenter {
     public void getAllCountriesCode() {
         if (Validation.isConnected(context)) {
 
-            dialogLoaderTwo.show(((AppCompatActivity) context).getSupportFragmentManager(), "");
-            mSubscriptions.add(NetworkUtil.getRetrofitByToken(sharedPreferences.getString(Constant.UserID, ""))
+            if (dialogLoaderTwo.isAdded()){
+                return;
+            }else {
+                dialogLoaderTwo.show(((AppCompatActivity) context).getSupportFragmentManager(), "");
+            }            mSubscriptions.add(NetworkUtil.getRetrofitByToken(sharedPreferences.getString(Constant.UserID, ""))
                     .getCountriesCode()
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribeOn(Schedulers.io())

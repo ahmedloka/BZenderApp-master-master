@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".activities.real_state.AddRealStateActivity">
 
+
     <android.support.v7.widget.AppCompatImageView
         android:id="@+id/img_bg"
         android:layout_width="match_parent"
@@ -714,5 +715,13 @@
 
 
     </android.support.v4.widget.NestedScrollView>
+
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="wrap_content"
+        android:visibility="gone"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"/>
+
 
 </RelativeLayout>

@@ -69,7 +69,11 @@ public class BookTenderRealPresenter {
 
 
             if (Validation.isConnected(context)) {
-                dialogLoader.show(((AppCompatActivity) context).getSupportFragmentManager(), "");
+                if (dialogLoader.isAdded()){
+                    return;
+                }else {
+                    dialogLoader.show(((AppCompatActivity) context).getSupportFragmentManager(), "");
+                }
                 mSubscriptions.add(NetworkUtil.getRetrofitByToken(sharedPreferences.getString(Constant.UserID, ""))
                         .bookTenderRealEstate(bookTenderRealEstateBody)
                         .observeOn(AndroidSchedulers.mainThread())

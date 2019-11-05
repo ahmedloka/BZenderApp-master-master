@@ -6,8 +6,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.Toast;
 
-import org.json.JSONObject;
-
 import java.util.List;
 
 import apps.sharabash.bzender.Models.my_tenders.MyBookingBody;
@@ -16,7 +14,6 @@ import apps.sharabash.bzender.Network.NetworkUtil;
 import apps.sharabash.bzender.Utills.Constant;
 import apps.sharabash.bzender.Utills.Validation;
 import apps.sharabash.bzender.dialog.DialogLoader;
-import retrofit2.HttpException;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 import rx.subscriptions.CompositeSubscription;
@@ -46,7 +43,11 @@ public class MyTenderPresenter {
 
     public void getMyooking() {
         if (Validation.isConnected(mContext)) {
-            dialogLoader.show(((AppCompatActivity) mContext).getSupportFragmentManager(), "");
+            if (dialogLoader.isAdded()) {
+                return;
+            } else {
+                dialogLoader.show(((AppCompatActivity) mContext).getSupportFragmentManager(), "");
+            }
             mSubscriptions.add(NetworkUtil.getRetrofitByToken(sharedPreferences.getString(Constant.UserID, ""))
                     .getMyBooking()
                     .observeOn(AndroidSchedulers.mainThread())
@@ -61,14 +62,17 @@ public class MyTenderPresenter {
 
     public void getMyTender() {
         if (Validation.isConnected(mContext)) {
-            dialogLoaderTwo.show(((AppCompatActivity) mContext).getSupportFragmentManager(), "");
-            mSubscriptions.add(NetworkUtil.getRetrofitByToken(sharedPreferences.getString(Constant.UserID, ""))
+            if (dialogLoaderTwo.isAdded()) {
+                return;
+            } else {
+                dialogLoaderTwo.show(((AppCompatActivity) mContext).getSupportFragmentManager(), "");
+            }            mSubscriptions.add(NetworkUtil.getRetrofitByToken(sharedPreferences.getString(Constant.UserID, ""))
                     .getMyTender()
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribeOn(Schedulers.io())
                     .subscribe(this::handleResponseMyTender, this::handleError));
         } else {
-           // Toast.makeText(mContext, "error happend", Toast.LENGTH_SHORT).show();
+            // Toast.makeText(mContext, "error happend", Toast.LENGTH_SHORT).show();
         }
 
     }
@@ -88,7 +92,7 @@ public class MyTenderPresenter {
         if (dialogLoader.isAdded())
             dialogLoader.dismiss();
 
-        Log.d(TAG, "handleResponse: "+myTenderModels.getBookingList().toString());
+        Log.d(TAG, "handleResponse: " + myTenderModels.getBookingList().toString());
         myTenderInterface.getMyooking(myTenderModels);
     }
 

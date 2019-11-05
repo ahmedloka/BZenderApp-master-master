@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
 import android.widget.Toast;
 
 import java.util.List;
@@ -21,6 +22,11 @@ import rx.schedulers.Schedulers;
 import rx.subscriptions.CompositeSubscription;
 
 import static apps.sharabash.bzender.Utills.Constant.buildDialog;
+import static apps.sharabash.bzender.activities.fillDataCar.FillDataCarActivity.btnNextCar;
+import static apps.sharabash.bzender.activities.fillDataElectrical.FillDataElectricalActivity.btnSend;
+import static apps.sharabash.bzender.activities.real_state.AddRealStateActivity.btnNextRealState;
+import static apps.sharabash.bzender.activities.real_state.AddRealStateActivity.mProgressBarAddTender;
+
 
 public class AddTinderPresenter {
 
@@ -70,11 +76,36 @@ public class AddTinderPresenter {
 
         if (Validation.isConnected(mContext)) {
 
+
+            try {
+                btnNextCar.setClickable(false);
+            } catch (NullPointerException ignored) {
+
+            }
+            try {
+                btnSend.setClickable(false);
+            } catch (NullPointerException ignored) {
+
+            }
+
+            try {
+                btnNextRealState.setClickable(false);
+            } catch (NullPointerException ignored) {
+
+            }
+
             mSubscriptions.add(NetworkUtil.getRetrofitByToken(sharedPreferences.getString("UserID", ""))
                     .addTinder(addTinderPojo)
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribeOn(Schedulers.io())
                     .subscribe(this::handleResponseTender, this::handleError));
+
+            try {
+                mProgressBarAddTender.setVisibility(View.VISIBLE);
+            } catch (Exception ignored) {
+
+            }
+
 
         } else {
             buildDialog((Activity) mContext).show().setCanceledOnTouchOutside(false);
@@ -86,8 +117,28 @@ public class AddTinderPresenter {
         Constant.handleError(mContext, throwable);
 
 
-        if (dialogLoaderTwo.isAdded())
-            dialogLoaderTwo.dismiss();
+        try {
+            mProgressBarAddTender.setVisibility(View.GONE);
+        } catch (Exception ignored) {
+
+        }
+
+        try {
+            btnNextCar.setClickable(true);
+        } catch (NullPointerException ignored) {
+
+        }
+        try {
+            btnSend.setClickable(true);
+        } catch (NullPointerException ignored) {
+
+        }
+
+        try {
+            btnNextRealState.setClickable(true);
+        } catch (NullPointerException ignored) {
+
+        }
 
 
     }
@@ -97,7 +148,31 @@ public class AddTinderPresenter {
         Constant.ADD_TENDER_ID = addTinderResponse.getTenderId();
         addTinderInterface.tenderAddedSuccessfully();
         Log.d(TAG, "YOU_CLICK_ME: " + Constant.ADD_TENDER_ID + " " + addTinderResponse.toString() + " " + addTinderResponse.getTenderId());
-//        Log.d(TAG, "TENDER ID: " + addTinderResponse.getTenderId());
+
+        try {
+            mProgressBarAddTender.setVisibility(View.GONE);
+        } catch (Exception ignored) {
+
+        }
+
+        try {
+            btnNextCar.setClickable(true);
+        } catch (NullPointerException ignored) {
+
+        }
+        try {
+            btnSend.setClickable(true);
+        } catch (NullPointerException ignored) {
+
+        }
+
+        try {
+            btnNextRealState.setClickable(true);
+        } catch (NullPointerException ignored) {
+
+        }
+
+        //        Log.d(TAG, "TENDER ID: " + addTinderResponse.getTenderId());
 //        Log.d(TAG, "handleResponse: + success");
 //        Log.d(TAG, "handleResponse: " + SELECTED_TENDER_TYPE);
 //
@@ -116,7 +191,11 @@ public class AddTinderPresenter {
 
     public void getAllCities() {
         if (Validation.isConnected(mContext)) {
-            dialogLoaderTwo.show(((AppCompatActivity) mContext).getSupportFragmentManager(), "");
+            if (dialogLoaderTwo.isAdded()) {
+                return;
+            } else {
+                dialogLoaderTwo.show(((AppCompatActivity) mContext).getSupportFragmentManager(), "");
+            }
             mSubscriptions.add(NetworkUtil.getRetrofitByToken(sharedPreferences.getString(Constant.UserID, ""))
                     .getAllCities()
                     .observeOn(AndroidSchedulers.mainThread())
@@ -132,7 +211,6 @@ public class AddTinderPresenter {
         if (dialogLoaderTwo.isAdded()) {
             dialogLoaderTwo.dismiss();
         }
-        dialogLoaderTwo.dismiss();
         Log.d(TAG + "cities", "handleResponse: " + allCitiesModel.get(0).getEnglishName());
         addTinderInterface.getAllCities(allCitiesModel);
 

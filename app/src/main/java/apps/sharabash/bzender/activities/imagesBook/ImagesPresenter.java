@@ -50,9 +50,12 @@ class ImagesPresenter {
 
         if (Validation.isConnected(context)) {
             if (!dialogLoaderThree.isAdded()) {
-                dialogLoaderThree.show(((AppCompatActivity) context).getSupportFragmentManager(), "4");
+                if (dialogLoaderThree.isAdded()) {
+                    return;
+                } else {
+                    dialogLoaderThree.show(((AppCompatActivity) context).getSupportFragmentManager(), "4");
+                }
             }
-            dialogLoader.show(((AppCompatActivity) context).getSupportFragmentManager(), "");
             mSubscriptions.add(NetworkUtil.getRetrofitByToken(sharedPreferences.getString(Constant.UserID, ""))
                     .uploadBookingRealEstate(uploadRealEstateImageBody)
                     .observeOn(AndroidSchedulers.mainThread())
@@ -80,7 +83,11 @@ class ImagesPresenter {
         uploadCarIamge.setTenderCarBookingId(id);
 
         if (Validation.isConnected(context)) {
-            dialogLoader.show(((AppCompatActivity) context).getSupportFragmentManager(), "2");
+            if (dialogLoader.isAdded()) {
+                return;
+            } else {
+                dialogLoader.show(((AppCompatActivity) context).getSupportFragmentManager(), "2");
+            }
             mSubscriptions.add(NetworkUtil.getRetrofitByToken(sharedPreferences.getString(Constant.UserID, ""))
                     .uploadCarImage(uploadCarIamge)
                     .observeOn(AndroidSchedulers.mainThread())
@@ -109,7 +116,11 @@ class ImagesPresenter {
         uploadElectricalImage.setTenderElectricalBookingId(id);
 
         if (Validation.isConnected(context)) {
-            dialogLoaderTwo.show(((AppCompatActivity) context).getSupportFragmentManager(), "");
+            if (dialogLoaderTwo.isAdded()) {
+                return;
+            } else {
+                dialogLoaderTwo.show(((AppCompatActivity) context).getSupportFragmentManager(), "");
+            }
             mSubscriptions.add(NetworkUtil.getRetrofitByToken(sharedPreferences.getString(Constant.UserID, ""))
                     .uploadElectricalImage(uploadElectricalImage)
                     .observeOn(AndroidSchedulers.mainThread())

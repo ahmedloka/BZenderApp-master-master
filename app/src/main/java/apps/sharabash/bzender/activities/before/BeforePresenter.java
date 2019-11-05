@@ -23,7 +23,10 @@ import rx.schedulers.Schedulers;
 import rx.subscriptions.CompositeSubscription;
 
 import static apps.sharabash.bzender.Utills.Constant.ErrorDialog;
+import static apps.sharabash.bzender.activities.TenderCarDetails.dialogBeforeDetails;
+import static apps.sharabash.bzender.activities.TenderElectricalDetails.dialogBeforeElectrical;
 import static apps.sharabash.bzender.activities.before.BeforerActivity.mProgressBar;
+import static apps.sharabash.bzender.activities.tenderRealEstateDetails.TenderRealEstateDetails.dialogBeforeRealEstate;
 
 public class BeforePresenter {
 
@@ -51,13 +54,32 @@ public class BeforePresenter {
             Intent intent;
             if (fromWhere.equals("add".trim())) {
                 intent = new Intent(mContext, AddTender.class);
-            } else {
-                intent = new Intent(mContext, AllTenderActivity.class);
-            }
-            mContext.startActivity(intent);
-            Animatoo.animateSlideRight(mContext);
-            ((Activity) mContext).finish();
+                mContext.startActivity(intent);
+                Animatoo.animateSlideRight(mContext);
+                ((Activity) mContext).finish();
 
+            } else {
+                try {
+                    if (dialogBeforeRealEstate.isAdded())
+                        dialogBeforeRealEstate.dismiss();
+                } catch (NullPointerException ignored) {
+
+                }
+
+                try {
+                    if (dialogBeforeElectrical.isAdded())
+                        dialogBeforeElectrical.dismiss();
+                } catch (NullPointerException ignored) {
+
+                }
+
+                try {
+                    if (dialogBeforeDetails.isAdded())
+                        dialogBeforeDetails.dismiss();
+                } catch (NullPointerException ignored) {
+
+                }
+            }
         } else {
             if (Validation.validateFields(nationalId)) {
                 ErrorDialog((Activity) mContext, mContext.getString(R.string.national_id_required));
@@ -101,6 +123,27 @@ public class BeforePresenter {
             Constant.showSuccessVERFIED(mContext, mContext.getString(R.string.verfied_successfullty), AllTenderActivity.class);
         }
 
+        try {
+            if (dialogBeforeRealEstate.isAdded())
+                dialogBeforeRealEstate.dismiss();
+        } catch (NullPointerException ignored) {
+
+        }
+
+        try {
+            if (dialogBeforeElectrical.isAdded())
+                dialogBeforeElectrical.dismiss();
+        } catch (NullPointerException ignored) {
+
+        }
+
+        try {
+            if (dialogBeforeDetails.isAdded())
+                dialogBeforeDetails.dismiss();
+        } catch (NullPointerException ignored) {
+
+        }
+
 
     }
 
@@ -112,12 +155,32 @@ public class BeforePresenter {
             Intent intent;
             if (fromWhere.equals("add".trim())) {
                 intent = new Intent(mContext, AddTender.class);
+                mContext.startActivity(intent);
+                Animatoo.animateSlideRight(mContext);
+                ((Activity) mContext).finish();
+
             } else {
-                intent = new Intent(mContext, AllTenderActivity.class);
+                try {
+                    if (dialogBeforeRealEstate.isAdded())
+                        dialogBeforeRealEstate.dismiss();
+                } catch (NullPointerException ignored) {
+
+                }
+
+                try {
+                    if (dialogBeforeElectrical.isAdded())
+                        dialogBeforeElectrical.dismiss();
+                } catch (NullPointerException ignored) {
+
+                }
+
+                try {
+                    if (dialogBeforeDetails.isAdded())
+                        dialogBeforeDetails.dismiss();
+                } catch (NullPointerException ignored) {
+
+                }
             }
-            mContext.startActivity(intent);
-            Animatoo.animateSlideRight(mContext);
-            ((Activity) mContext).finish();
 
         } else {
 

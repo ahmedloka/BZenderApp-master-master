@@ -98,7 +98,7 @@
 
                 <android.support.v7.widget.LinearLayoutCompat
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:orientation="vertical">
 
                     <Space
@@ -135,7 +135,7 @@
 
                     <android.support.v7.widget.LinearLayoutCompat
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:layout_marginStart="@dimen/safe_margin"
                         android:layout_marginEnd="@dimen/safe_margin"
                         android:layout_weight="370"
@@ -324,7 +324,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_vertical"
-                                android:text="@string/payment"
+                                android:text="@string/get_points"
                                 android:textColor="@color/whitecolor"
                                 android:textSize="@dimen/_14ssp"
                                 android:textStyle="bold" />
@@ -564,6 +564,7 @@
                             android:layout_height="@dimen/_2sdp" />
 
                     </android.support.v7.widget.LinearLayoutCompat>
+
                 </android.support.v7.widget.LinearLayoutCompat>
             </ScrollView>
         </android.support.design.widget.NavigationView>
