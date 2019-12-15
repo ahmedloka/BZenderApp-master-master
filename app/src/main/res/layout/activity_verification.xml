@@ -84,7 +84,7 @@
                                 android:layout_gravity="center"
                                 android:gravity="center"
                                 >
-                                <apps.sharabash.bzender.Utills.MyTextViewBold
+                                <apps.pixel.bzender.Utills.MyTextViewBold
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:textSize="@dimen/_15ssp"
@@ -98,7 +98,7 @@
                             <Space
                                 android:layout_width="match_parent"
                                 android:layout_height="@dimen/_4_height" />
-                            <apps.sharabash.bzender.Utills.MyTextView
+                            <apps.pixel.bzender.Utills.MyTextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textSize="@dimen/_7ssp"
@@ -218,7 +218,7 @@
                             android:layout_weight="146"
                             android:layout_height="wrap_content" />
 
-                        <apps.sharabash.bzender.Utills.ButtonBook
+                        <apps.pixel.bzender.Utills.ButtonBook
                             android:id="@+id/submit"
                             android:layout_width="0dp"
                             android:layout_weight="233"

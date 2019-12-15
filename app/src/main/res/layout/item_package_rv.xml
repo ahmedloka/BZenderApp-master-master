@@ -13,7 +13,7 @@
         android:layout_height="match_parent"
         android:layout_weight="1">
 
-        <apps.sharabash.bzender.Utills.MyTextView
+        <apps.pixel.bzender.Utills.MyTextView
             android:id="@+id/txt_points"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
@@ -31,7 +31,7 @@
         android:layout_height="match_parent"
         android:gravity="center">
 
-        <apps.sharabash.bzender.Utills.MyTextView
+        <apps.pixel.bzender.Utills.MyTextView
             android:id="@+id/txt_money"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"

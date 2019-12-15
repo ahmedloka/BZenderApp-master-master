@@ -10,7 +10,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:319444397929:android:3ddb4f606159d381",
         "android_client_info": {
-          "package_name": "apps.sharabash.bzender"
+          "package_name": "apps.pixel.bzender"
         }
       },
       "oauth_client": [
@@ -18,7 +18,7 @@
           "client_id": "319444397929-pl9ihr0ukv9t20co3i6agbefcv93c6up.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "apps.sharabash.bzender",
+            "package_name": "apps.pixel.bzender",
             "certificate_hash": "37409bd428dadd0d8ca5647c5fb876769ff8c9e3"
           }
         },

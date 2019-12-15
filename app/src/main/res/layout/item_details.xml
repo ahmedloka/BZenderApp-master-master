@@ -27,7 +27,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <apps.sharabash.bzender.Utills.MyTextViewBold
+                <apps.pixel.bzender.Utills.MyTextViewBold
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -86,7 +86,7 @@
                     app:layout_constraintVertical_bias="0.4">
 
 
-                    <apps.sharabash.bzender.Utills.MyTextViewBold
+                    <apps.pixel.bzender.Utills.MyTextViewBold
                         android:id="@+id/name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -108,7 +108,7 @@
                         android:paddingEnd="@dimen/_3sdp"
                         android:paddingBottom="@dimen/_4sdp">
 
-                        <apps.sharabash.bzender.Utills.MyTextViewBold
+                        <apps.pixel.bzender.Utills.MyTextViewBold
                             android:id="@+id/txt_soon"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -132,7 +132,7 @@
                                 android:layout_weight="1"
                                 android:orientation="vertical">
 
-                                <apps.sharabash.bzender.Utills.MyTextViewBold
+                                <apps.pixel.bzender.Utills.MyTextViewBold
                                     android:id="@+id/txt_days"
                                     android:layout_width="match_parent"
                                     android:layout_height="0dp"
@@ -144,7 +144,7 @@
                                     android:textColor="@color/whitecolor"
                                     android:textSize="@dimen/_10ssp" />
 
-                                <apps.sharabash.bzender.Utills.MyTextViewBold
+                                <apps.pixel.bzender.Utills.MyTextViewBold
                                     android:layout_width="match_parent"
                                     android:layout_height="0dp"
                                     android:layout_gravity="center"
@@ -177,7 +177,7 @@
 
                                 android:orientation="vertical">
 
-                                <apps.sharabash.bzender.Utills.MyTextViewBold
+                                <apps.pixel.bzender.Utills.MyTextViewBold
                                     android:id="@+id/txt_hrs"
                                     android:layout_width="match_parent"
                                     android:layout_height="0dp"
@@ -189,7 +189,7 @@
                                     android:textColor="@color/whitecolor"
                                     android:textSize="@dimen/_10ssp" />
 
-                                <apps.sharabash.bzender.Utills.MyTextViewBold
+                                <apps.pixel.bzender.Utills.MyTextViewBold
                                     android:layout_width="match_parent"
                                     android:layout_height="0dp"
                                     android:layout_gravity="center"
@@ -221,7 +221,7 @@
                                 android:layout_weight="1"
                                 android:orientation="vertical">
 
-                                <apps.sharabash.bzender.Utills.MyTextViewBold
+                                <apps.pixel.bzender.Utills.MyTextViewBold
                                     android:id="@+id/txt_mins"
                                     android:layout_width="match_parent"
                                     android:layout_height="0dp"
@@ -235,7 +235,7 @@
                                     android:textColor="@color/whitecolor"
                                     android:textSize="@dimen/_10ssp" />
 
-                                <apps.sharabash.bzender.Utills.MyTextViewBold
+                                <apps.pixel.bzender.Utills.MyTextViewBold
                                     android:layout_width="match_parent"
                                     android:layout_height="0dp"
                                     android:layout_gravity="center"
@@ -267,7 +267,7 @@
 
                                 android:orientation="vertical">
 
-                                <apps.sharabash.bzender.Utills.MyTextViewBold
+                                <apps.pixel.bzender.Utills.MyTextViewBold
                                     android:id="@+id/txt_secs"
                                     android:layout_width="match_parent"
                                     android:layout_height="0dp"
@@ -279,7 +279,7 @@
                                     android:textColor="@color/whitecolor"
                                     android:textSize="@dimen/_10ssp" />
 
-                                <apps.sharabash.bzender.Utills.MyTextViewBold
+                                <apps.pixel.bzender.Utills.MyTextViewBold
                                     android:layout_width="match_parent"
                                     android:layout_height="0dp"
                                     android:layout_gravity="center"
@@ -309,7 +309,7 @@
                         android:background="@drawable/item_tinder_bg_two"
                         android:orientation="vertical">
 
-                        <apps.sharabash.bzender.Utills.MyTextViewBold
+                        <apps.pixel.bzender.Utills.MyTextViewBold
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
@@ -339,7 +339,7 @@
                             android:layout_gravity="center"
                             android:src="@drawable/date" />
 
-                        <apps.sharabash.bzender.Utills.MyTextView
+                        <apps.pixel.bzender.Utills.MyTextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
@@ -351,7 +351,7 @@
                             android:textSize="@dimen/_8ssp"
                             android:textStyle="bold" />
 
-                        <apps.sharabash.bzender.Utills.MyTextView
+                        <apps.pixel.bzender.Utills.MyTextView
                             android:id="@+id/startDate"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -381,7 +381,7 @@
                             android:layout_height="@dimen/arrow_icon_size"
                             android:src="@drawable/date" />
 
-                        <apps.sharabash.bzender.Utills.MyTextView
+                        <apps.pixel.bzender.Utills.MyTextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
@@ -393,7 +393,7 @@
                             android:textSize="@dimen/_8ssp"
                             android:textStyle="bold" />
 
-                        <apps.sharabash.bzender.Utills.MyTextView
+                        <apps.pixel.bzender.Utills.MyTextView
                             android:id="@+id/endDate"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -407,7 +407,7 @@
                 </android.support.v7.widget.LinearLayoutCompat>
 
 
-                <apps.sharabash.bzender.Utills.MyTextViewBold
+                <apps.pixel.bzender.Utills.MyTextViewBold
                     android:id="@+id/count"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

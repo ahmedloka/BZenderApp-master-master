@@ -19,7 +19,7 @@
         android:layout_weight="13"
         android:src="@drawable/bzender" />
 
-    <apps.sharabash.bzender.Utills.MyTextView
+    <apps.pixel.bzender.Utills.MyTextView
         android:id="@+id/desc"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -30,7 +30,7 @@
         android:textSize="@dimen/_10ssp"
         android:textStyle="bold" />
 
-    <apps.sharabash.bzender.Utills.MyTextView
+    <apps.pixel.bzender.Utills.MyTextView
         android:id="@+id/date"
         android:layout_width="0dp"
         android:layout_height="wrap_content"

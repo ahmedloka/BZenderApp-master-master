@@ -34,7 +34,7 @@
     <Space
         android:layout_width="wrap_content"
         android:layout_height="@dimen/_88_dp_height" />
-    <apps.sharabash.bzender.Utills.MyTextViewBold
+    <apps.pixel.bzender.Utills.MyTextViewBold
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/intro_one_first_txt"
@@ -51,7 +51,7 @@
 
 
 
-    <apps.sharabash.bzender.Utills.MyTextView
+    <apps.pixel.bzender.Utills.MyTextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/intro_one_second_txt"

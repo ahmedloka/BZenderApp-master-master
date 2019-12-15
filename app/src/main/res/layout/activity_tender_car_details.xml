@@ -8,11 +8,11 @@
 
     <android.support.v7.widget.AppCompatImageView
         android:id="@+id/img"
-        android:clickable="true"
-        android:focusableInTouchMode="true"
-        android:focusable="true"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:clickable="true"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
         android:scaleType="fitXY"
         android:src="@drawable/app_bg" />
 
@@ -54,7 +54,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="22" />
 
-            <apps.sharabash.bzender.Utills.MyTextViewBold
+            <apps.pixel.bzender.Utills.MyTextViewBold
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -87,11 +87,11 @@
 
             <android.support.v4.widget.NestedScrollView
                 android:id="@+id/img_bg_two"
-                android:clickable="true"
-                android:focusableInTouchMode="true"
-                android:focusable="true"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:clickable="true"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
                 android:orientation="horizontal"
                 android:paddingStart="@dimen/_10sdp"
                 android:paddingTop="@dimen/_5sdp"
@@ -103,291 +103,492 @@
                     android:layout_height="wrap_content">
 
                     <LinearLayout
-                        android:layout_width="0dp"
+                        android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="0.9"
                         android:orientation="vertical">
 
-                        <apps.sharabash.bzender.Utills.MyTextView
-                            android:id="@+id/txt_type"
-                            android:layout_width="wrap_content"
+                        <RelativeLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="start"
+                            android:layout_gravity="center"
                             android:layout_weight="1"
-                            android:gravity="start|center"
-                            android:paddingTop="@dimen/_5sdp"
-                            android:paddingBottom="@dimen/_5sdp"
-                            android:text="@string/car_typ"
-                            android:textColor="@color/whitecolor"
-                            android:textSize="@dimen/_14ssp" />
+                            android:gravity="center"
+                            android:orientation="horizontal">
 
+                            <apps.pixel.bzender.Utills.MyTextView
+                                android:id="@+id/txt_type"
 
-                        <apps.sharabash.bzender.Utills.MyTextView
-                            android:id="@+id/txt_model"
-                            android:layout_width="wrap_content"
+                                android:layout_toStartOf="@id/checkbox_type"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentStart="true"
+                                android:layout_gravity="start"
+                                android:gravity="start|center"
+                                android:paddingTop="@dimen/_5sdp"
+                                android:paddingBottom="@dimen/_5sdp"
+
+                                android:textColor="@color/whitecolor"
+                                android:textSize="@dimen/_14ssp"
+                                android:text="@string/car_typ"/>
+
+                            <android.support.v7.widget.AppCompatCheckBox
+                                android:id="@+id/checkbox_type"
+                                android:layout_toEndOf="@id/checkbox_type"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentEnd="true"
+                                android:layout_gravity="end"
+                                android:gravity="end|center"
+                                app:buttonTint="@color/whitecolor" />
+
+                        </RelativeLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_1sdp"
+                            android:layout_marginTop="@dimen/_4sdp"
+                            android:layout_marginBottom="@dimen/_4sdp"
+                            android:background="@color/seperator" />
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="start"
+                            android:layout_gravity="center"
                             android:layout_weight="1"
-                            android:gravity="start|center"
-                            android:paddingTop="@dimen/_5sdp"
-                            android:paddingBottom="@dimen/_5sdp"
-                            android:text="@string/car_mo"
-                            android:textColor="@color/whitecolor"
-                            android:textSize="@dimen/_14ssp" />
+                            android:gravity="center"
+                            android:orientation="horizontal">
 
+                            <apps.pixel.bzender.Utills.MyTextView
+                                android:id="@+id/txt_model"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentStart="true"
+                                android:layout_gravity="start"
+                                android:layout_toStartOf="@id/checkbox_model"
+                                android:gravity="start|center"
+                                android:paddingTop="@dimen/_5sdp"
+                                android:paddingBottom="@dimen/_5sdp"
+                                android:text="@string/car_mo"
+                                android:textColor="@color/whitecolor"
+                                android:textSize="@dimen/_14ssp" />
 
-                        <apps.sharabash.bzender.Utills.MyTextView
-                            android:id="@+id/txt_year"
-                            android:layout_width="wrap_content"
+                            <android.support.v7.widget.AppCompatCheckBox
+                                android:id="@+id/checkbox_model"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentEnd="true"
+                                android:layout_gravity="end|center"
+                                android:gravity="end|center"
+                                app:buttonTint="@color/whitecolor" />
+
+                        </RelativeLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_1sdp"
+                            android:layout_marginTop="@dimen/_4sdp"
+                            android:layout_marginBottom="@dimen/_4sdp"
+                            android:background="@color/seperator" />
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="start|center"
-                            android:layout_weight="1"
-                            android:gravity="start"
-                            android:paddingTop="@dimen/_5sdp"
-                            android:paddingBottom="@dimen/_5sdp"
-                            android:text="@string/year_of_ccar"
-                            android:textColor="@color/whitecolor"
-                            android:textSize="@dimen/_13ssp" />
+                            android:layout_gravity="center"
+                            android:gravity="center">
 
-                        <apps.sharabash.bzender.Utills.MyTextView
-                            android:id="@+id/txt_number"
-                            android:layout_width="wrap_content"
+                            <apps.pixel.bzender.Utills.MyTextView
+                                android:id="@+id/txt_year"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentStart="true"
+                                android:layout_gravity="start|center"
+                                android:layout_toStartOf="@id/checkbox_year"
+                                android:layout_weight="1"
+                                android:gravity="start"
+                                android:paddingTop="@dimen/_5sdp"
+                                android:paddingBottom="@dimen/_5sdp"
+                                android:text="@string/year_of_ccar"
+                                android:textColor="@color/whitecolor"
+                                android:textSize="@dimen/_13ssp" />
+
+                            <android.support.v7.widget.AppCompatCheckBox
+                                android:id="@+id/checkbox_year"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentEnd="true"
+                                android:layout_gravity="end"
+                                android:layout_weight="1"
+                                android:gravity="end|center"
+                                app:buttonTint="@color/whitecolor" />
+                        </RelativeLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_1sdp"
+                            android:layout_marginTop="@dimen/_4sdp"
+                            android:layout_marginBottom="@dimen/_4sdp"
+                            android:background="@color/seperator" />
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="start|center"
-                            android:layout_weight="1"
-                            android:gravity="start"
-                            android:paddingTop="@dimen/_5sdp"
-                            android:paddingBottom="@dimen/_5sdp"
-                            android:text="@string/num_of_ccar"
-                            android:textColor="@color/whitecolor"
-                            android:textSize="@dimen/_14ssp" />
+                            android:layout_gravity="center"
+                            android:gravity="center">
 
-                        <apps.sharabash.bzender.Utills.MyTextView
-                            android:id="@+id/txt_kilometers"
-                            android:layout_width="wrap_content"
+                            <apps.pixel.bzender.Utills.MyTextView
+                                android:id="@+id/txt_number"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentStart="true"
+                                android:layout_gravity="start|center"
+                                android:layout_toStartOf="@+id/checkbox_number"
+                                android:gravity="start"
+                                android:paddingTop="@dimen/_5sdp"
+                                android:paddingBottom="@dimen/_5sdp"
+                                android:text="@string/num_of_ccar"
+                                android:textColor="@color/whitecolor"
+                                android:textSize="@dimen/_14ssp" />
+
+                            <android.support.v7.widget.AppCompatCheckBox
+                                android:id="@+id/checkbox_number"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentEnd="true"
+                                android:layout_gravity="end|center"
+                                android:gravity="end|center"
+                                app:buttonTint="@color/whitecolor" />
+
+
+                        </RelativeLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_1sdp"
+                            android:layout_marginTop="@dimen/_4sdp"
+                            android:layout_marginBottom="@dimen/_4sdp"
+                            android:background="@color/seperator" />
+
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="start|center"
-                            android:layout_weight="1"
-                            android:gravity="start"
-                            android:paddingTop="@dimen/_5sdp"
-                            android:paddingBottom="@dimen/_5sdp"
-                            android:text="@string/km"
-                            android:textColor="@color/whitecolor"
-                            android:textSize="@dimen/_14ssp" />
+                            android:layout_gravity="center"
+                            android:gravity="center">
 
-                        <apps.sharabash.bzender.Utills.MyTextView
-                            android:id="@+id/txt_transmission"
-                            android:layout_width="wrap_content"
+                            <apps.pixel.bzender.Utills.MyTextView
+                                android:id="@+id/txt_kilometers"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentStart="true"
+                                android:layout_gravity="start|center"
+                                android:layout_toStartOf="@+id/checkbox_kilometers"
+                                android:gravity="start"
+                                android:paddingTop="@dimen/_5sdp"
+                                android:paddingBottom="@dimen/_5sdp"
+                                android:text="@string/km"
+                                android:textColor="@color/whitecolor"
+                                android:textSize="@dimen/_14ssp" />
+
+                            <android.support.v7.widget.AppCompatCheckBox
+                                android:id="@+id/checkbox_kilometers"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentEnd="true"
+                                android:layout_gravity="end|center"
+                                android:layout_weight="1"
+                                android:gravity="end|center"
+                                app:buttonTint="@color/whitecolor" />
+
+
+                        </RelativeLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_1sdp"
+                            android:layout_marginTop="@dimen/_4sdp"
+                            android:layout_marginBottom="@dimen/_4sdp"
+                            android:background="@color/seperator" />
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="start|center"
-                            android:layout_weight="1"
-                            android:gravity="start"
-                            android:paddingTop="@dimen/_5sdp"
-                            android:paddingBottom="@dimen/_5sdp"
-                            android:text="@string/tra_type"
-                            android:textColor="@color/whitecolor"
-                            android:textSize="@dimen/_14ssp" />
+                            android:layout_gravity="center"
+                            android:gravity="center">
+
+                            <apps.pixel.bzender.Utills.MyTextView
+                                android:id="@+id/txt_transmission"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentStart="true"
+                                android:layout_gravity="start|center"
+                                android:layout_toStartOf="@+id/checkbox_transmission"
+                                android:gravity="start"
+                                android:paddingTop="@dimen/_5sdp"
+                                android:paddingBottom="@dimen/_5sdp"
+                                android:text="@string/tra_type"
+                                android:textColor="@color/whitecolor"
+                                android:textSize="@dimen/_14ssp" />
+
+                            <android.support.v7.widget.AppCompatCheckBox
+                                android:id="@+id/checkbox_transmission"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentEnd="true"
+                                android:layout_gravity="end|center"
+                                android:layout_weight="1"
+                                android:gravity="end|center"
+                                app:buttonTint="@color/whitecolor" />
 
 
-                        <apps.sharabash.bzender.Utills.MyTextView
-                            android:id="@+id/txt_license"
-                            android:layout_width="wrap_content"
+                        </RelativeLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_1sdp"
+                            android:layout_marginTop="@dimen/_4sdp"
+                            android:layout_marginBottom="@dimen/_4sdp"
+                            android:background="@color/seperator" />
+
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="start|center"
-                            android:layout_weight="1"
-                            android:gravity="start"
-                            android:paddingTop="@dimen/_5sdp"
-                            android:paddingBottom="@dimen/_5sdp"
-                            android:text="@string/lic_stat"
-                            android:textColor="@color/whitecolor"
-                            android:textSize="@dimen/_14ssp" />
+                            android:layout_gravity="center"
+                            android:gravity="center">
+
+                            <apps.pixel.bzender.Utills.MyTextView
+                                android:id="@+id/txt_license"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentStart="true"
+                                android:layout_gravity="start|center"
+                                android:layout_toStartOf="@+id/checkbox_license"
+                                android:gravity="start"
+                                android:paddingTop="@dimen/_5sdp"
+                                android:paddingBottom="@dimen/_5sdp"
+                                android:text="@string/lic_stat"
+                                android:textColor="@color/whitecolor"
+                                android:textSize="@dimen/_14ssp" />
+
+                            <android.support.v7.widget.AppCompatCheckBox
+                                android:id="@+id/checkbox_license"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentEnd="true"
+                                android:layout_gravity="end"
+                                android:layout_weight="1"
+                                android:gravity="end|center"
+                                app:buttonTint="@color/whitecolor" />
 
 
-                        <apps.sharabash.bzender.Utills.MyTextView
-                            android:id="@+id/txt_fees"
-                            android:layout_width="wrap_content"
+                        </RelativeLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_1sdp"
+                            android:layout_marginTop="@dimen/_4sdp"
+                            android:layout_marginBottom="@dimen/_4sdp"
+                            android:background="@color/seperator" />
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="start|center"
-                            android:layout_weight="1"
-                            android:gravity="start"
-                            android:paddingTop="@dimen/_5sdp"
-                            android:paddingBottom="@dimen/_5sdp"
-                            android:text="@string/fees_paid"
-                            android:textColor="@color/whitecolor"
-                            android:textSize="@dimen/_14ssp" />
+                            android:layout_gravity="center"
+                            android:gravity="center">
 
-                        <apps.sharabash.bzender.Utills.MyTextView
-                            android:id="@+id/txt_scan"
-                            android:layout_width="wrap_content"
+                            <apps.pixel.bzender.Utills.MyTextView
+                                android:id="@+id/txt_fees"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentStart="true"
+                                android:layout_gravity="start|center"
+                                android:layout_toStartOf="@+id/checkbox_fees"
+                                android:layout_weight="1"
+                                android:gravity="start"
+                                android:paddingTop="@dimen/_5sdp"
+                                android:paddingBottom="@dimen/_5sdp"
+                                android:text="@string/fees_paid"
+                                android:textColor="@color/whitecolor"
+                                android:textSize="@dimen/_14ssp" />
+
+                            <android.support.v7.widget.AppCompatCheckBox
+                                android:id="@+id/checkbox_fees"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentEnd="true"
+                                android:layout_gravity="end"
+                                android:layout_weight="1"
+                                android:gravity="end|center"
+                                app:buttonTint="@color/whitecolor" />
+
+
+                        </RelativeLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_1sdp"
+                            android:layout_marginTop="@dimen/_4sdp"
+                            android:layout_marginBottom="@dimen/_4sdp"
+                            android:background="@color/seperator" />
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="start|center"
-                            android:layout_weight="1"
-                            android:gravity="start"
-                            android:paddingTop="@dimen/_5sdp"
-                            android:paddingBottom="@dimen/_5sdp"
-                            android:text="@string/can_scan"
-                            android:textColor="@color/whitecolor"
-                            android:textSize="@dimen/_14ssp" />
+                            android:layout_gravity="center"
+                            android:gravity="center">
 
-                        <apps.sharabash.bzender.Utills.MyTextView
-                            android:id="@+id/txt_engine"
-                            android:layout_width="wrap_content"
+                            <apps.pixel.bzender.Utills.MyTextView
+                                android:id="@+id/txt_scan"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentStart="true"
+                                android:layout_gravity="start|center"
+                                android:layout_toStartOf="@+id/checkbox_can_scan"
+                                android:layout_weight="1"
+                                android:gravity="start"
+                                android:paddingTop="@dimen/_5sdp"
+                                android:paddingBottom="@dimen/_5sdp"
+                                android:text="@string/can_scan"
+                                android:textColor="@color/whitecolor"
+                                android:textSize="@dimen/_14ssp" />
+
+                            <android.support.v7.widget.AppCompatCheckBox
+                                android:id="@+id/checkbox_can_scan"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentEnd="true"
+                                android:layout_gravity="end"
+                                android:layout_weight="1"
+                                android:gravity="end|center"
+                                app:buttonTint="@color/whitecolor" />
+
+
+                        </RelativeLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_1sdp"
+                            android:layout_marginTop="@dimen/_4sdp"
+                            android:layout_marginBottom="@dimen/_4sdp"
+                            android:background="@color/seperator" />
+
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="start|center"
-                            android:layout_weight="1"
-                            android:gravity="start"
-                            android:paddingTop="@dimen/_5sdp"
-                            android:paddingBottom="@dimen/_5sdp"
-                            android:text="@string/engine_capa"
-                            android:textColor="@color/whitecolor"
-                            android:textSize="@dimen/_14ssp" />
+                            android:layout_gravity="center"
+                            android:gravity="center">
 
-                        <apps.sharabash.bzender.Utills.MyTextView
-                            android:id="@+id/txt_extra"
-                            android:layout_width="wrap_content"
+                            <apps.pixel.bzender.Utills.MyTextView
+                                android:id="@+id/txt_engine"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentStart="true"
+                                android:layout_gravity="start|center"
+                                android:layout_toStartOf="@+id/checkbox_engine"
+                                android:gravity="start"
+                                android:paddingTop="@dimen/_5sdp"
+                                android:paddingBottom="@dimen/_5sdp"
+                                android:text="@string/engine_capa"
+                                android:textColor="@color/whitecolor"
+                                android:textSize="@dimen/_14ssp" />
+
+                            <android.support.v7.widget.AppCompatCheckBox
+                                android:id="@+id/checkbox_engine"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentEnd="true"
+                                android:layout_gravity="end"
+                                android:layout_weight="1"
+                                android:gravity="end|center"
+                                app:buttonTint="@color/whitecolor" />
+
+
+                        </RelativeLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_1sdp"
+                            android:layout_marginTop="@dimen/_4sdp"
+                            android:layout_marginBottom="@dimen/_4sdp"
+                            android:background="@color/seperator" />
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="start|center"
-                            android:layout_weight="1"
-                            android:gravity="start"
-                            android:paddingTop="@dimen/_5sdp"
-                            android:paddingBottom="@dimen/_5sdp"
-                            android:text="@string/extra_feat"
-                            android:textColor="@color/whitecolor"
-                            android:textSize="@dimen/_14ssp" />
+                            android:layout_gravity="center"
+                            android:gravity="center">
+
+                            <apps.pixel.bzender.Utills.MyTextView
+                                android:id="@+id/txt_extra"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentStart="true"
+                                android:layout_gravity="start|center"
+                                android:layout_toStartOf="@+id/checkbox_extra"
+                                android:layout_weight="1"
+                                android:gravity="start"
+                                android:paddingTop="@dimen/_5sdp"
+                                android:paddingBottom="@dimen/_5sdp"
+                                android:text="@string/extra_feat"
+                                android:textColor="@color/whitecolor"
+                                android:textSize="@dimen/_14ssp" />
+
+                            <android.support.v7.widget.AppCompatCheckBox
+                                android:id="@+id/checkbox_extra"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentEnd="true"
+                                android:layout_gravity="end"
+                                android:layout_weight="1"
+                                android:gravity="end|center"
+                                app:buttonTint="@color/whitecolor" />
 
 
-                        <apps.sharabash.bzender.Utills.MyTextView
-                            android:id="@+id/txt_viol"
-                            android:layout_width="wrap_content"
+                        </RelativeLayout>
+
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_1sdp"
+                            android:layout_marginTop="@dimen/_4sdp"
+                            android:layout_marginBottom="@dimen/_4sdp"
+                            android:background="@color/seperator" />
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="start|center"
-                            android:layout_weight="1"
-                            android:gravity="start"
-                            android:paddingTop="@dimen/_5sdp"
-                            android:paddingBottom="@dimen/_5sdp"
-                            android:text="@string/violation_certificate"
-                            android:textColor="@color/whitecolor"
-                            android:textSize="@dimen/_14ssp" />
+                            android:layout_gravity="center"
+                            android:gravity="center">
+
+                            <apps.pixel.bzender.Utills.MyTextView
+                                android:id="@+id/txt_viol"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentStart="true"
+                                android:layout_gravity="start|center"
+                                android:layout_toStartOf="@+id/checkbox_violo"
+                                android:gravity="start"
+                                android:paddingTop="@dimen/_5sdp"
+                                android:paddingBottom="@dimen/_5sdp"
+                                android:text="@string/violation_certificate"
+                                android:textColor="@color/whitecolor"
+                                android:textSize="@dimen/_14ssp" />
 
 
-                    </LinearLayout>
+                            <android.support.v7.widget.AppCompatCheckBox
+                                android:id="@+id/checkbox_violo"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentEnd="true"
+                                android:layout_gravity="end"
+                                android:layout_weight="1"
+                                android:gravity="end|center"
+                                app:buttonTint="@color/whitecolor" />
 
 
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="0.5"
-                        android:orientation="vertical">
-
-                        <android.support.v7.widget.AppCompatCheckBox
-                            android:id="@+id/checkbox_type"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="end"
-                            android:layout_weight="1"
-                            android:gravity="end|center"
-                            app:buttonTint="@color/whitecolor" />
-
-                        <android.support.v7.widget.AppCompatCheckBox
-                            android:id="@+id/checkbox_model"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="end|center"
-                            android:layout_weight="1"
-                            android:gravity="end|center"
-                            app:buttonTint="@color/whitecolor" />
-
-                        <android.support.v7.widget.AppCompatCheckBox
-                            android:id="@+id/checkbox_year"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="end"
-                            android:layout_weight="1"
-                            android:gravity="end|center"
-                            app:buttonTint="@color/whitecolor" />
-
-                        <android.support.v7.widget.AppCompatCheckBox
-                            android:id="@+id/checkbox_number"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="end|center"
-                            android:layout_weight="1"
-                            android:gravity="end|center"
-                            app:buttonTint="@color/whitecolor" />
-
-                        <android.support.v7.widget.AppCompatCheckBox
-                            android:id="@+id/checkbox_kilometers"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="end|center"
-                            android:layout_weight="1"
-                            android:gravity="end|center"
-                            app:buttonTint="@color/whitecolor" />
-
-                        <android.support.v7.widget.AppCompatCheckBox
-                            android:id="@+id/checkbox_transmission"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="end|center"
-                            android:layout_weight="1"
-                            android:gravity="end|center"
-                            app:buttonTint="@color/whitecolor" />
-
-
-                        <android.support.v7.widget.AppCompatCheckBox
-                            android:id="@+id/checkbox_license"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="end"
-                            android:layout_weight="1"
-                            android:gravity="end|center"
-                            app:buttonTint="@color/whitecolor" />
-
-                        <android.support.v7.widget.AppCompatCheckBox
-                            android:id="@+id/checkbox_fees"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="end"
-                            android:layout_weight="1"
-                            android:gravity="end|center"
-                            app:buttonTint="@color/whitecolor" />
-
-                        <android.support.v7.widget.AppCompatCheckBox
-                            android:id="@+id/checkbox_can_scan"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="end"
-                            android:layout_weight="1"
-                            android:gravity="end|center"
-                            app:buttonTint="@color/whitecolor" />
-
-                        <android.support.v7.widget.AppCompatCheckBox
-                            android:id="@+id/checkbox_engine"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="end"
-                            android:layout_weight="1"
-                            android:gravity="end|center"
-                            app:buttonTint="@color/whitecolor" />
-
-                        <android.support.v7.widget.AppCompatCheckBox
-                            android:id="@+id/checkbox_extra"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="end"
-                            android:layout_weight="1"
-                            android:gravity="end|center"
-                            app:buttonTint="@color/whitecolor" />
-
-
-                        <android.support.v7.widget.AppCompatCheckBox
-                            android:id="@+id/checkbox_violo"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="end"
-                            android:layout_weight="1"
-                            android:gravity="end|center"
-                            app:buttonTint="@color/whitecolor" />
+                        </RelativeLayout>
 
 
                     </LinearLayout>
@@ -398,16 +599,16 @@
 
             <android.support.v4.widget.NestedScrollView
                 android:id="@+id/img_three"
-                android:clickable="true"
-                android:focusableInTouchMode="true"
-                android:focusable="true"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_marginStart="@dimen/_10sdp"
                 android:layout_marginTop="@dimen/_10sdp"
                 android:layout_marginEnd="@dimen/_10sdp"
                 android:layout_marginBottom="@dimen/_10sdp"
-                android:layout_weight="20">
+                android:layout_weight="20"
+                android:clickable="true"
+                android:focusable="true"
+                android:focusableInTouchMode="true">
 
                 <android.support.v7.widget.LinearLayoutCompat
                     android:layout_width="match_parent"
@@ -424,7 +625,7 @@
 
                         android:paddingBottom="@dimen/_5sdp">
 
-                        <apps.sharabash.bzender.Utills.MyTextView
+                        <apps.pixel.bzender.Utills.MyTextView
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:gravity="center"
@@ -432,7 +633,7 @@
                             android:textColor="@color/whitecolor"
                             android:textSize="@dimen/_14ssp" />
 
-                        <apps.sharabash.bzender.Utills.MyEditText
+                        <apps.pixel.bzender.Utills.MyEditText
                             android:id="@+id/et_price"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
@@ -447,7 +648,7 @@
                             android:paddingBottom="@dimen/_5sdp"
                             android:textSize="@dimen/_12ssp" />
 
-                        <apps.sharabash.bzender.Utills.MyTextView
+                        <apps.pixel.bzender.Utills.MyTextView
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:layout_marginStart="@dimen/_10sdp"
@@ -460,7 +661,7 @@
                     </android.support.v7.widget.LinearLayoutCompat>
 
 
-                    <apps.sharabash.bzender.Utills.MyTextView
+                    <apps.pixel.bzender.Utills.MyTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_10sdp"
@@ -469,7 +670,7 @@
                         android:textColor="@color/whitecolor"
                         android:textSize="@dimen/_14ssp" />
 
-                    <apps.sharabash.bzender.Utills.MyEditText
+                    <apps.pixel.bzender.Utills.MyEditText
                         android:id="@+id/et_desc"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -485,7 +686,7 @@
                         android:textSize="@dimen/_12ssp" />
 
 
-                    <apps.sharabash.bzender.Utills.ButtonBook
+                    <apps.pixel.bzender.Utills.ButtonBook
                         android:id="@+id/btn_book"
                         android:layout_width="@dimen/_70sdp"
                         android:layout_height="@dimen/_30sdp"

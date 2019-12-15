@@ -23,7 +23,7 @@
             android:layout_marginBottom="@dimen/_5sdp"
             android:src="@drawable/congrat_img" />
 
-        <apps.sharabash.bzender.Utills.MyTextViewBold
+        <apps.pixel.bzender.Utills.MyTextViewBold
             android:id="@+id/txt_congrats"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -33,7 +33,7 @@
             android:textColor="@color/whitecolor"
             android:textSize="@dimen/_18ssp" />
 
-        <apps.sharabash.bzender.Utills.MyTextView
+        <apps.pixel.bzender.Utills.MyTextView
             android:id="@+id/txt_desc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -47,7 +47,7 @@ and become 2400 point"
             android:textSize="@dimen/_14ssp" />
 
 
-        <apps.sharabash.bzender.Utills.ButtonBook
+        <apps.pixel.bzender.Utills.ButtonBook
             android:id="@+id/btn_ok"
             android:layout_width="@dimen/_70sdp"
             android:layout_height="0dp"

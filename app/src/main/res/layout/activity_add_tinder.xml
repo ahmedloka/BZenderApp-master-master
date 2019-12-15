@@ -61,7 +61,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="22" />
 
-                <apps.sharabash.bzender.Utills.MyTextViewBold
+                <apps.pixel.bzender.Utills.MyTextViewBold
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
@@ -117,7 +117,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="@dimen/_20_height" />
 
-                        <apps.sharabash.bzender.Utills.MyEditText
+                        <apps.pixel.bzender.Utills.MyEditText
                             android:id="@+id/tinder_title"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/_45_height"
@@ -133,7 +133,7 @@
                             android:textColor="@color/blakcolor"
                             android:textSize="@dimen/_13ssp" />
 
-                        <apps.sharabash.bzender.Utills.MyTextView
+                        <apps.pixel.bzender.Utills.MyTextView
                             android:id="@+id/tender_type"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/_45_height"
@@ -154,7 +154,7 @@
                             android:textSize="@dimen/_13ssp" />
 
 
-                        <apps.sharabash.bzender.Utills.MyEditText
+                        <apps.pixel.bzender.Utills.MyEditText
                             android:id="@+id/location"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/_45_height"
@@ -195,7 +195,7 @@
                                 android:background="@color/colorPrimary"
                                 app:textColorSelected="#FFFF" />
 
-                            <apps.sharabash.bzender.Utills.MyTextView
+                            <apps.pixel.bzender.Utills.MyTextView
                                 android:id="@+id/mTxtStartTime"
                                 android:layout_width="0dp"
                                 android:layout_height="@dimen/pin_height"
@@ -217,7 +217,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="18" />
 
-                            <apps.sharabash.bzender.Utills.MyTextView
+                            <apps.pixel.bzender.Utills.MyTextView
                                 android:id="@+id/mTxtEndTime"
                                 android:layout_width="0dp"
                                 android:layout_height="@dimen/pin_height"
@@ -241,7 +241,7 @@
                         </android.support.v7.widget.LinearLayoutCompat>
 
 
-                        <apps.sharabash.bzender.Utills.MyEditText
+                        <apps.pixel.bzender.Utills.MyEditText
                             android:id="@+id/desc"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/_84_height"
@@ -259,7 +259,7 @@
                             android:textSize="@dimen/_13ssp" />
 
 
-                        <apps.sharabash.bzender.Utills.ButtonBook
+                        <apps.pixel.bzender.Utills.ButtonBook
                             android:id="@+id/create"
                             android:layout_width="@dimen/_100sdp"
                             android:layout_height="@dimen/_45_height"

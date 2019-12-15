@@ -53,7 +53,7 @@
                     android:layout_weight="3.5"
                     android:gravity="center">
 
-                    <apps.sharabash.bzender.Utills.MyTextViewBold
+                    <apps.pixel.bzender.Utills.MyTextViewBold
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
@@ -104,7 +104,7 @@
                 android:layout_marginEnd="@dimen/safe_margin"
                 android:src="@drawable/change_password" />
 
-            <apps.sharabash.bzender.Utills.MyTextView
+            <apps.pixel.bzender.Utills.MyTextView
                 android:id="@+id/change_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -135,7 +135,7 @@
                 android:layout_marginEnd="@dimen/safe_margin"
                 android:src="@drawable/change_lang" />
 
-            <apps.sharabash.bzender.Utills.MyTextView
+            <apps.pixel.bzender.Utills.MyTextView
                 android:id="@+id/change_lang"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -167,7 +167,7 @@
                 android:layout_marginEnd="@dimen/safe_margin"
                 android:src="@drawable/terms_condition" />
 
-            <apps.sharabash.bzender.Utills.MyTextView
+            <apps.pixel.bzender.Utills.MyTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -197,14 +197,14 @@
         android:orientation="vertical">
 
 
-        <apps.sharabash.bzender.Utills.MyTextViewBold
+        <apps.pixel.bzender.Utills.MyTextViewBold
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="@string/developed_byy"
             android:textColor="@color/blakcolor" />
 
-        <apps.sharabash.bzender.Utills.MyTextViewBold
+        <apps.pixel.bzender.Utills.MyTextViewBold
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_10sdp"

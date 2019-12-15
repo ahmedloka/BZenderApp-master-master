@@ -47,7 +47,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="22"
                 />
-            <apps.sharabash.bzender.Utills.MyTextViewBold
+            <apps.pixel.bzender.Utills.MyTextViewBold
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/_14ssp"
@@ -104,7 +104,7 @@
                 android:layout_marginBottom="@dimen/_20sdp"
                 android:visibility="gone"
                 android:layout_gravity="center"/>
-            <apps.sharabash.bzender.Utills.MyTextViewBold
+            <apps.pixel.bzender.Utills.MyTextViewBold
 
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

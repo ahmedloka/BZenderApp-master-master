@@ -33,7 +33,7 @@
                 android:scaleType="centerInside"
                 android:src="@drawable/reply" />
 
-            <apps.sharabash.bzender.Utills.MyTextViewBold
+            <apps.pixel.bzender.Utills.MyTextViewBold
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"

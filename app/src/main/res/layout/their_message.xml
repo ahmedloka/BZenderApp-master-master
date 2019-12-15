@@ -18,7 +18,7 @@
         android:layout_height="@dimen/_53_height"
         android:layout_gravity="center" />
 
-    <apps.sharabash.bzender.Utills.MyTextView
+    <apps.pixel.bzender.Utills.MyTextView
         android:id="@+id/name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -28,7 +28,7 @@
         android:paddingBottom="@dimen/margin_txt"
         android:text="" />
 
-    <apps.sharabash.bzender.Utills.MyTextView
+    <apps.pixel.bzender.Utills.MyTextView
         android:id="@+id/message_body"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

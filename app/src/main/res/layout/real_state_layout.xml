@@ -55,7 +55,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="22" />
 
-            <apps.sharabash.bzender.Utills.MyTextViewBold
+            <apps.pixel.bzender.Utills.MyTextViewBold
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_gravity="start|center"
@@ -99,7 +99,7 @@
                     android:padding="@dimen/_10sdp">
 
 
-                    <apps.sharabash.bzender.Utills.MyTextViewBold
+                    <apps.pixel.bzender.Utills.MyTextViewBold
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_gravity="start|center"
@@ -116,7 +116,7 @@
                         android:layout_height="match_parent"
                         android:background="@android:color/white" />
 
-                    <apps.sharabash.bzender.Utills.MyTextViewBold
+                    <apps.pixel.bzender.Utills.MyTextViewBold
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_gravity="start|center"
@@ -175,7 +175,7 @@
                 android:orientation="horizontal">
 
 
-                <apps.sharabash.bzender.Utills.MyTextViewBold
+                <apps.pixel.bzender.Utills.MyTextViewBold
                     android:layout_width="@dimen/_80sdp"
                     android:layout_height="match_parent"
                     android:layout_gravity="center|start"
@@ -195,7 +195,7 @@
                     android:paddingStart="@dimen/_5sdp"
                     android:paddingEnd="@dimen/_5sdp">
 
-                    <apps.sharabash.bzender.Utills.MyTextView
+                    <apps.pixel.bzender.Utills.MyTextView
                         android:id="@+id/txt_activity_for"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -219,7 +219,7 @@
                 android:orientation="horizontal">
 
 
-                <apps.sharabash.bzender.Utills.MyTextViewBold
+                <apps.pixel.bzender.Utills.MyTextViewBold
                     android:layout_width="@dimen/_80sdp"
                     android:layout_height="match_parent"
                     android:layout_gravity="center|start"
@@ -239,7 +239,7 @@
                     android:paddingStart="@dimen/_5sdp"
                     android:paddingEnd="@dimen/_5sdp">
 
-                    <apps.sharabash.bzender.Utills.MyTextView
+                    <apps.pixel.bzender.Utills.MyTextView
                         android:id="@+id/txt_location"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -265,7 +265,7 @@
                 android:orientation="horizontal">
 
 
-                <apps.sharabash.bzender.Utills.MyTextViewBold
+                <apps.pixel.bzender.Utills.MyTextViewBold
                     android:layout_width="@dimen/_80sdp"
                     android:layout_height="match_parent"
                     android:layout_gravity="center|start"
@@ -285,7 +285,7 @@
                     android:paddingStart="@dimen/_5sdp"
                     android:paddingEnd="@dimen/_5sdp">
 
-                    <apps.sharabash.bzender.Utills.MyTextView
+                    <apps.pixel.bzender.Utills.MyTextView
                         android:id="@+id/txt_amenities"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -310,7 +310,7 @@
                 android:orientation="horizontal">
 
 
-                <apps.sharabash.bzender.Utills.MyTextViewBold
+                <apps.pixel.bzender.Utills.MyTextViewBold
                     android:layout_width="@dimen/_80sdp"
                     android:layout_height="match_parent"
                     android:layout_gravity="center|start"
@@ -330,7 +330,7 @@
                     android:paddingStart="@dimen/_5sdp"
                     android:paddingEnd="@dimen/_5sdp">
 
-                    <apps.sharabash.bzender.Utills.MyTextView
+                    <apps.pixel.bzender.Utills.MyTextView
                         android:id="@+id/txt_bedrooms"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -354,7 +354,7 @@
                 android:orientation="horizontal">
 
 
-                <apps.sharabash.bzender.Utills.MyTextViewBold
+                <apps.pixel.bzender.Utills.MyTextViewBold
                     android:layout_width="@dimen/_80sdp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/_20sdp"
@@ -372,7 +372,7 @@
                     android:paddingStart="@dimen/_5sdp"
                     android:paddingEnd="@dimen/_5sdp">
 
-                    <apps.sharabash.bzender.Utills.MyTextView
+                    <apps.pixel.bzender.Utills.MyTextView
                         android:id="@+id/txt_level"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -397,7 +397,7 @@
                 android:orientation="horizontal">
 
 
-                <apps.sharabash.bzender.Utills.MyTextViewBold
+                <apps.pixel.bzender.Utills.MyTextViewBold
                     android:layout_width="@dimen/_80sdp"
                     android:layout_height="match_parent"
                     android:layout_gravity="center|start"
@@ -418,7 +418,7 @@
                     android:paddingStart="@dimen/_5sdp"
                     android:paddingEnd="@dimen/_5sdp">
 
-                    <apps.sharabash.bzender.Utills.MyEditText
+                    <apps.pixel.bzender.Utills.MyEditText
                         android:id="@+id/txt_specefic_area"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -443,7 +443,7 @@
                 android:orientation="horizontal">
 
 
-                <apps.sharabash.bzender.Utills.MyTextViewBold
+                <apps.pixel.bzender.Utills.MyTextViewBold
                     android:layout_width="@dimen/_80sdp"
                     android:layout_height="match_parent"
                     android:layout_gravity="center|start"
@@ -465,7 +465,7 @@
                     android:paddingStart="@dimen/_5sdp"
                     android:paddingEnd="@dimen/_5sdp">
 
-                    <apps.sharabash.bzender.Utills.MyEditText
+                    <apps.pixel.bzender.Utills.MyEditText
                         android:id="@+id/txt_period"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -491,7 +491,7 @@
                 android:orientation="horizontal">
 
 
-                <apps.sharabash.bzender.Utills.MyTextViewBold
+                <apps.pixel.bzender.Utills.MyTextViewBold
                     android:layout_width="@dimen/_80sdp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center|start"
@@ -513,7 +513,7 @@
                     android:paddingBottom="@dimen/_4sdp">
 
 
-                    <apps.sharabash.bzender.Utills.MyEditText
+                    <apps.pixel.bzender.Utills.MyEditText
                         android:id="@+id/et_range_one"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -526,7 +526,7 @@
                         android:padding="@dimen/_5sdp"
                         android:textColor="@color/app_color" />
 
-                    <apps.sharabash.bzender.Utills.MyEditText
+                    <apps.pixel.bzender.Utills.MyEditText
                         android:id="@+id/et_range_two"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -557,7 +557,7 @@
                 android:orientation="horizontal">
 
 
-                <apps.sharabash.bzender.Utills.MyTextViewBold
+                <apps.pixel.bzender.Utills.MyTextViewBold
                     android:layout_width="@dimen/_80sdp"
                     android:layout_height="match_parent"
                     android:layout_gravity="center|start"
@@ -579,7 +579,7 @@
                     android:paddingBottom="@dimen/_4sdp">
 
 
-                    <apps.sharabash.bzender.Utills.MyEditText
+                    <apps.pixel.bzender.Utills.MyEditText
                         android:id="@+id/area_price_one"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -592,7 +592,7 @@
                         android:padding="@dimen/_5sdp"
                         android:textColor="@color/app_color" />
 
-                    <apps.sharabash.bzender.Utills.MyEditText
+                    <apps.pixel.bzender.Utills.MyEditText
                         android:id="@+id/area_price_two"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -622,7 +622,7 @@
                 android:orientation="horizontal">
 
 
-                <apps.sharabash.bzender.Utills.MyTextViewBold
+                <apps.pixel.bzender.Utills.MyTextViewBold
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_marginStart="@dimen/_20sdp"
@@ -675,7 +675,7 @@
 
             </android.support.v7.widget.LinearLayoutCompat>
 
-            <apps.sharabash.bzender.Utills.MyEditText
+            <apps.pixel.bzender.Utills.MyEditText
                 android:id="@+id/et_desciption"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -694,7 +694,7 @@
                 android:textSize="@dimen/_12ssp" />
 
 
-            <apps.sharabash.bzender.Utills.ButtonBook
+            <apps.pixel.bzender.Utills.ButtonBook
                 android:id="@+id/btn_next"
                 android:layout_width="@dimen/_80sdp"
                 android:layout_height="wrap_content"

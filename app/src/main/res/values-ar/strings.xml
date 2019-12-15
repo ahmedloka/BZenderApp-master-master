@@ -372,9 +372,9 @@
     <string name="developed_by">Developed By :</string>
     <string name="developed_byy">تم التطوير بواسطة : <u> <font color='#00476B'>Pixel</font></u></string>
     <string name="pixel_website"><u> <font color='#00476B'>www.pixel-adv.com</font></u></string>
-    <string name="newww">New</string>
-    <string name="usedd">Used</string>
-    <string name="get_points">Get Points</string>
+    <string name="newww">جديد</string>
+    <string name="usedd">مستعمل</string>
+    <string name="get_points">الحصول على النقاط</string>
 
 
 </resources>

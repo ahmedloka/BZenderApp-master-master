@@ -71,7 +71,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <apps.sharabash.bzender.Utills.ButtonBook
+            <apps.pixel.bzender.Utills.ButtonBook
                 android:id="@+id/add_tinder"
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/button_height_size"

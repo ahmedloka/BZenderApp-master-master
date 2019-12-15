@@ -100,7 +100,7 @@
                                 android:gravity="center"
                                 android:weightSum="411">
 
-                                <apps.sharabash.bzender.Utills.MyTextViewBold
+                                <apps.pixel.bzender.Utills.MyTextViewBold
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center"
@@ -120,7 +120,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="@dimen/_10_height" />
 
-                            <apps.sharabash.bzender.Utills.MyTextView
+                            <apps.pixel.bzender.Utills.MyTextView
                                 android:id="@+id/txt_record"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -133,7 +133,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="@dimen/_4_height" />
 
-                            <apps.sharabash.bzender.Utills.MyEditText
+                            <apps.pixel.bzender.Utills.MyEditText
                                 android:id="@+id/et_record"
                                 android:layout_width="match_parent"
                                 android:layout_height="@dimen/pin_height"
@@ -152,7 +152,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="@dimen/_10_height" />
 
-                            <apps.sharabash.bzender.Utills.MyTextView
+                            <apps.pixel.bzender.Utills.MyTextView
                                 android:id="@+id/txt_card"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -169,7 +169,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="@dimen/_33sdp">
 
-                                <apps.sharabash.bzender.Utills.MyEditText
+                                <apps.pixel.bzender.Utills.MyEditText
                                     android:id="@+id/et_card_one"
                                     android:layout_width="0dp"
                                     android:layout_height="@dimen/pin_height"
@@ -186,7 +186,7 @@
                                     android:textColorHint="@color/blakcolor"
                                     android:textSize="@dimen/_13ssp" />
 
-                                <apps.sharabash.bzender.Utills.MyEditText
+                                <apps.pixel.bzender.Utills.MyEditText
                                     android:id="@+id/et_two"
                                     android:layout_width="0dp"
                                     android:layout_height="@dimen/pin_height"
@@ -204,7 +204,7 @@
                                     android:textColorHint="@color/blakcolor"
                                     android:textSize="@dimen/_13ssp" />
 
-                                <apps.sharabash.bzender.Utills.MyEditText
+                                <apps.pixel.bzender.Utills.MyEditText
                                     android:id="@+id/et_three"
                                     android:layout_width="0dp"
                                     android:layout_height="@dimen/pin_height"
@@ -227,7 +227,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="@dimen/_10_height" />
 
-                            <apps.sharabash.bzender.Utills.MyTextView
+                            <apps.pixel.bzender.Utills.MyTextView
                                 android:id="@+id/txt_id"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -242,7 +242,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="@dimen/_4_height" />
 
-                            <apps.sharabash.bzender.Utills.MyEditText
+                            <apps.pixel.bzender.Utills.MyEditText
                                 android:id="@+id/et_id"
                                 android:layout_width="match_parent"
                                 android:layout_height="@dimen/pin_height"
@@ -303,7 +303,7 @@
                                 android:orientation="horizontal">
 
 
-                                <apps.sharabash.bzender.Utills.MyTextView
+                                <apps.pixel.bzender.Utills.MyTextView
                                     android:id="@+id/txt_bussiness"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
@@ -314,7 +314,7 @@
                                     android:textSize="@dimen/_10ssp"
                                     android:textStyle="bold" />
 
-                                <apps.sharabash.bzender.Utills.MyTextView
+                                <apps.pixel.bzender.Utills.MyTextView
                                     android:id="@+id/txt_individual"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
@@ -361,7 +361,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="146" />
 
-                        <apps.sharabash.bzender.Utills.ButtonBook
+                        <apps.pixel.bzender.Utills.ButtonBook
                             android:id="@+id/next"
                             android:layout_width="0dp"
                             android:layout_height="@dimen/_45_height"
@@ -431,7 +431,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="22" />
 
-            <apps.sharabash.bzender.Utills.MyTextViewBold
+            <apps.pixel.bzender.Utills.MyTextViewBold
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_gravity="start|center"

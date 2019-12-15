@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:gravity="end"
         >
-        <apps.sharabash.bzender.Utills.MyTextView
+        <apps.pixel.bzender.Utills.MyTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/message_body"

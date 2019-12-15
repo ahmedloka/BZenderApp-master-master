@@ -24,7 +24,7 @@
         android:weightSum="411"
         android:gravity="center"
         >
-        <apps.sharabash.bzender.Utills.MyTextView
+        <apps.pixel.bzender.Utills.MyTextView
             android:layout_width="0dp"
             android:layout_weight="320"
             android:layout_height="wrap_content"
@@ -39,7 +39,7 @@
     <Space
         android:layout_width="wrap_content"
         android:layout_height="@dimen/_30_height" />
-    <apps.sharabash.bzender.Utills.ButtonBook
+    <apps.pixel.bzender.Utills.ButtonBook
         android:id="@+id/ok"
         android:layout_width="wrap_content"
         android:layout_height="@dimen/_45_height"

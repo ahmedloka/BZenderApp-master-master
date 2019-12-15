@@ -12,7 +12,7 @@
 
     </android.support.v7.widget.AppCompatImageView>
 
-    <apps.sharabash.bzender.Utills.MyTextViewBold
+    <apps.pixel.bzender.Utills.MyTextViewBold
         android:id="@+id/txt_details"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

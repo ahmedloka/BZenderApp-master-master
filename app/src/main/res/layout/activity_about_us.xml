@@ -47,7 +47,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="22" />
 
-            <apps.sharabash.bzender.Utills.MyTextViewBold
+            <apps.pixel.bzender.Utills.MyTextViewBold
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -82,7 +82,7 @@
                 android:gravity="center"
                 android:weightSum="411">
 
-                <apps.sharabash.bzender.Utills.MyTextViewBold
+                <apps.pixel.bzender.Utills.MyTextViewBold
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -100,7 +100,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_10_height" />
 
-            <apps.sharabash.bzender.Utills.MyTextView
+            <apps.pixel.bzender.Utills.MyTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -121,7 +121,7 @@
                 android:gravity="center"
                 android:weightSum="411">
 
-                <apps.sharabash.bzender.Utills.MyTextViewBold
+                <apps.pixel.bzender.Utills.MyTextViewBold
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -139,7 +139,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_10_height" />
 
-            <apps.sharabash.bzender.Utills.MyTextView
+            <apps.pixel.bzender.Utills.MyTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -160,7 +160,7 @@
                 android:gravity="center"
                 android:weightSum="411">
 
-                <apps.sharabash.bzender.Utills.MyTextViewBold
+                <apps.pixel.bzender.Utills.MyTextViewBold
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -178,7 +178,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_10_height" />
 
-            <apps.sharabash.bzender.Utills.MyTextView
+            <apps.pixel.bzender.Utills.MyTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"

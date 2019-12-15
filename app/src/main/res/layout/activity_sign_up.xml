@@ -110,7 +110,7 @@
                             android:gravity="center"
                             android:weightSum="411">
 
-                            <apps.sharabash.bzender.Utills.MyTextViewBold
+                            <apps.pixel.bzender.Utills.MyTextViewBold
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
@@ -130,7 +130,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/_10_height" />
 
-                        <apps.sharabash.bzender.Utills.MyTextView
+                        <apps.pixel.bzender.Utills.MyTextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/name"
@@ -142,7 +142,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/_4_height" />
 
-                        <apps.sharabash.bzender.Utills.MyEditText
+                        <apps.pixel.bzender.Utills.MyEditText
                             android:id="@+id/user_name"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/pin_height"
@@ -160,7 +160,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/_10_height" />
 
-                        <apps.sharabash.bzender.Utills.MyTextView
+                        <apps.pixel.bzender.Utills.MyTextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/email_address"
@@ -172,7 +172,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/_4_height" />
 
-                        <apps.sharabash.bzender.Utills.MyEditText
+                        <apps.pixel.bzender.Utills.MyEditText
                             android:id="@+id/email_address"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/pin_height"
@@ -189,7 +189,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/_10_height" />
 
-                        <apps.sharabash.bzender.Utills.MyTextView
+                        <apps.pixel.bzender.Utills.MyTextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/password"
@@ -201,7 +201,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/_4_height" />
 
-                        <apps.sharabash.bzender.Utills.MyEditText
+                        <apps.pixel.bzender.Utills.MyEditText
                             android:id="@+id/password"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/pin_height"
@@ -218,7 +218,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/_10_height" />
 
-                        <apps.sharabash.bzender.Utills.MyTextView
+                        <apps.pixel.bzender.Utills.MyTextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/confirm_password"
@@ -230,7 +230,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/_4_height" />
 
-                        <apps.sharabash.bzender.Utills.MyEditText
+                        <apps.pixel.bzender.Utills.MyEditText
                             android:id="@+id/confirm_password"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/pin_height"
@@ -247,7 +247,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/_10_height" />
 
-                        <apps.sharabash.bzender.Utills.MyTextView
+                        <apps.pixel.bzender.Utills.MyTextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/address"
@@ -259,7 +259,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/_4_height" />
 
-                        <apps.sharabash.bzender.Utills.MyTextView
+                        <apps.pixel.bzender.Utills.MyTextView
                             android:id="@+id/address"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/pin_height"
@@ -293,7 +293,7 @@
                                 android:layout_weight="60"
                                 android:orientation="vertical">
 
-                                <apps.sharabash.bzender.Utills.MyTextView
+                                <apps.pixel.bzender.Utills.MyTextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="@string/country"
@@ -305,7 +305,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="@dimen/_4_height" />
 
-                                <apps.sharabash.bzender.Utills.MyTextView
+                                <apps.pixel.bzender.Utills.MyTextView
                                     android:id="@+id/country_code"
                                     android:layout_width="match_parent"
                                     android:layout_height="@dimen/pin_height"
@@ -336,7 +336,7 @@
                                 android:layout_weight="156"
                                 android:orientation="vertical">
 
-                                <apps.sharabash.bzender.Utills.MyTextView
+                                <apps.pixel.bzender.Utills.MyTextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="@string/mobile_number"
@@ -348,7 +348,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="@dimen/_4_height" />
 
-                                <apps.sharabash.bzender.Utills.MyEditText
+                                <apps.pixel.bzender.Utills.MyEditText
                                     android:id="@+id/phone_number"
                                     android:layout_width="match_parent"
                                     android:layout_height="@dimen/pin_height"
@@ -402,7 +402,7 @@
                         android:padding="@dimen/_10sdp" />
 
 
-                    <apps.sharabash.bzender.Utills.MyTextViewBold
+                    <apps.pixel.bzender.Utills.MyTextViewBold
                         android:id="@+id/txt_terms"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -431,7 +431,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="146" />
 
-                    <apps.sharabash.bzender.Utills.ButtonBook
+                    <apps.pixel.bzender.Utills.ButtonBook
                         android:id="@+id/mBtnSignUp"
                         android:layout_width="0dp"
                         android:layout_height="@dimen/_45_height"

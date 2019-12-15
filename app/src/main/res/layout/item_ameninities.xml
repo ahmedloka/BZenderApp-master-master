@@ -12,7 +12,7 @@
         android:layout_weight="20"
         android:buttonTint="@color/app_color" />
 
-    <apps.sharabash.bzender.Utills.MyTextViewBold
+    <apps.pixel.bzender.Utills.MyTextViewBold
         android:id="@+id/txt_of_check_box"
         android:layout_width="0dp"
         android:layout_height="wrap_content"

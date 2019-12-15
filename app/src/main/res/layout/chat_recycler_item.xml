@@ -53,7 +53,7 @@
                             android:weightSum="100">
 
 
-                            <apps.sharabash.bzender.Utills.MyTextView
+                            <apps.pixel.bzender.Utills.MyTextView
                                 android:id="@+id/text_name_left"
                                 android:layout_width="@dimen/_90sdp"
                                 android:layout_height="@dimen/_15sdp"
@@ -67,7 +67,7 @@
 
                         </LinearLayout>
 
-                        <apps.sharabash.bzender.Utills.MyTextViewBold
+                        <apps.pixel.bzender.Utills.MyTextViewBold
                             android:id="@+id/chat_left_msg_text_view"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -118,7 +118,7 @@
                         android:orientation="horizontal"
                         android:weightSum="100">
 
-                        <apps.sharabash.bzender.Utills.MyTextView
+                        <apps.pixel.bzender.Utills.MyTextView
                             android:id="@+id/text_name_right"
                             android:layout_width="@dimen/_80sdp"
                             android:layout_height="@dimen/_15sdp"
@@ -133,7 +133,7 @@
 
                     </LinearLayout>
 
-                    <apps.sharabash.bzender.Utills.MyTextViewBold
+                    <apps.pixel.bzender.Utills.MyTextViewBold
                         android:id="@+id/chat_right_msg_text_view"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"

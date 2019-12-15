@@ -54,7 +54,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="22" />
 
-            <apps.sharabash.bzender.Utills.MyTextViewBold
+            <apps.pixel.bzender.Utills.MyTextViewBold
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_gravity="start|center"
@@ -98,7 +98,7 @@
                     android:padding="@dimen/_10sdp">
 
 
-                    <apps.sharabash.bzender.Utills.MyTextViewBold
+                    <apps.pixel.bzender.Utills.MyTextViewBold
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_gravity="start|center"
@@ -115,7 +115,7 @@
                         android:layout_height="match_parent"
                         android:background="@android:color/white" />
 
-                    <apps.sharabash.bzender.Utills.MyTextViewBold
+                    <apps.pixel.bzender.Utills.MyTextViewBold
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_gravity="start|center"
@@ -186,7 +186,7 @@
                     android:padding="@dimen/_10sdp">
 
 
-                    <apps.sharabash.bzender.Utills.MyTextViewBold
+                    <apps.pixel.bzender.Utills.MyTextViewBold
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_gravity="start|center"
@@ -203,7 +203,7 @@
                         android:layout_height="match_parent"
                         android:background="@android:color/white" />
 
-                    <apps.sharabash.bzender.Utills.MyTextViewBold
+                    <apps.pixel.bzender.Utills.MyTextViewBold
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_gravity="start|center"
@@ -263,7 +263,7 @@
                 android:orientation="horizontal">
 
 
-                <apps.sharabash.bzender.Utills.MyTextViewBold
+                <apps.pixel.bzender.Utills.MyTextViewBold
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/_20sdp"
@@ -308,7 +308,7 @@
                 android:orientation="horizontal">
 
 
-                <apps.sharabash.bzender.Utills.MyTextViewBold
+                <apps.pixel.bzender.Utills.MyTextViewBold
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/_20sdp"
@@ -412,7 +412,7 @@
                 android:orientation="horizontal">
 
 
-                <apps.sharabash.bzender.Utills.MyTextViewBold
+                <apps.pixel.bzender.Utills.MyTextViewBold
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center|start"
@@ -449,7 +449,7 @@
 
             </android.support.v7.widget.LinearLayoutCompat>
 
-            <apps.sharabash.bzender.Utills.MyEditText
+            <apps.pixel.bzender.Utills.MyEditText
                 android:id="@+id/et_extra_feat"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -468,7 +468,7 @@
                 android:textSize="@dimen/_12ssp" />
 
 
-            <apps.sharabash.bzender.Utills.ButtonBook
+            <apps.pixel.bzender.Utills.ButtonBook
                 android:id="@+id/btn_next"
                 android:layout_width="@dimen/_70sdp"
                 android:layout_height="@dimen/_45_height"

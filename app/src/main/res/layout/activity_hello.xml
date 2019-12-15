@@ -47,7 +47,7 @@
             android:gravity="center"
             >
 
-            <apps.sharabash.bzender.Utills.ButtonBook
+            <apps.pixel.bzender.Utills.ButtonBook
                 android:id="@+id/login"
                 android:layout_width="0dp"
                 android:layout_weight="233"
@@ -77,7 +77,7 @@
             android:gravity="center"
             >
 
-            <apps.sharabash.bzender.Utills.ButtonBook
+            <apps.pixel.bzender.Utills.ButtonBook
                 android:id="@+id/register"
                 android:layout_width="0dp"
                 android:layout_weight="233"
@@ -109,7 +109,7 @@
             android:gravity="center"
             >
 
-            <apps.sharabash.bzender.Utills.MyTextView
+            <apps.pixel.bzender.Utills.MyTextView
                 android:id="@+id/mBtnSignUp"
                 android:layout_width="0dp"
                 android:layout_weight="233"

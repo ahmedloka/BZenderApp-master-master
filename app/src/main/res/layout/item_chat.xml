@@ -29,7 +29,7 @@
         android:orientation="vertical"
         >
 
-        <apps.sharabash.bzender.Utills.MyTextViewBold
+        <apps.pixel.bzender.Utills.MyTextViewBold
             android:id="@+id/name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -41,7 +41,7 @@
         <Space
             android:layout_width="wrap_content"
             android:layout_height="@dimen/_10_height" />
-        <apps.sharabash.bzender.Utills.MyTextViewBold
+        <apps.pixel.bzender.Utills.MyTextViewBold
             android:id="@+id/desc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

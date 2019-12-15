@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:dist="http://schemas.android.com/apk/distribution"
     xmlns:tools="http://schemas.android.com/tools"
-    package="apps.sharabash.bzender">
+    package="apps.pixel.bzender">
 
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -37,7 +37,7 @@
     <uses-permission android:name="android.permission.CALL_PHONE" />
 
     <application
-        android:name=".Utills.MyApp"
+        android:name="apps.pixel.bzender.Utills.MyApp"
         android:allowBackup="true"
         android:fullBackupContent="true"
         android:icon="@mipmap/ic_launcher"
@@ -47,127 +47,127 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activities.WebViewOfferActivity"
-            android:parentActivityName=".activities.Home.Home"></activity>
+        <activity android:name="apps.pixel.bzender.activities.WebViewOfferActivity"
+            android:parentActivityName="apps.pixel.bzender.activities.Home.Home"></activity>
         <activity
-            android:name=".activities.tenderRealEstateDetails.TenderRealEstateDetails"
-            android:parentActivityName=".activities.TenderCarDetails" />
+            android:name="apps.pixel.bzender.activities.tenderRealEstateDetails.TenderRealEstateDetails"
+            android:parentActivityName="apps.pixel.bzender.activities.TenderCarDetails" />
         <activity
-            android:name=".activities.real_state.AddRealStateActivity"
-            android:parentActivityName=".activities.Home.Home" />
+            android:name="apps.pixel.bzender.activities.real_state.AddRealStateActivity"
+            android:parentActivityName="apps.pixel.bzender.activities.Home.Home" />
         <activity
-            android:name=".activities.before.BeforerActivity"
-            android:parentActivityName=".activities.Home.Home" />
+            android:name="apps.pixel.bzender.activities.before.BeforerActivity"
+            android:parentActivityName="apps.pixel.bzender.activities.Home.Home" />
         <activity
-            android:name=".activities.webPaymnet.WebPaymentActivity"
-            android:parentActivityName=".activities.packages.PackagesActivity" />
+            android:name="apps.pixel.bzender.activities.webPaymnet.WebPaymentActivity"
+            android:parentActivityName="apps.pixel.bzender.activities.packages.PackagesActivity" />
         <activity
-            android:name=".activities.PaymentActivity"
-            android:parentActivityName=".activities.packages.PackagesActivity" />
+            android:name="apps.pixel.bzender.activities.PaymentActivity"
+            android:parentActivityName="apps.pixel.bzender.activities.packages.PackagesActivity" />
         <activity
-            android:name=".activities.packages.PackagesActivity"
-            android:parentActivityName=".activities.Home.Home" />
+            android:name="apps.pixel.bzender.activities.packages.PackagesActivity"
+            android:parentActivityName="apps.pixel.bzender.activities.Home.Home" />
         <activity
-            android:name=".activities.myTender.MyTendersActivity"
+            android:name="apps.pixel.bzender.activities.myTender.MyTendersActivity"
             android:configChanges="orientation|keyboardHidden"
-            android:parentActivityName=".activities.Home.Home" />
+            android:parentActivityName="apps.pixel.bzender.activities.Home.Home" />
         <activity
-            android:name=".activities.TermsAndConditionActivity"
-            android:parentActivityName=".activities.Setting" />
+            android:name="apps.pixel.bzender.activities.TermsAndConditionActivity"
+            android:parentActivityName="apps.pixel.bzender.activities.Setting" />
         <activity
-            android:name=".activities.imagesBook.ImagesActivity"
-            android:parentActivityName=".activities.TenderDetails.TinderDetails" />
+            android:name="apps.pixel.bzender.activities.imagesBook.ImagesActivity"
+            android:parentActivityName="apps.pixel.bzender.activities.TenderDetails.TinderDetails" />
         <activity
-            android:name=".activities.BookActivity"
-            android:parentActivityName=".activities.Home.Home" />
+            android:name="apps.pixel.bzender.activities.BookActivity"
+            android:parentActivityName="apps.pixel.bzender.activities.Home.Home" />
         <activity
-            android:name=".activities.TenderCarDetails"
-            android:parentActivityName=".activities.TenderDetails.TinderDetails" />
+            android:name="apps.pixel.bzender.activities.TenderCarDetails"
+            android:parentActivityName="apps.pixel.bzender.activities.TenderDetails.TinderDetails" />
         <activity
-            android:name=".activities.TenderElectricalDetails"
-            android:parentActivityName=".activities.TenderCarDetails" />
+            android:name="apps.pixel.bzender.activities.TenderElectricalDetails"
+            android:parentActivityName="apps.pixel.bzender.activities.TenderCarDetails" />
         <activity
-            android:name=".activities.fillDataElectrical.FillDataElectricalActivity"
-            android:parentActivityName=".activities.Home.Home" />
+            android:name="apps.pixel.bzender.activities.fillDataElectrical.FillDataElectricalActivity"
+            android:parentActivityName="apps.pixel.bzender.activities.Home.Home" />
         <activity
-            android:name=".activities.fillDataCar.FillDataCarActivity"
-            android:parentActivityName=".activities.Home.Home" />
+            android:name="apps.pixel.bzender.activities.fillDataCar.FillDataCarActivity"
+            android:parentActivityName="apps.pixel.bzender.activities.Home.Home" />
         <activity
-            android:name=".activities.CompleteAddTiner"
-            android:parentActivityName=".activities.before.BeforerActivity" />
+            android:name="apps.pixel.bzender.activities.CompleteAddTiner"
+            android:parentActivityName="apps.pixel.bzender.activities.before.BeforerActivity" />
         <activity
-            android:name=".activities.webViewContactUs.WebViewActivity"
-            android:parentActivityName=".activities.ContactUs" />
-        <activity android:name=".activities.HowBookTender" />
-        <activity android:name=".activities.HowAddTender" />
+            android:name="apps.pixel.bzender.activities.webViewContactUs.WebViewActivity"
+            android:parentActivityName="apps.pixel.bzender.activities.ContactUs" />
+        <activity android:name="apps.pixel.bzender.activities.HowBookTender" />
+        <activity android:name="apps.pixel.bzender.activities.HowAddTender" />
         <activity
-            android:name=".activities.ChooseHowItWork"
-            android:parentActivityName=".activities.Home.Home" />
+            android:name="apps.pixel.bzender.activities.ChooseHowItWork"
+            android:parentActivityName="apps.pixel.bzender.activities.Home.Home" />
 
         <meta-data
             android:name="io.fabric.ApiKey"
             android:value="5397ab207ad3000ea778a8bb9c620625dd57401b" />
 
-        <activity android:name=".activities.HowItWork" />
+        <activity android:name="apps.pixel.bzender.activities.HowItWork" />
         <activity
-            android:name=".activities.changePassword.ChangePassword"
-            android:parentActivityName=".activities.Setting" />
+            android:name="apps.pixel.bzender.activities.changePassword.ChangePassword"
+            android:parentActivityName="apps.pixel.bzender.activities.Setting" />
         <activity
-            android:name=".activities.editProfile.EditProfile"
+            android:name="apps.pixel.bzender.activities.editProfile.EditProfile"
             android:exported="true"
-            android:parentActivityName=".activities.profile.Profile" />
+            android:parentActivityName="apps.pixel.bzender.activities.profile.Profile" />
         <activity
-            android:name=".activities.profile.Profile"
-            android:parentActivityName=".activities.Home.Home" />
+            android:name="apps.pixel.bzender.activities.profile.Profile"
+            android:parentActivityName="apps.pixel.bzender.activities.Home.Home" />
         <activity
-            android:name=".activities.Setting"
-            android:parentActivityName=".activities.Home.Home" />
+            android:name="apps.pixel.bzender.activities.Setting"
+            android:parentActivityName="apps.pixel.bzender.activities.Home.Home" />
         <activity
-            android:name=".activities.ContactUs"
-            android:parentActivityName=".activities.Home.Home" />
+            android:name="apps.pixel.bzender.activities.ContactUs"
+            android:parentActivityName="apps.pixel.bzender.activities.Home.Home" />
         <activity
-            android:name=".activities.AboutUs"
-            android:parentActivityName=".activities.Home.Home" />
-        <activity android:name=".activities.WelcomeActivity" />
+            android:name="apps.pixel.bzender.activities.AboutUs"
+            android:parentActivityName="apps.pixel.bzender.activities.Home.Home" />
+        <activity android:name="apps.pixel.bzender.activities.WelcomeActivity" />
         <activity
-            android:name=".activities.chatRoom.ChatRoom"
-            android:parentActivityName=".activities.chatRoom.ChatRoom"
+            android:name="apps.pixel.bzender.activities.chatRoom.ChatRoom"
+            android:parentActivityName="apps.pixel.bzender.activities.chatRoom.ChatRoom"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name=".activities.notification.Notifications"
-            android:parentActivityName=".activities.Home.Home" />
+            android:name="apps.pixel.bzender.activities.notification.Notifications"
+            android:parentActivityName="apps.pixel.bzender.activities.Home.Home" />
         <activity
-            android:name=".activities.chatAllUsers.ChatListActivity"
-            android:parentActivityName=".activities.Home.Home" />
+            android:name="apps.pixel.bzender.activities.chatAllUsers.ChatListActivity"
+            android:parentActivityName="apps.pixel.bzender.activities.Home.Home" />
         <activity
-            android:name=".activities.myBooking.MyBooking"
-            android:parentActivityName=".activities.Home.Home" />
+            android:name="apps.pixel.bzender.activities.myBooking.MyBooking"
+            android:parentActivityName="apps.pixel.bzender.activities.Home.Home" />
         <activity
-            android:name=".activities.TenderDetails.TinderDetails"
-            android:parentActivityName=".activities.Tenders.AllTenderActivity" />
+            android:name="apps.pixel.bzender.activities.TenderDetails.TinderDetails"
+            android:parentActivityName="apps.pixel.bzender.activities.Tenders.AllTenderActivity" />
         <activity
-            android:name=".activities.Tenders.AllTenderActivity"
-            android:parentActivityName=".activities.before.BeforerActivity" />
+            android:name="apps.pixel.bzender.activities.Tenders.AllTenderActivity"
+            android:parentActivityName="apps.pixel.bzender.activities.before.BeforerActivity" />
         <activity
-            android:name=".activities.AddTender.AddTender"
-            android:parentActivityName=".activities.Home.Home" />
+            android:name="apps.pixel.bzender.activities.AddTender.AddTender"
+            android:parentActivityName="apps.pixel.bzender.activities.Home.Home" />
         <activity
-            android:name=".activities.verfication.VerificationActivity"
-            android:parentActivityName=".activities.login.Login"
+            android:name="apps.pixel.bzender.activities.verfication.VerificationActivity"
+            android:parentActivityName="apps.pixel.bzender.activities.login.Login"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name=".activities.forget_password.ForgetPassword"
-            android:parentActivityName=".activities.login.Login" />
-        <activity android:name=".activities.HelloActivity" />
+            android:name="apps.pixel.bzender.activities.forget_password.ForgetPassword"
+            android:parentActivityName="apps.pixel.bzender.activities.login.Login" />
+        <activity android:name="apps.pixel.bzender.activities.HelloActivity" />
         <activity
-            android:name=".activities.Home.Home"
+            android:name="apps.pixel.bzender.activities.Home.Home"
             android:launchMode="singleTop" />
         <activity
-            android:name=".activities.signUp.SignUp"
+            android:name="apps.pixel.bzender.activities.signUp.SignUp"
             android:exported="true"
             android:windowSoftInputMode="stateAlwaysHidden" />
-        <activity android:name=".activities.login.Login" />
-        <activity android:name=".activities.Splash">
+        <activity android:name="apps.pixel.bzender.activities.login.Login" />
+        <activity android:name="apps.pixel.bzender.activities.Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.intent.action.VIEW" />
@@ -187,18 +187,18 @@
             android:name="com.google.firebase.messaging.default_notification_color"
             android:resource="@color/dark_blue" />
 
-        <service android:name=".services.MyFireBaseMessagingService">
+        <service android:name="apps.pixel.bzender.services.MyFireBaseMessagingService">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
         <service
-            android:name=".services.SignalRService"
+            android:name="apps.pixel.bzender.services.SignalRService"
             android:enabled="true"
             android:exported="true"
             tools:ignore="ExportedService" />
 
-        <receiver android:name=".Utills.NetworkChangeReceiver">
+        <receiver android:name="apps.pixel.bzender.Utills.NetworkChangeReceiver">
             <intent-filter>
                 <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
             </intent-filter>
