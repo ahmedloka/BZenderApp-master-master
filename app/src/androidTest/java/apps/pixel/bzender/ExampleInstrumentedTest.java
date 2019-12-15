@@ -1,4 +1,4 @@
-package apps.sharabash.bzender;
+package apps.pixel.bzender;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
